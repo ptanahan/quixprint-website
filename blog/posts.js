@@ -5,7 +5,7 @@ window.QUIXPRINT_POSTS = [
     date: "October 13, 2025",
     author: "Patrick Tanahan",
     excerpt: "Discover how a simple printed flyer helped turn a product story into a powerful marketing advantage.",
-    image: "/assets/marketing-materials-printing.png",
+    image: "/assets/dyson.jpeg",
     imageAlt: "Printed brochures, flyers, and marketing materials"
   },
   {
@@ -14,7 +14,7 @@ window.QUIXPRINT_POSTS = [
     date: "August 12, 2025",
     author: "Patrick Tanahan",
     excerpt: "Learn the key differences between BOPP and paper labels so you can choose the right material for your product.",
-    image: "/assets/labels-printing.png",
+    image: "/assets/labels.jpeg",
     imageAlt: "Custom printed roll labels"
   }
 ];
