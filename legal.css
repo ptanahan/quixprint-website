@@ -1,0 +1,44 @@
+
+.legal-hero{
+  padding:145px 4vw 70px;
+  background:var(--light-grey);
+  border-bottom:1px solid var(--line);
+}
+.legal-hero-inner{max-width:1050px;margin:auto}
+.legal-hero h1{
+  font-family:"Manrope",sans-serif;
+  font-size:clamp(52px,7vw,100px);
+  line-height:.95;
+  letter-spacing:-.06em;
+  margin:18px 0 22px;
+}
+.legal-hero p{font-size:17px;color:var(--text-muted);margin:0}
+.legal-content{
+  max-width:860px;
+  margin:0 auto;
+  padding:85px 24px 120px;
+  font-size:16px;
+  line-height:1.75;
+}
+.legal-content h2{
+  font-family:"Manrope",sans-serif;
+  font-size:clamp(28px,4vw,43px);
+  line-height:1.1;
+  letter-spacing:-.035em;
+  margin:55px 0 18px;
+}
+.legal-content h3{
+  font-family:"Manrope",sans-serif;
+  font-size:22px;
+  margin:38px 0 12px;
+}
+.legal-content p{margin:0 0 20px}
+.legal-content ul{padding-left:22px;margin:0 0 24px}
+.legal-content li{margin:0 0 10px}
+.legal-notice{
+  padding:20px 22px;
+  margin-bottom:38px;
+  background:var(--light-grey);
+  border-radius:12px;
+  font-size:14px;
+}
