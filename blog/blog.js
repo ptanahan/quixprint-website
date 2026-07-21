@@ -11,7 +11,7 @@ if (grid) {
           <img src="${post.image}" alt="${post.imageAlt || ""}">
         </a>
         <div class="blog-card-body">
-          <div class="blog-meta">${post.date} · ${post.author}</div>
+          <div class="blog-meta">${post.date}</div>
           <h2><a href="/blog/${post.slug}/">${post.title}</a></h2>
           <p>${post.excerpt}</p>
           <a class="blog-read" href="/blog/${post.slug}/">Read article <span>→</span></a>
