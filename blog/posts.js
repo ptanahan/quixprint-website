@@ -1,5 +1,14 @@
 window.QUIXPRINT_POSTS = [
   {
+  title: "Why Color Matters in Print and Marketing",
+  slug: "why-color-matters",
+  date: "July 24, 2026",
+  author: "Patrick Tanahan",
+  excerpt: "Learn how color psychology influences branding, packaging, product labels, and printed marketing materials.",
+  image: "/assets/color-psychology-print.jpg",
+  imageAlt: "Colorful printed labels, packaging, and marketing materials demonstrating color psychology"
+},
+  {
     title: "James Dyson’s Old-School Marketing Trick That Still Works Wonders Today",
     slug: "james-dyson-marketing-genius-flyer-strategy",
     date: "October 13, 2025",
