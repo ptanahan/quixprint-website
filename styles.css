@@ -105,6 +105,23 @@ button,input,textarea,select{font:inherit}
 .button-dark{background:var(--blue);color:var(--white)}
 .button-dark:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(20,126,224,.25)}
 .text-link{font-weight:700;border-bottom:1px solid var(--black);padding-bottom:4px}
+.arrow-icon{
+  display:inline-block;
+  width:11px;
+  height:11px;
+  border-top:1.8px solid currentColor;
+  border-right:1.8px solid currentColor;
+  flex-shrink:0;
+}
+
+.arrow-down{
+  transform:rotate(135deg);
+  margin-left:6px;
+}
+
+.arrow-up{
+  transform:rotate(-45deg);
+}
 
 .hero-art{height:min(650px,66vw);position:relative;min-height:480px}
 .hero-photo{
@@ -189,7 +206,11 @@ button,input,textarea,select{font:inherit}
 }
 .product-row p{color:rgba(0,0,0,.66);line-height:1.55;margin:0}
 .product-number{font-size:12px;color:var(--blue);font-weight:700}
-.product-arrow{font-size:27px;text-align:right;transition:transform .2s;color:var(--blue)}
+.product-arrow{
+  justify-self:end;
+  transition:transform .2s;
+  color:var(--blue);
+}
 .product-row:hover .product-arrow{transform:translate(4px,-4px)}
 
 .statement{overflow:hidden;background:var(--blue);color:var(--white);padding:21px 0}
