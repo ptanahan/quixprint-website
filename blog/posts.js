@@ -1,5 +1,12 @@
 window.QUIXPRINT_POSTS = [
 {
+  title: "The IKEA Catalog: How 200 Million Copies Sold Furniture for 70 Years",
+  slug: "ikea-catalog-history",
+  date: "September 10, 2026",
+  image: "/assets/ikea-catalog.jpeg",
+  imageAlt: "Vintage IKEA catalogs and printed furniture marketing materials"
+},
+{
   title: "Direct Mail Response Rates: Why Printed Mail Still Beats Email",
   slug: "direct-mail-response-rates",
   date: "September 9, 2026",
