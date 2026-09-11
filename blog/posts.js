@@ -4,7 +4,8 @@ window.QUIXPRINT_POSTS = [
   slug: "ikea-catalog-history",
   date: "September 10, 2026",
   image: "/assets/ikea-catalog.jpeg",
-  imageAlt: "Vintage IKEA catalogs and printed furniture marketing materials"
+  imageAlt: "Vintage IKEA catalogs and printed furniture marketing materials",
+  excerpt: "How a Swedish furniture catalog grew into a 200-million-copy global marketing machine—and what its 70-year run still teaches brands about print."
 },
 {
   title: "Direct Mail Response Rates: Why Printed Mail Still Beats Email",
