@@ -19,7 +19,6 @@ window.QUIXPRINT_POSTS = [
   title: "Direct Mail Response Rates: Why Printed Mail Still Beats Email",
   slug: "direct-mail-response-rates",
   date: "September 9, 2026",
-  author: "Patrick Tanahan",
   excerpt: "See the latest direct mail response rates and learn why printed mail remains a powerful channel for lead generation, customer acquisition, and retention.",
   image: "/assets/direct-mail.jpg",
   imageAlt: "Direct mail postcards, brochures, and printed marketing materials"
@@ -28,7 +27,6 @@ window.QUIXPRINT_POSTS = [
   title: "Why Color Matters in Print and Marketing",
   slug: "why-color-matters",
   date: "July 24, 2026",
-  author: "Patrick Tanahan",
   excerpt: "Learn how color psychology influences branding, packaging, product labels, and printed marketing materials.",
   image: "/assets/color-psychology-print.jpg",
   imageAlt: "Colorful printed labels, packaging, and marketing materials demonstrating color psychology"
