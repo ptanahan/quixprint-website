@@ -1,5 +1,13 @@
 window.QUIXPRINT_POSTS = [
 {
+  title: "Custom Table Tents: The Small-Space Marketing Tool Restaurants and Offices Underuse",
+  slug: "custom-table-tent-printing",
+  date: "September 17, 2026",
+  excerpt: "A blank table is wasted ad space. Learn how custom table tents turn tables, counters, and waiting areas into simple, effective marketing opportunities.",
+  image: "/assets/table-tent-printing.jpg",
+  imageAlt: "Custom printed table tent displayed on a restaurant table"
+},
+{
   title: "The IKEA Catalog: How 200 Million Copies Sold Furniture for 70 Years",
   slug: "ikea-catalog-history",
   date: "September 10, 2026",
