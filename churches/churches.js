@@ -135,9 +135,9 @@
       const file = fileInput.files[0];
       if (file && file.size > 4_000_000) { $('.artwork-section').open = true; showError($('#form-error'),'This file is over 4 MB. Remove it to continue; you can provide artwork later by email.'); return; }
       if (file && !/\.(pdf|eps|jpg|jpeg|png|tif|tiff|zip)$/i.test(file.name)) { $('.artwork-section').open = true; showError($('#form-error'),'Choose a PDF, EPS, JPG, PNG, TIFF, or ZIP. ZIP AI, PSD, and InDesign files before uploading.'); return; }
-      const value = key => form.elements[key].value.trim();
+      const value = key => form.elements[key]?.value?.trim() || '';
       const contact = {};
-      for (const name of ['church','contact','email','phone','recipient','address1','address2','city','state','postal','country','notes']) contact[name] = value(name);
+      for (const name of ['church','contact','email','phone','promoCode','recipient','address1','address2','city','state','postal','country','notes']) contact[name] = value(name);
       if (contact.phone.replace(/\D/g,'').length < 7) { showError($('#form-error'),'Enter a complete phone number.'); return; }
       if (items.length > 30) { showError($('#form-error'),'Please include up to 30 products per request.'); return; }
       // Reuse a request identifier when retrying the same saved quote after a network error.

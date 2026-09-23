@@ -18,8 +18,8 @@ function text(value,label,max=250,required=true) {
 function validate(raw) {
   if (!raw || !UUID.test(raw.submissionId || '')) throw new Invalid('Refresh the page and try again.');
   const contact = {};
-  const limits = {church:160,contact:120,email:254,phone:40,recipient:160,address1:200,address2:160,city:100,state:100,postal:20,country:100,notes:4000};
-  for (const [key,max] of Object.entries(limits)) contact[key] = text(raw.contact?.[key] ?? '',key,max,!['address2','notes'].includes(key));
+  const limits = {church:160,contact:120,email:254,phone:40,promoCode:64,recipient:160,address1:200,address2:160,city:100,state:100,postal:20,country:100,notes:4000};
+  for (const [key,max] of Object.entries(limits)) contact[key] = text(raw.contact?.[key] ?? '',key,max,!['address2','notes','promoCode'].includes(key));
   if (!EMAIL.test(contact.email) || /[\r\n]/.test(contact.email)) throw new Invalid('Enter a valid email address.');
   if (contact.phone.replace(/\D/g,'').length < 7) throw new Invalid('Enter a complete phone number.');
   if (!Array.isArray(raw.items) || !raw.items.length || raw.items.length > 30) throw new Invalid('Include between 1 and 30 products per request.');
@@ -46,7 +46,7 @@ function validate(raw) {
 export function renderEmail(quote,reference,filename) {
   const c=quote.contact;
   const sections=[
-    ['Request',[c.church,`Reference: ${reference}`,`${quote.items.length} product${quote.items.length===1?'':'s'}`]],
+    ['Request',[c.church,`Reference: ${reference}`,`${quote.items.length} product${quote.items.length===1?'':'s'}`,...(c.promoCode ? [`Promo code: ${c.promoCode}`] : [])]],
     ['Contact',[`Name: ${c.contact}`,`Email: ${c.email}`,`Phone: ${c.phone}`]],
     ['Shipping',[c.recipient,c.address1,c.address2,`${c.city}, ${c.state} ${c.postal}`,c.country].filter(Boolean)]
   ];
