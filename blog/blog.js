@@ -8,7 +8,10 @@ if (grid) {
     grid.innerHTML = posts.map(post => `
       <article class="blog-card reveal">
         <a class="blog-card-image" href="/blog/${post.slug}/">
-          <img src="${post.image}" alt="${post.imageAlt || ""}">
+          <img src="${post.thumbnail || post.image}"
+            ${post.thumbnailSrcSet ? `srcset="${post.thumbnailSrcSet}" sizes="(max-width: 700px) calc(46vw - 9px), (max-width: 1100px) calc(30.667vw - 17px), (max-width: 1440px) calc(23vw - 19px), calc(358px - 2vw - 16.5px)"` : ""}
+            width="640" height="480" decoding="async"
+            alt="${post.imageAlt || ""}">
         </a>
         <div class="blog-card-body">
           <div class="blog-meta">${post.date}</div>
