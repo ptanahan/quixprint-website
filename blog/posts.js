@@ -1,5 +1,13 @@
 window.QUIXPRINT_POSTS = [
 {
+  title: "What Is Variable Data Printing? How to Personalize Every Piece You Mail",
+  slug: "variable-data-printing",
+  date: "September 30, 2026",
+  image: "/assets/variable-data-printing.jpg",
+  imageAlt: "Personalized direct mail pieces created using variable data printing",
+  excerpt: "Variable data printing lets you change names, offers, images, coupons, and more from one printed piece to the next. Here's how VDP works and where it pays off."
+},
+  {
   title: "Custom Table Tents: The Small-Space Marketing Tool Restaurants and Offices Underuse",
   slug: "custom-table-tent-printing",
   date: "September 17, 2026",
