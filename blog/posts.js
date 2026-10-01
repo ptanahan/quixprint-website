@@ -4,6 +4,7 @@ window.QUIXPRINT_POSTS = [
   slug: "variable-data-printing",
   date: "September 30, 2026",
   image: "/assets/variable-data-printing.jpg",
+  thumbnail: "/assets/variable-data-printing-640.webp",
   imageAlt: "Personalized direct mail pieces created using variable data printing",
   excerpt: "Variable data printing lets you change names, offers, images, coupons, and more from one printed piece to the next. Here's how VDP works and where it pays off."
 },
