@@ -1,5 +1,14 @@
 window.QUIXPRINT_POSTS = [
 {
+  "title": "Custom Counter Mats: How Checkout Counters Become Selling Space",
+  "slug": "custom-counter-mats",
+  "date": "October 6, 2026",
+  "excerpt": "Your counter already has an audience. Here’s how to choose custom counter mat sizes, materials, and designs that stand up to daily use.",
+  "image": "/assets/custom-counter-mats.svg",
+  "thumbnail": "/assets/custom-counter-mats.svg",
+  "imageAlt": "Illustration of a branded counter mat beside a payment terminal"
+},
+  {
   title: "What Is Variable Data Printing? How to Personalize Every Piece You Mail",
   slug: "variable-data-printing",
   date: "September 30, 2026",
