@@ -4,8 +4,8 @@ window.QUIXPRINT_POSTS = [
   "slug": "custom-counter-mats",
   "date": "October 6, 2026",
   "excerpt": "Your counter already has an audience. Here’s how to choose custom counter mat sizes, materials, and designs that stand up to daily use.",
-  "image": "/assets/custom-counter-mats.svg",
-  "thumbnail": "/assets/custom-counter-mats.svg",
+  "image": "/assets/custom-counter-mats.jpg",
+  "thumbnail": "/assets/custom-counter-mats.jpg",
   "imageAlt": "Illustration of a branded counter mat beside a payment terminal"
 },
   {
