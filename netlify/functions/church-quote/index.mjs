@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 const MAX_FILE = 4_000_000;
 const MAX_REQUEST = 4_200_000;
 const RECIPIENT = 'churches@quixprint.com';
-const PRODUCTS = new Set(['Flag banners','X-frame banners','Outdoor banners','Retractable banners with stand','Yard signs','Posters','Window decals','Postcards','Door hangers','Flyers','Brochures','Remittance Envelopes','Letterheads','Presentation folders','Christmas Cards','Easter Cards','Calendars','Custom product','Stickers']);
+const PRODUCTS = new Set(['Flag banners','X-frame banners','Outdoor banners','Retractable banners with stand','Yard signs','Posters','Window decals','Postcards','Door hangers','Flyers','Brochures','Remittance Envelopes','Envelopes','Letterheads','Presentation folders','Christmas Cards','Easter Cards','Calendars','Custom product','Stickers']);
 const EXTENSIONS = /\.(pdf|eps|jpg|jpeg|png|tif|tiff|zip)$/i;
 const EMAIL = /^[^\s<>@]+@[^\s<>@]+\.[^\s<>@]+$/;
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;

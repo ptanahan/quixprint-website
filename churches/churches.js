@@ -66,6 +66,11 @@
       if (choices['Mailing list'] === 'I have a list') guidance.push('We’ll arrange your mailing-list transfer when we review your quote.');
       if (choices['Mailing list'] === 'Every Door Direct Mail') guidance.push('Tell us your preferred neighborhoods or carrier routes in your item notes.');
       if (choices['Cover Paper'] === 'Self Cover') guidance.push('The cover will use the same paper as the inside pages.');
+      if (name === 'Envelopes') {
+        guidance.push('Outside printing covers the exterior panels and flap. Both sides means the outside and the inside of the envelope.');
+        if (resolved.fields.find(field => field.label === 'Color')?.options.length === 1) guidance.push('This size is available with outside printing only.');
+        if (/^(9\" x 12\"|10\" x 13\")/.test(choices.Size)) guidance.push('This size may need additional production time. We’ll confirm timing with your quote.');
+      }
       $('#spec-guidance').textContent = guidance.join(' '); $('#spec-guidance').hidden = !guidance.length;
       const quantityValid = resolved.quantities.includes(String(quantity));
       form.elements.quantity.innerHTML = '<option value="">Choose a quantity</option>'+resolved.quantities.map(value => `<option value="${value}" ${quantityValid && String(quantity) === value ? 'selected' : ''}>${Number(value).toLocaleString()}</option>`).join('');

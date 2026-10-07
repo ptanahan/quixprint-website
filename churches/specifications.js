@@ -1,7 +1,7 @@
 (() => {
   'use strict';
   const data = window.QUIXPRINT_SPEC_DATA;
-  const keys = {'Postcards':'postcards','Door hangers':'door','Flyers':'flyers','Brochures':'brochures','Posters':'posters','Calendars':'calendars','Remittance Envelopes':'envelopes','Letterheads':'letterheads','Presentation folders':'folders','Christmas Cards':'greeting','Easter Cards':'greeting','Flag banners':'flag','X-frame banners':'xframe','Outdoor banners':'outdoor','Retractable banners with stand':'retractable','Yard signs':'yard','Stickers':'stickers','Window decals':'window'};
+  const keys = {'Postcards':'postcards','Door hangers':'door','Flyers':'flyers','Brochures':'brochures','Posters':'posters','Calendars':'calendars','Envelopes':'mailingEnvelopes','Remittance Envelopes':'envelopes','Letterheads':'letterheads','Presentation folders':'folders','Christmas Cards':'greeting','Easter Cards':'greeting','Flag banners':'flag','X-frame banners':'xframe','Outdoor banners':'outdoor','Retractable banners with stand':'retractable','Yard signs':'yard','Stickers':'stickers','Window decals':'window'};
   // Resolve in dependency order. Only active fields survive in the returned state.
   window.quixprintSpecifications = (name, previous = {}) => {
     const key = keys[name], d = data[key], state = {}, fields = [];
@@ -27,6 +27,14 @@
     }
     let quantities = [];
     if (!d) return {fields,state,quantities:['25','50','100','250','500','1000','2500','5000','10000']};
+    if (key === 'mailingEnvelopes') {
+      const size = select('Size',d.sizes,d.defaultSize);
+      const variant = d.bySize[size];
+      select('Paper',d.paper);
+      const color = select('Color',variant.colors);
+      quantities = variant.quantitiesByColor?.[color] || variant.quantities;
+      return {fields,state,quantities};
+    }
     if (d.fields) {
       const size = select('Size',d.fields.Size,d.defaults.Size);
       if (!['envelopes','folders','door','calendars'].includes(key)) orientation(size);
