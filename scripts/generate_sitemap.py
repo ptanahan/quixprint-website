@@ -5,7 +5,7 @@ from urllib.parse import quote
 from xml.sax.saxutils import escape
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = "https://www.quixprint.com"
+BASE = "https://quixprint.com"
 EXCLUDED_PARTS = {"_post-template", "email-preview", "thanks", "cart", "checkout", "custom-product", "node_modules", ".git", "dist", "scripts"}
 
 urls = []
