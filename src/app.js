@@ -144,7 +144,7 @@ function initLogo(){
  if(!brand||!still||route().pathname!=='/'||document.hidden)return;
  const motion=matchMedia('(prefers-reduced-motion: reduce)');
  if(motion.matches||logoPlayed)return;
- const key='qxp.logo.intro.v1';
+ const key='qxp.logo.intro.v2';
  try{if(sessionStorage.getItem(key))return;sessionStorage.setItem(key,'played');}catch{}
  logoPlayed=true;
  const layer=document.createElement('span'),animated=document.createElement('img'),events=new AbortController();
@@ -153,17 +153,16 @@ function initLogo(){
  animated.alt='';animated.width=650;animated.height=250;
  function finish(){if(disposed)return;disposed=true;clearTimeout(timer);events.abort();brand.classList.remove('logo-playing');layer.remove();}
  function start(){if(disposed||started)return;started=true;if(motion.matches||document.hidden){finish();return;}brand.classList.add('logo-playing');
-  // The supplied GIF reaches its completed frame at 930 ms; restore the sharp
-  // static logo after a short hold, well before its five-second repeat.
-  clearTimeout(timer);timer=setTimeout(finish,1500);
+  // This GIF has no repeat metadata: the browser holds its final frame.
+  // Keep the same image and geometry in place; never swap to a different logo.
+  clearTimeout(timer);
  }
  animated.addEventListener('load',start,{signal:events.signal});
  animated.addEventListener('error',finish,{signal:events.signal});
  motion.addEventListener('change',()=>{if(motion.matches)finish();},{signal:events.signal});
- document.addEventListener('visibilitychange',()=>{if(document.hidden)finish();},{signal:events.signal});
  window.addEventListener('pagehide',finish,{signal:events.signal});
  layer.append(animated);brand.append(layer);timer=setTimeout(finish,8000);
- animated.src=window.QXP_ASSETS?.['/qxp_logo_animated.gif']||'/qxp_logo_animated.gif';
+ animated.src=window.QXP_ASSETS?.['/qxp-logo-once.gif']||'/qxp-logo-once.gif';
  if(animated.complete&&animated.naturalWidth)start();
  destroyLogo=finish;
 }

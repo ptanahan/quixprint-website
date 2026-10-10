@@ -15,6 +15,14 @@ const style=['site.css','refinement.css','journal.css'].map(f=>fs.readFileSync('
 const preview=process.env.SITE_MODE!=='live';
 const out=path.join(root,'dist');fs.rmSync(out,{recursive:true,force:true});fs.mkdirSync(out,{recursive:true});
 for(const name of fs.readdirSync('legacy-site')){if(['netlify','scripts','README.md','netlify.toml','sitemap.xml','robots.txt'].includes(name))continue;fs.cpSync(path.join('legacy-site',name),path.join(out,name),{recursive:true,filter:src=>!path.basename(src).startsWith('.')});}
+// Remove only the GIF repeat-control metadata. Preserve every encoded image
+// frame, palette and timing byte so the logo holds its own completed frame.
+const logoGif=fs.readFileSync('legacy-site/qxp_logo_animated.gif');
+const repeatControl=Buffer.from('21ff0b4e45545343415045322e300301000000','hex');
+const repeatAt=logoGif.indexOf(repeatControl);
+if(repeatAt<0)throw new Error('Expected the supplied logo GIF repeat metadata.');
+const logoOnce=Buffer.concat([logoGif.subarray(0,repeatAt),logoGif.subarray(repeatAt+repeatControl.length)]);
+fs.writeFileSync(path.join(out,'qxp-logo-once.gif'),logoOnce);
 fs.mkdirSync(path.join(out,'assets/products'),{recursive:true});
 for(const file of fs.readdirSync('artwork').filter(n=>n.endsWith('.webp')))fs.copyFileSync(path.join('artwork',file),path.join(out,'assets/products',file));
 fs.writeFileSync(path.join(out,'assets/qxp.css'),style);fs.copyFileSync('src/app.js',path.join(out,'assets/qxp-app.js'));fs.copyFileSync('lib/engine.js',path.join(out,'assets/qxp-engine.js'));fs.copyFileSync('lib/email.js',path.join(out,'assets/qxp-email.js'));
@@ -73,7 +81,7 @@ function register(asset){const absolute=previewImages[asset]?path.join(root,prev
 function embedded(html){return html.replace(/\s+srcset="[^"]*"/g,'').replace(/src="(\/[^"?]+\.(?:webp|png|jpg|jpeg))"/g,(match,asset)=>{register(asset);return 'data-qxp-src="'+asset+'"';});}
 const offlinePages=Object.fromEntries(Object.entries(pages).map(([k,p])=>[k,{...p,html:embedded(k==='/quote/checkout/'?normalizeIcons(T.checkoutPage(true)):p.html)}]));
 for(const p of catalog.products)register(p.image);
-register('/qxp_logo_animated.gif');
+register('/qxp-logo-once.gif');
 const offlineHeader=embedded(normalizeIcons(T.header(catalog,true))),offlineFooter=embedded(footer);
 const offline=`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Quixprint — Full Website Preview</title><link rel="icon" href="data:image/png;base64,${fs.readFileSync(path.join(out,'QXP Favicon.png')).toString('base64')}"><style>${style}</style></head><body>${offlineHeader}<main id="main" tabindex="-1"></main>${offlineFooter}<script>window.QXP_ICONS=${jsJSON(icons)};window.QXP_OFFLINE=true;window.QXP_CONFIG={preview:true};window.QXP_PAGES=${jsJSON(offlinePages)};window.QXP_ASSETS=${jsJSON(cached)};window.QXP_CATALOG=${jsJSON(catalog)};window.QXP_LEGACY=${jsJSON(legacy)};window.QXP_HYDRATE=function(root){root.querySelectorAll('img').forEach(function(img){const key=img.getAttribute('data-qxp-src')||img.getAttribute('src');if(window.QXP_ASSETS[key]){img.removeAttribute('srcset');img.src=window.QXP_ASSETS[key];img.removeAttribute('data-qxp-src');}});};window.QXP_HYDRATE(document);</script><script>${fs.readFileSync('lib/engine.js','utf8')}</script><script>${fs.readFileSync('lib/email.js','utf8')}</script><script>${fs.readFileSync('src/app.js','utf8')}</script></body></html>`;
 fs.writeFileSync('Quixprint-Full-Preview.html',offline);
