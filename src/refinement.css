@@ -75,3 +75,36 @@ button.hero-slides{display:block;width:100%;padding:0;border:0;color:inherit;tex
 
 /* Vector controls render identically on desktop, iOS, and Android. */
 .q-icon{display:inline-block;width:1em;height:1em;flex-shrink:0;vertical-align:-.13em;font-size:16px;fill:none;stroke:currentColor}.button .q-icon,.text-link .q-icon{font-size:16px}.q-footer .q-icon{font-size:12px}.dialog-close .q-icon{font-size:21px}.versions-stepper .q-icon{font-size:18px}.category-toggle .q-icon{font-size:14px}.products-nav>button .q-icon{font-size:13px}
+
+/* Customer confirmation: one calm column, with no development email previews. */
+#receipt{max-width:900px;margin:0 auto;padding:14px 0 0}
+.receipt-heading{max-width:730px;margin:0 0 30px}
+.receipt-status{display:inline-flex;align-items:center;gap:9px;color:var(--blue);font-size:12px;font-weight:600;margin-bottom:19px}
+.receipt-status svg{flex-shrink:0}
+.receipt-heading h1{font-size:clamp(34px,4vw,52px);font-weight:500;letter-spacing:-.045em;line-height:1.12;margin:0 0 15px}
+.receipt-heading>p{font-size:15px;line-height:1.7;color:var(--muted);margin:0;max-width:570px}
+.receipt-reference{display:flex;flex-wrap:wrap;gap:8px 15px;align-items:center;margin-top:23px;font-size:12px;line-height:1.6}
+.receipt-reference>span{color:var(--muted)}
+.receipt-reference strong{font-weight:500;letter-spacing:.04em;color:var(--ink);overflow-wrap:anywhere}
+#receipt .receipt-box{max-width:none;padding:28px 32px;border-radius:5px}
+.receipt-summary-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-bottom:23px;border-bottom:1px solid var(--line)}
+#receipt .receipt-summary-heading h2{font-size:20px;line-height:1.3;margin:0;letter-spacing:-.025em}
+.receipt-summary-heading>span{font-size:12px;color:var(--muted);white-space:nowrap}
+.receipt-details-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;padding:24px 0}
+.receipt-details-grid h3{font-size:11px;font-weight:500;color:var(--muted);margin:0 0 9px}
+.receipt-details-grid p{font-size:13px;line-height:1.75;overflow-wrap:anywhere;margin:0}
+.receipt-details-grid strong{font-weight:600}
+#receipt .receipt-products .checkout-summary-item{border-top:1px solid var(--line);padding:22px 0}
+#receipt .checkout-summary-item h3{font-size:16px}
+#receipt .checkout-summary-item>p{font-size:12px;color:var(--muted)}
+#receipt .checkout-summary-item .item-specs{font-size:12px}
+.receipt-project-details{border-top:1px solid var(--line);padding-top:20px;margin:0;display:grid;gap:12px;font-size:12px;line-height:1.6}
+.receipt-project-details>div{display:grid;grid-template-columns:140px minmax(0,1fr);gap:18px}
+.receipt-project-details dt{color:var(--muted)}
+.receipt-project-details dd{margin:0;overflow-wrap:anywhere}
+.receipt-order-note{font-size:11px;line-height:1.7;color:var(--muted);margin:22px 0 0}
+.receipt-email-status{font-size:12px;line-height:1.7;color:var(--muted);margin:20px 0 0;overflow-wrap:anywhere}
+.receipt-email-status strong{font-weight:500;color:var(--ink)}
+#receipt .receipt-actions{margin-top:25px;gap:24px}
+@media(max-width:600px){#receipt{padding-top:4px}.receipt-heading{margin-bottom:24px}.receipt-heading>p{font-size:14px}#receipt .receipt-box{padding:23px 20px}.receipt-summary-heading{gap:10px}#receipt .receipt-summary-heading h2{font-size:18px}.receipt-details-grid{grid-template-columns:1fr;gap:22px}.receipt-project-details>div{grid-template-columns:1fr;gap:3px}#receipt .receipt-actions{gap:16px 22px}}
+@media print{#receipt{max-width:none;padding:0}.receipt-heading{margin-bottom:18px}.receipt-heading h1{font-size:30px}#receipt .receipt-box{padding:20px}.receipt-details-grid{grid-template-columns:1fr 1fr}.receipt-project-details>div{grid-template-columns:140px 1fr}.receipt-actions{display:none!important}}

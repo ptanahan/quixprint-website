@@ -110,7 +110,32 @@ function initCheckout(){const form=$('#checkout-form');if(!form)return;let items
  else{if(!C.preview){submissionId=await attemptId(contact,items,f,submissionId);request.submissionId=submissionId;}const body=new FormData();body.set('payload',JSON.stringify(request));body.set('company_website',data.get('company_website')||'');if(f)body.set('attachment',f);let r;try{r=await fetch('/api/quote',{method:'POST',body,signal:AbortSignal.timeout(55000)});}catch{throw new Error('We couldn’t confirm the request. Your cart is saved. Try again, or contact sales@quixprint.com.');}response=await r.json().catch(()=>null);if(!r.ok||!response?.ok)throw new Error(response?.error||'We couldn’t confirm your request. Your cart is saved. Please try again.');}
  saveReceipt({...response,quote:request,filename:f?.name||'',created:Date.now()});if(!response.preview){saveCart([]);try{sessionStorage.removeItem('qxp.attempt')}catch{}}navigate('/quote/received/');
  }catch(ex){error($('#checkout-error'),ex.message);button.disabled=false;button.innerHTML=(C.preview?'Preview quote request':'Submit quote request')+' '+icon('arrow-right');}});}
-function initReceipt(){const root=$('#receipt');if(!root)return;const r=getReceipt();if(!r||Date.now()-r.created>2*60*60*1000)return;const c=r.quote.contact;root.innerHTML=`<div class="page-heading compact"><span class="eyebrow">${r.preview?'Preview complete':'Thank you for thinking of us'}</span><h1>${r.preview?'That’s your quote<br><em>request, ready.</em>':'Your project is<br><em>in good hands.</em>'}</h1><p>${r.preview?'Nothing was sent. Here’s how your request will come together. Your quote cart is still available to edit.':'We’ve received your request and will review the details before sending pricing.'}</p></div><span class="code-reference">${esc(r.reference)}</span><div class="receipt-box"><h2>${esc(c.company)}</h2><div class="receipt-contact">${esc(c.contact)} · ${esc(c.email)}<br>${esc(c.recipient)} · ${esc(c.address1)}${c.address2?', '+esc(c.address2):''}<br>${esc(c.city)}, ${esc(c.state)} ${esc(c.postal)} · ${esc(c.country)}</div>${summaryHTML(r.quote.items)}<p class="receipt-contact">Artwork: ${r.filename?esc(r.filename)+(r.preview?' (preview only; not uploaded)':''):'To follow'}${c.deliveryDate?'<br>Requested delivery date: '+esc(c.deliveryDate):''}</p>${!r.preview&&!r.confirmationSent?'<p class="field-help">Your request reached our email service, but the confirmation email could not be confirmed. Keep this reference for your records.</p>':''}<p class="field-help">This is a request for pricing, not an accepted order.</p></div><div class="actions receipt-actions"><a class="button" href="${r.preview?'/quote/cart/':'/products/'}">${r.preview?'Back to your quote':'Explore more products'} ${icon('arrow-right')}</a><button type="button" class="text-button" id="print-receipt">Print / save summary</button></div>`;$('#print-receipt').addEventListener('click',()=>print());if(window.QXP_EMAIL){const customer=QXP_EMAIL.render(r.quote,r.reference,r.filename,true),team=QXP_EMAIL.render(r.quote,r.reference,r.filename,false);for(const [title,html] of [['Customer confirmation preview',customer.html],['Quixprint notification preview',team.html]]){const details=document.createElement('details');details.className='email-preview';const summary=document.createElement('summary');summary.textContent=title;const iframe=document.createElement('iframe');iframe.title=title;iframe.setAttribute('sandbox','');iframe.srcdoc=html;details.append(summary,iframe);root.append(details)}}}
+function initReceipt(){
+ const root=$('#receipt');if(!root)return;
+ const r=getReceipt();if(!r||Date.now()-r.created>2*60*60*1000)return;
+ const c=r.quote.contact;
+ const delivery=c.deliveryDate?new Date(c.deliveryDate+'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}):'';
+ const check='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>';
+ root.innerHTML=`<div class="receipt-heading">
+  <span class="receipt-status">${check}${r.preview?'Preview complete':'Request received'}</span>
+  <h1>${r.preview?'Your quote preview.':'Thank you for your request.'}</h1>
+  <p>${r.preview?'Nothing has been sent. Review your details below or return to your quote to make changes.':'Our team will review your project and follow up with pricing.'}</p>
+  <div class="receipt-reference"><span>Reference number</span><strong>${esc(r.reference)}</strong></div>
+ </div>
+ <section class="receipt-box" aria-labelledby="receipt-summary-title">
+  <div class="receipt-summary-heading"><h2 id="receipt-summary-title">Your project summary</h2><span>${r.quote.items.length} ${r.quote.items.length===1?'item':'items'}</span></div>
+  <div class="receipt-details-grid">
+   <div><h3>Contact</h3><p><strong>${esc(c.company)}</strong><br>${esc(c.contact)}<br>${esc(c.email)}</p></div>
+   <div><h3>Shipping address</h3><p>${esc(c.recipient)}<br>${esc(c.address1)}${c.address2?'<br>'+esc(c.address2):''}<br>${esc(c.city)}, ${esc(c.state)} ${esc(c.postal)}<br>${esc(c.country)}</p></div>
+  </div>
+  <div class="receipt-products">${summaryHTML(r.quote.items)}</div>
+  <dl class="receipt-project-details"><div><dt>Artwork</dt><dd>${r.filename?esc(r.filename)+(r.preview?' (preview only)':''):'To follow'}</dd></div>${delivery?'<div><dt>Requested delivery</dt><dd>'+esc(delivery)+'</dd></div>':''}</dl>
+  <p class="receipt-order-note">This is a quote request. No order has been placed and no payment is required.</p>
+ </section>
+ ${!r.preview?'<p class="receipt-email-status">'+(r.confirmationSent?'A confirmation email has been sent to <strong>'+esc(c.email)+'</strong>.':'Your request was received, but we couldn’t send your confirmation email. Please save your reference number.')+'</p>':''}
+ <div class="actions receipt-actions"><a class="button" href="${r.preview?'/quote/cart/':'/products/'}">${r.preview?'Back to your quote':'Continue browsing'} ${icon('arrow-right')}</a><button type="button" class="text-button" id="print-receipt">Print / save summary</button></div>`;
+ $('#print-receipt').addEventListener('click',()=>print());
+}
 function initHomeJournal(){const root=$('#home-journal');if(!root)return;const cards=$$('[data-journal-index]',root).sort((a,b)=>Number(a.dataset.journalIndex)-Number(b.dataset.journalIndex));if(!cards.length)return;const day=Math.floor(Date.now()/86400000),count=Math.min(3,cards.length),start=(day*3)%cards.length;cards.forEach(card=>card.hidden=true);for(let i=0;i<count;i++){const card=cards[(start+i)%cards.length];card.hidden=false;root.append(card);}}
 let destroyHero=()=>{};
 function initHero(){
