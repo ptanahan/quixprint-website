@@ -108,3 +108,11 @@ button.hero-slides{display:block;width:100%;padding:0;border:0;color:inherit;tex
 #receipt .receipt-actions{margin-top:25px;gap:24px}
 @media(max-width:600px){#receipt{padding-top:4px}.receipt-heading{margin-bottom:24px}.receipt-heading>p{font-size:14px}#receipt .receipt-box{padding:23px 20px}.receipt-summary-heading{gap:10px}#receipt .receipt-summary-heading h2{font-size:18px}.receipt-details-grid{grid-template-columns:1fr;gap:22px}.receipt-project-details>div{grid-template-columns:1fr;gap:3px}#receipt .receipt-actions{gap:16px 22px}}
 @media print{#receipt{max-width:none;padding:0}.receipt-heading{margin-bottom:18px}.receipt-heading h1{font-size:30px}#receipt .receipt-box{padding:20px}.receipt-details-grid{grid-template-columns:1fr 1fr}.receipt-project-details>div{grid-template-columns:140px 1fr}.receipt-actions{display:none!important}}
+
+/* Animate the existing logo without changing header dimensions. */
+.q-brand{position:relative}
+.logo-motion{display:none;position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.q-brand.logo-playing>img{visibility:hidden}
+.q-brand.logo-playing .logo-motion{display:block}
+.q-brand .logo-motion img{position:absolute;left:-4.6%;top:-36.7%;width:111%;height:177%;max-width:none;object-fit:fill}
+@media(prefers-reduced-motion:reduce){.q-brand.logo-playing>img{visibility:visible}.q-brand.logo-playing .logo-motion{display:none}}
