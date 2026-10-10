@@ -110,7 +110,7 @@ button.hero-slides{display:block;width:100%;padding:0;border:0;color:inherit;tex
 @media print{#receipt{max-width:none;padding:0}.receipt-heading{margin-bottom:18px}.receipt-heading h1{font-size:30px}#receipt .receipt-box{padding:20px}.receipt-details-grid{grid-template-columns:1fr 1fr}.receipt-project-details>div{grid-template-columns:140px 1fr}.receipt-actions{display:none!important}}
 
 /* Animate the existing logo without changing header dimensions. */
-.q-brand{position:relative}
+.q-brand{position:relative;display:block;aspect-ratio:2048/529}
 .logo-motion{display:none;position:absolute;inset:0;overflow:hidden;pointer-events:none}
 .q-brand.logo-playing>img{visibility:hidden}
 .q-brand.logo-playing .logo-motion{display:block}

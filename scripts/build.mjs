@@ -29,7 +29,40 @@ fs.writeFileSync(path.join(out,'assets/qxp.css'),style);fs.copyFileSync('src/app
 const jsJSON=x=>JSON.stringify(x).replace(/</g,'\\u003c');
 const dataJS='window.QXP_ICONS='+jsJSON(icons)+';window.QXP_CATALOG='+jsJSON(catalog)+';\nwindow.QXP_LEGACY='+jsJSON(legacy)+';\nwindow.QXP_CONFIG='+jsJSON({preview})+';';
 fs.writeFileSync(path.join(out,'assets/qxp-data.js'),dataJS);
-const header=normalizeIcons(T.header(catalog,preview)),footer=normalizeIcons(T.footer());
+// Run synchronously at the logo's position in the header. Only the selected
+// image is created, so a static logo cannot paint before the animated one.
+function logoBootstrap(animatedSource,staticSource,offline){
+ const host=document.currentScript.parentElement;
+ const home=offline?(location.hash.slice(1).split(/[?#]/)[0]||'/')==='/':location.pathname==='/';
+ const motion=matchMedia('(prefers-reduced-motion: reduce)'),key='qxp.logo.intro.v3';
+ let seen=false;try{seen=!!sessionStorage.getItem(key);}catch{}
+ const animate=home&&!seen&&!motion.matches&&!document.hidden;
+ const img=document.createElement('img');img.alt='Quixprint';img.decoding='sync';img.fetchPriority='high';
+ let layer,finished=false;
+ function showStatic(){
+  if(finished)return;finished=true;host.classList.remove('logo-playing');
+  motion.removeEventListener('change',preference);
+  if(layer)layer.remove();img.remove();
+  const still=document.createElement('img');still.src=staticSource;still.alt='Quixprint';still.width=164;still.height=42;host.append(still);
+ }
+ function preference(){if(motion.matches)showStatic();}
+ if(animate){
+  layer=document.createElement('span');layer.className='logo-motion';layer.setAttribute('aria-hidden','true');
+  img.width=650;img.height=250;host.classList.add('logo-playing');
+  img.addEventListener('error',showStatic,{once:true});
+  img.addEventListener('load',()=>{if(!finished)try{sessionStorage.setItem(key,'played');}catch{}},{once:true});
+  motion.addEventListener('change',preference);
+  layer.append(img);host.append(layer);img.src=animatedSource;
+ }else{img.width=164;img.height=42;img.src=staticSource;host.append(img);}
+ window.QXP_STOP_LOGO=animate?showStatic:()=>{};
+}
+function logoHeader(markup,offline=false){
+ const gif=offline?'data:image/gif;base64,'+logoOnce.toString('base64'):'/qxp-logo-once.gif';
+ const still=offline?'data:image/png;base64,'+fs.readFileSync('legacy-site/assets/quixprint-logo.png').toString('base64'):'/assets/quixprint-logo.png';
+ const bootstrap='<script data-qxp-logo>('+logoBootstrap.toString()+')('+jsJSON(gif)+','+jsJSON(still)+','+JSON.stringify(offline)+');</script>';
+ return markup.replace(/<img src="\/assets\/quixprint-logo\.png"[^>]*>/,match=>bootstrap+'<noscript>'+match+'</noscript>');
+}
+const header=logoHeader(normalizeIcons(T.header(catalog,preview))),footer=normalizeIcons(T.footer());
 const pages={};
 const add=(route,type,title,description,html,product='')=>pages[route]={type,title,description,html:normalizeIcons(html),product};
 add('/','home','Quixprint | Printing for leading businesses','Commercial printing for businesses nationwide. Explore brochures, labels, catalogs, signs, and more. Build a quote with personal service from Quixprint.',T.home(catalog,posts));
@@ -82,7 +115,7 @@ function embedded(html){return html.replace(/\s+srcset="[^"]*"/g,'').replace(/sr
 const offlinePages=Object.fromEntries(Object.entries(pages).map(([k,p])=>[k,{...p,html:embedded(k==='/quote/checkout/'?normalizeIcons(T.checkoutPage(true)):p.html)}]));
 for(const p of catalog.products)register(p.image);
 register('/qxp-logo-once.gif');
-const offlineHeader=embedded(normalizeIcons(T.header(catalog,true))),offlineFooter=embedded(footer);
+const offlineHeader=embedded(logoHeader(normalizeIcons(T.header(catalog,true)),true)),offlineFooter=embedded(footer);
 const offline=`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Quixprint — Full Website Preview</title><link rel="icon" href="data:image/png;base64,${fs.readFileSync(path.join(out,'QXP Favicon.png')).toString('base64')}"><style>${style}</style></head><body>${offlineHeader}<main id="main" tabindex="-1"></main>${offlineFooter}<script>window.QXP_ICONS=${jsJSON(icons)};window.QXP_OFFLINE=true;window.QXP_CONFIG={preview:true};window.QXP_PAGES=${jsJSON(offlinePages)};window.QXP_ASSETS=${jsJSON(cached)};window.QXP_CATALOG=${jsJSON(catalog)};window.QXP_LEGACY=${jsJSON(legacy)};window.QXP_HYDRATE=function(root){root.querySelectorAll('img').forEach(function(img){const key=img.getAttribute('data-qxp-src')||img.getAttribute('src');if(window.QXP_ASSETS[key]){img.removeAttribute('srcset');img.src=window.QXP_ASSETS[key];img.removeAttribute('data-qxp-src');}});};window.QXP_HYDRATE(document);</script><script>${fs.readFileSync('lib/engine.js','utf8')}</script><script>${fs.readFileSync('lib/email.js','utf8')}</script><script>${fs.readFileSync('src/app.js','utf8')}</script></body></html>`;
 fs.writeFileSync('Quixprint-Full-Preview.html',offline);
 fs.writeFileSync('build-report.json',JSON.stringify({mode:preview?'preview':'live',newPages:Object.keys(pages).length,catalogProducts:catalog.products.length-1,analyticsPages:analyticsFiles.length,analyticsMeasurementId:'G-D2CW5LWNT1',menuEntries:catalog.categories.reduce((n,c)=>n+c.links.length,0),sitemapURLs:urls.length,generated: new Date().toISOString()},null,2));

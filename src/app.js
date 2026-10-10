@@ -137,34 +137,10 @@ function initReceipt(){
  $('#print-receipt').addEventListener('click',()=>print());
 }
 function initHomeJournal(){const root=$('#home-journal');if(!root)return;const cards=$$('[data-journal-index]',root).sort((a,b)=>Number(a.dataset.journalIndex)-Number(b.dataset.journalIndex));if(!cards.length)return;const day=Math.floor(Date.now()/86400000),count=Math.min(3,cards.length),start=(day*3)%cards.length;cards.forEach(card=>card.hidden=true);for(let i=0;i<count;i++){const card=cards[(start+i)%cards.length];card.hidden=false;root.append(card);}}
-let destroyLogo=()=>{},logoPlayed=false;
 function initLogo(){
- destroyLogo();
- const brand=$('.q-brand'),still=$('.q-brand > img');
- if(!brand||!still||route().pathname!=='/'||document.hidden)return;
- const motion=matchMedia('(prefers-reduced-motion: reduce)');
- if(motion.matches||logoPlayed)return;
- const key='qxp.logo.intro.v2';
- try{if(sessionStorage.getItem(key))return;sessionStorage.setItem(key,'played');}catch{}
- logoPlayed=true;
- const layer=document.createElement('span'),animated=document.createElement('img'),events=new AbortController();
- let disposed=false,started=false,timer;
- layer.className='logo-motion';layer.setAttribute('aria-hidden','true');
- animated.alt='';animated.width=650;animated.height=250;
- function finish(){if(disposed)return;disposed=true;clearTimeout(timer);events.abort();brand.classList.remove('logo-playing');layer.remove();}
- function start(){if(disposed||started)return;started=true;if(motion.matches||document.hidden){finish();return;}brand.classList.add('logo-playing');
-  // This GIF has no repeat metadata: the browser holds its final frame.
-  // Keep the same image and geometry in place; never swap to a different logo.
-  clearTimeout(timer);
- }
- animated.addEventListener('load',start,{signal:events.signal});
- animated.addEventListener('error',finish,{signal:events.signal});
- motion.addEventListener('change',()=>{if(motion.matches)finish();},{signal:events.signal});
- window.addEventListener('pagehide',finish,{signal:events.signal});
- layer.append(animated);brand.append(layer);timer=setTimeout(finish,8000);
- animated.src=window.QXP_ASSETS?.['/qxp-logo-once.gif']||'/qxp-logo-once.gif';
- if(animated.complete&&animated.naturalWidth)start();
- destroyLogo=finish;
+ // The header selects its image before first paint. Only stop an existing
+ // intro when the portable preview navigates away from the homepage.
+ if(route().pathname!=='/')window.QXP_STOP_LOGO?.();
 }
 let destroyHero=()=>{};
 function initHero(){
