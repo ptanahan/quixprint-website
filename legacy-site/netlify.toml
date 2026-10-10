@@ -1,0 +1,6 @@
+[build]
+  command = "python3 scripts/generate_sitemap.py"
+  publish = "."
+
+[functions]
+  directory = "netlify/functions"

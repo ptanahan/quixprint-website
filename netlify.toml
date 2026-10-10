@@ -1,6 +1,26 @@
 [build]
-  command = "python3 scripts/generate_sitemap.py"
-  publish = "."
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  SITE_MODE = "preview"
+  QUOTE_MODE = "preview"
 
 [functions]
   directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Build settings only. Set SITE_MODE and QUOTE_MODE to live in the Netlify UI
+# for production Functions as well. Keep email secrets in the UI.
+[context.production.environment]
+  SITE_MODE = "live"
+  QUOTE_MODE = "live"
+
+[context.deploy-preview.environment]
+  SITE_MODE = "preview"
+  QUOTE_MODE = "preview"
+
+[context.branch-deploy.environment]
+  SITE_MODE = "preview"
+  QUOTE_MODE = "preview"

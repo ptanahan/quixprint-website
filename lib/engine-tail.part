@@ -1,0 +1,81 @@
+
+function product(id) { return catalog.products.find(p=>p.id===id); }
+function matches(when,state) { return !when || Object.entries(when).every(([key,value])=>(Array.isArray(value)?value:[value]).includes(state[key])); }
+function resolve(id,previous={}) {
+  const p=product(id); if(!p)throw new Error('Unknown product');
+  let out;
+  if(p.legacyName) {
+    out=resolveLegacy(p.legacyName,previous);
+    out.fields=out.fields.map(f=>({...f,required:true}));
+  } else {
+    const state={},fields=[]; let config=p.config||{};
+    const pick=f=>{
+      if(!matches(f.when,state))return;
+      let options=f.options;
+      if(f.optionsBy)options=f.optionsBy.values[state[f.optionsBy.field]]||f.optionsBy.fallback||[];
+      if(options && !options.length)return;
+      const value=options?(options.includes(previous[f.label])?previous[f.label]:(options.includes(f.default)?f.default:options[0])):String(previous[f.label]??f.default??'');
+      state[f.label]=value;fields.push({...f,options,value});
+    };
+    for(const f of config.fields||[])pick(f);
+    if(config.variants){const v=config.variants[state[config.variantField]];for(const f of v?.fields||[])pick(f);if(v)config={...config,...v};}
+    // Verified dependent rules only. Each rule modifies subsequent selectable choices.
+    for(const rule of config.rules||[])if(matches(rule.when,state)) {
+      for(const [label,options] of Object.entries(rule.options||{})){const f=fields.find(x=>x.label===label);if(f){f.options=options;f.value=options.includes(previous[label])?previous[label]:options[0];state[label]=f.value;}}
+      for(const label of rule.hide||[]){const index=fields.findIndex(f=>f.label===label);if(index>=0)fields.splice(index,1);delete state[label];}
+    }
+    out={fields,state,quantities:config.quantities||[]};
+  }
+  const addSelect=(label,options)=>{const value=options.includes(previous[label])?previous[label]:options[0];out.state[label]=value;out.fields.push({label,options,value,required:true});return value;};
+  const addInput=(label,type,required=false)=>{const value=String(previous[label]??'');out.state[label]=value;out.fields.push({label,type,value,required,maxLength:500});};
+  if(id==='flyers') {
+    if(addSelect('Mailing',['Without mailing','With mailing'])==='With mailing')addSelect('Mailing list',['I have a list','I need a list','Every Door Direct Mail']);
+  }
+  if(out.state.Mailing==='With mailing')addInput('Mailing details','text');
+  if(p.customOnly){addInput('Project description','textarea',true);addInput('Width (in)','dimension');addInput('Height (in)','dimension');addInput('Preferred material / finish','text');}
+  if(!out.fields.some(f=>f.label==='Versions')){const value=String(previous.Versions??'1');out.state.Versions=value;out.fields.push({label:'Versions',type:'integer',value,required:true,min:1,max:10000});}
+  if(id==='booklets-catalogs'){const pages=out.fields.find(f=>f.label==='Page count including cover');if(pages){pages.min=out.state.Binding==='Perfect Binding'?48:8;pages.help='Including cover. '+(pages.min===48?'Perfect binding starts at 48 pages.':'Saddle-stitched booklets start at 8 pages.');}}
+  return out;
+}
+function quantityUnit(p,choices={}){if(p.id==='stickers')return choices.Format==='Kiss-Cut Sticker Sheets'?'sheets':'stickers';return p.quantityUnit||(p.id==='notepads'?'pads':'pieces');}
+
+function validateItem(raw) {
+  const p=product(raw?.productId);if(!p)throw new Error('Please choose a product from the catalog.');
+  if(!raw.choices||typeof raw.choices!=='object'||Array.isArray(raw.choices)||Object.keys(raw.choices).length>45)throw new Error('Check the product specifications.');
+  const resolved=resolve(p.id,raw.choices);
+  for(const field of resolved.fields){
+    const value=raw.choices[field.label];
+    if(typeof value!=='string'||value.length>(field.maxLength||500))throw new Error('Check '+field.label+'.');
+    if(field.options && !field.options.includes(value))throw new Error('Choose an available '+field.label.toLowerCase()+'.');
+    if(field.required && !value.trim())throw new Error('Complete '+field.label+'.');
+    if(['dimension','integer','number'].includes(field.type)&&value!==''){
+      const n=Number(value);if(p.id==='booklets-catalogs'&&field.label==='Page count including cover'&&resolved.state.Binding==='Perfect Binding'&&n<48)throw new Error('Perfect-bound booklets require at least 48 pages including cover.');if(!Number.isFinite(n)||n<=0||(field.type==='integer'&&!Number.isInteger(n))||(field.min!=null&&n<field.min)||(field.max!=null&&n>field.max))throw new Error('Check '+field.label+'.');
+    }
+  }
+  // Inactive fields are rejected instead of silently accepting an incompatible configuration.
+  for(const key of Object.keys(raw.choices))if(!(key in resolved.state))throw new Error('Your product options changed. Please update this item.');
+  const quantity=Number(raw.quantity);if(!Number.isSafeInteger(quantity)||quantity<1||quantity>10000000)throw new Error('Enter a whole-number quantity between 1 and 10,000,000.');
+  const versions=Number(resolved.state.Versions||1);if(!Number.isSafeInteger(versions)||versions<1||versions>10000)throw new Error('Check your artwork versions.');
+  const clean=(value,max)=>{if(typeof value!=='string'||value.length>max)throw new Error('Some product details are too long.');return value.trim();};
+  const breakdown=raw.quantityMode==='breakdown'||raw.artworkVersions!==undefined;
+  let artworkVersions;
+  if(breakdown){
+    if(p.versionMode!=='breakdown'||!Array.isArray(raw.artworkVersions)||raw.artworkVersions.length!==versions)throw new Error('Check the quantity breakdown for each artwork version.');
+    artworkVersions=raw.artworkVersions.map((v,i)=>{const n=Number(v?.quantity);if(!Number.isSafeInteger(n)||n<1||n>10000000)throw new Error('Enter a whole-number quantity for Version '+(i+1)+'.');return {name:clean(v.name||'',100),quantity:n};});
+    const total=artworkVersions.reduce((n,v)=>n+v.quantity,0);if(total!==quantity||total>10000000)throw new Error('The total quantity must equal the quantities for all artwork versions.');
+  }
+  for(const prefix of ['', 'Sheet ', 'Sticker ']){const w=resolved.state[prefix+'Width (in)'],h=resolved.state[prefix+'Height (in)'];if((w&&!h)||(h&&!w))throw new Error('Enter both width and height.');}
+  if(['Square','Circle'].includes(resolved.state.Shape)&&resolved.state.Size==='Custom size'&&Number(resolved.state['Width (in)'])!==Number(resolved.state['Height (in)']))throw new Error('Use matching width and height for a square or circle.');
+  if(p.id==='booklets-catalogs'){
+    const c=resolved.state,pages=Number(c['Page count including cover']);
+    if(c.Binding==='Perfect Binding'&&pages<48)throw new Error('Perfect-bound booklets require at least 48 pages including cover.');
+    if((artworkVersions?artworkVersions.some(v=>[25,50].includes(v.quantity)):[25,50].includes(quantity)) && (c['Interior paper']!=='100 lb. Gloss Book'||!['Self Cover','100 lb. Gloss Cover'].includes(c.Cover)||c.Binding!=='Saddle Stitch'||pages>40))throw new Error('For 25 or 50 booklets, choose 100 lb. Gloss Book, Self Cover or 100 lb. Gloss Cover, Saddle Stitch, and 8–40 pages. Otherwise request a custom project.');
+  }
+  const quantityCustom=Boolean(raw.quantityCustom)||!resolved.quantities.length||(breakdown&&versions>1);
+  if(!quantityCustom && !resolved.quantities.includes(String(quantity)))throw new Error('Select an available quantity or request a custom quantity.');
+  const buying=raw.buying===true;
+  let currentPrice='';if(buying && raw.currentPrice!=='' && raw.currentPrice!=null){const n=Number(raw.currentPrice);if(!Number.isFinite(n)||n<0||n>100000000)throw new Error('Check your current price.');currentPrice=n.toFixed(2);}
+  return {id:clean(String(raw.id||''),80),productId:p.id,product:p.name,quantity,quantityCustom,quantityMode:breakdown?'breakdown':'per-version',...(breakdown?{artworkVersions}:{}),quantityUnit:quantityUnit(p,resolved.state),choices:resolved.state,note:clean(raw.note||'',2000),buying,supplier:buying?clean(raw.supplier||'',250):'',currentPrice,buyingDetails:buying?clean(raw.buyingDetails||'',1000):'',reviewRequired:!!p.reviewRequired||quantityCustom||!!p.customOnly};
+}
+return {catalog,product,resolve,validateItem,quantityUnit};
+});

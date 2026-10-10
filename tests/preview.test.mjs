@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+const html=fs.readFileSync(new URL('../Quixprint-Full-Preview.html',import.meta.url),'utf8');
+const scripts=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m=>m[1]);
+const context={window:{},document:{querySelectorAll:()=>[]}};
+vm.runInNewContext(scripts[0],context);const w=context.window;
+test('portable preview embeds every page image once and includes the connected quote routes',()=>{for(const route of ['/','/products/','/quote/cart/','/quote/checkout/','/quote/received/','/blog/'])assert.ok(w.QXP_PAGES[route],route);for(const page of Object.values(w.QXP_PAGES)){assert.ok(!page.html.includes('data:image/'),'images must use the shared registry');for(const m of page.html.matchAll(/data-qxp-src="([^"]+)"/g))assert.ok(w.QXP_ASSETS[m[1]]?.startsWith('data:image/'),m[1]);}for(const p of w.QXP_CATALOG.products){assert.ok(w.QXP_ASSETS[p.image],p.id);assert.ok(w.QXP_PAGES[p.id==='custom-printing'?'/custom-printing/':'/products/'+p.id+'/'],p.id);}for(const script of scripts)new vm.Script(script);assert.equal(w.QXP_OFFLINE,true);assert.equal(w.QXP_CONFIG.preview,true);});
+test('all 30 products use responsive studio images without shared unrelated product art',()=>{const products=w.QXP_CATALOG.products.filter(p=>!p.customOnly||p.id==='window-decals');assert.equal(products.length,30);assert.equal(new Set(products.map(p=>p.image)).size,30);for(const p of products){assert.ok(p.imageSmall,p.id);assert.ok(fs.existsSync(new URL('../dist'+p.imageSmall,import.meta.url)),p.id);}});

@@ -1,0 +1,13 @@
+{
+  "note": "Architecture example only; these routes are not built or published.",
+  "real-estate": {
+    "productIds": ["brochures", "presentation-folders", "yard-signs", "postcards", "business-cards"],
+    "imageOverrides": {},
+    "descriptionOverrides": {}
+  },
+  "law-firms": {
+    "productIds": ["letterheads", "envelopes", "presentation-folders", "notepads", "business-cards"],
+    "imageOverrides": {},
+    "descriptionOverrides": {}
+  }
+}

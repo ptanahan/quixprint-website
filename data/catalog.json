@@ -1,0 +1,3069 @@
+{
+  "version": "2026-10-09",
+  "categories": [
+    {
+      "name": "Business essentials",
+      "links": [
+        {
+          "label": "Business Cards",
+          "slug": "business-cards"
+        },
+        {
+          "label": "Letterheads",
+          "slug": "letterheads"
+        },
+        {
+          "label": "Envelopes",
+          "slug": "envelopes"
+        },
+        {
+          "label": "Presentation Folders",
+          "slug": "presentation-folders"
+        },
+        {
+          "label": "Notepads",
+          "slug": "notepads"
+        },
+        {
+          "label": "Remittance Envelopes",
+          "slug": "remittance-envelopes"
+        }
+      ]
+    },
+    {
+      "name": "Marketing materials",
+      "links": [
+        {
+          "label": "Brochures",
+          "slug": "brochures"
+        },
+        {
+          "label": "Flyers",
+          "slug": "flyers"
+        },
+        {
+          "label": "Postcards",
+          "slug": "postcards"
+        },
+        {
+          "label": "Booklets & Catalogs",
+          "slug": "booklets-catalogs"
+        },
+        {
+          "label": "Greeting Cards",
+          "slug": "greeting-cards"
+        },
+        {
+          "label": "Calendars",
+          "slug": "calendars"
+        },
+        {
+          "label": "Door Hangers",
+          "slug": "door-hangers"
+        }
+      ]
+    },
+    {
+      "name": "Labels & stickers",
+      "links": [
+        {
+          "label": "Roll Labels",
+          "slug": "roll-labels"
+        },
+        {
+          "label": "Individual Stickers",
+          "slug": "stickers",
+          "format": "Individual Stickers"
+        },
+        {
+          "label": "Sticker Sheets",
+          "slug": "stickers",
+          "format": "Sticker Sheets"
+        },
+        {
+          "label": "Kiss-Cut Stickers",
+          "slug": "stickers",
+          "format": "Kiss-Cut Stickers"
+        },
+        {
+          "label": "Kiss-Cut Sticker Sheets",
+          "slug": "stickers",
+          "format": "Kiss-Cut Sticker Sheets"
+        }
+      ]
+    },
+    {
+      "name": "Signs & displays",
+      "links": [
+        {
+          "label": "A-Frame Signs",
+          "slug": "a-frame-signs"
+        },
+        {
+          "label": "Yard Signs",
+          "slug": "yard-signs"
+        },
+        {
+          "label": "Car Magnets",
+          "slug": "car-magnets"
+        },
+        {
+          "label": "Window Decals",
+          "slug": "window-decals"
+        },
+        {
+          "label": "Window Clings",
+          "slug": "window-clings"
+        },
+        {
+          "label": "Bulk Posters",
+          "slug": "bulk-posters"
+        },
+        {
+          "label": "Large Format Posters",
+          "slug": "large-format-posters"
+        }
+      ]
+    },
+    {
+      "name": "Banners",
+      "links": [
+        {
+          "label": "Outdoor Banners",
+          "slug": "outdoor-banners"
+        },
+        {
+          "label": "Retractable Banners",
+          "slug": "retractable-banners"
+        },
+        {
+          "label": "X-Frame Banners",
+          "slug": "x-frame-banners"
+        },
+        {
+          "label": "Flag Banners",
+          "slug": "flag-banners"
+        }
+      ]
+    },
+    {
+      "name": "Menus & counters",
+      "links": [
+        {
+          "label": "Laminated Menus",
+          "slug": "laminated-menus"
+        },
+        {
+          "label": "Takeout Menus",
+          "slug": "takeout-menus"
+        },
+        {
+          "label": "Table Tents",
+          "slug": "table-tents"
+        },
+        {
+          "label": "Counter Mats",
+          "slug": "counter-mats"
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "business-cards",
+      "name": "Business Cards",
+      "category": "Business essentials",
+      "headline": "A small introduction. A lasting impression.",
+      "description": "Make every introduction feel considered, with cards that put your name and brand in the right hands.",
+      "image": "/assets/products/product-business-cards-1200.webp",
+      "imageAlt": "Alder business cards photographed on a soft neutral studio background",
+      "featured": true,
+      "legacyName": null,
+      "config": {
+        "fields": [
+          {
+            "label": "Size",
+            "required": true,
+            "options": [
+              "2 x 3.5 in",
+              "2.17 x 3.35 in",
+              "1.75 x 3.5 in",
+              "1.75 x 3 in",
+              "2 x 3 in"
+            ]
+          },
+          {
+            "label": "Paper",
+            "required": true,
+            "options": [
+              "14 pt. Gloss Cover",
+              "14 pt. Uncoated Cover",
+              "13 pt. Premium Linen",
+              "16 pt. Premium Matte Cover",
+              "18 pt. Ultra Premium Pearl",
+              "18 pt. Premium Kraft",
+              "18 pt. Ultra Premium Smooth White",
+              "24 pt. Trifecta Green with Velvet Finish",
+              "38 pt. Trifecta Black with Velvet Finish",
+              "38 pt. Trifecta Red with Velvet Finish",
+              "38 pt. Trifecta Blue with Velvet Finish",
+              "100 lb. Matte Cover"
+            ]
+          },
+          {
+            "label": "Printing",
+            "required": true,
+            "options": [
+              "Full Color Both Sides",
+              "Full Color Front, Grayscale Back",
+              "Full Color Front, Blank Back"
+            ]
+          },
+          {
+            "label": "Gloss coating",
+            "required": true,
+            "when": {
+              "Paper": "14 pt. Gloss Cover"
+            },
+            "optionsBy": {
+              "field": "Printing",
+              "values": {
+                "Full Color Both Sides": [
+                  "High gloss UV both sides",
+                  "High gloss UV front only"
+                ]
+              },
+              "fallback": [
+                "High gloss UV front only"
+              ]
+            },
+            "help": "UV-coated areas cannot be written on."
+          },
+          {
+            "label": "Specialty finish",
+            "required": true,
+            "options": [
+              "None",
+              "Raised UV",
+              "Raised Foil"
+            ],
+            "optionsBy": {
+              "field": "Paper",
+              "values": {
+                "16 pt. Premium Matte Cover": [
+                  "None",
+                  "Raised UV",
+                  "Raised Foil"
+                ]
+              },
+              "fallback": [
+                "None"
+              ]
+            }
+          },
+          {
+            "label": "Foil color",
+            "required": true,
+            "options": [
+              "Gold",
+              "Silver",
+              "Rose Gold"
+            ],
+            "when": {
+              "Specialty finish": "Raised Foil"
+            }
+          }
+        ],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": true,
+      "sourceStatus": "static_product_details_verified_dynamic_matrix_unverified",
+      "sources": [
+        "https://www.gotprint.com/products/business-cards/order"
+      ],
+      "manualReview": [
+        "Quantity varies by paper; exact list unverified.",
+        "Rounded-corner stock compatibility unavailable.",
+        "Size/paper/finish combinations not exhaustively verified."
+      ],
+      "facts": [],
+      "imageSmall": "/assets/products/product-business-cards-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "letterheads",
+      "name": "Letterheads",
+      "category": "Business essentials",
+      "headline": "Every detail speaks for your business.",
+      "description": "Bring a consistent, professional look to proposals, correspondence, and the everyday work that carries your name.",
+      "image": "/assets/products/product-letterheads-1200.webp",
+      "imageAlt": "Alder letterheads photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": "Letterheads",
+      "config": {
+        "fields": [],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": false,
+      "sourceStatus": "Reused from supplied Churches backup",
+      "imageSmall": "/assets/products/product-letterheads-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "envelopes",
+      "name": "Envelopes",
+      "category": "Business essentials",
+      "headline": "Make an impression before it’s opened.",
+      "description": "Carry your identity from the outside in with printed envelopes for business correspondence and campaigns.",
+      "image": "/assets/products/product-envelopes-1200.webp",
+      "imageAlt": "Alder envelopes photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": "Envelopes",
+      "config": {
+        "fields": [],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": false,
+      "sourceStatus": "Reused from supplied Churches backup",
+      "imageSmall": "/assets/products/product-envelopes-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "presentation-folders",
+      "name": "Presentation Folders",
+      "category": "Business essentials",
+      "headline": "Bring it all together.",
+      "description": "Give proposals, welcome packets, and sales materials a polished home.",
+      "image": "/assets/products/product-presentation-folders-1200.webp",
+      "imageAlt": "Alder presentation folders photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": "Presentation folders",
+      "config": {
+        "fields": [],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": false,
+      "sourceStatus": "Reused from supplied Churches backup",
+      "imageSmall": "/assets/products/product-presentation-folders-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "notepads",
+      "name": "Notepads",
+      "category": "Business essentials",
+      "headline": "Keep your brand close at hand.",
+      "description": "Useful, everyday stationery for your team, your customers, and your next event.",
+      "image": "/assets/products/product-notepads-1200.webp",
+      "imageAlt": "Alder notepads photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": null,
+      "config": {
+        "fields": [
+          {
+            "label": "Size",
+            "required": true,
+            "options": [
+              "3 x 8 in",
+              "4 x 5.5 in",
+              "4 x 6 in",
+              "5 x 8 in",
+              "5.5 x 8.5 in",
+              "8.5 x 11 in"
+            ]
+          },
+          {
+            "label": "Paper",
+            "required": true,
+            "options": [
+              "70 lb. Opaque Smooth White"
+            ]
+          },
+          {
+            "label": "Printing",
+            "required": true,
+            "options": [
+              "Full Color Both Sides",
+              "Full Color Front, Blank Back"
+            ]
+          },
+          {
+            "label": "Sheets per pad",
+            "required": true,
+            "options": [
+              "50",
+              "100"
+            ]
+          }
+        ],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": true,
+      "sourceStatus": "static_product_details_verified_dynamic_matrix_unverified",
+      "sources": [
+        "https://www.gotprint.com/products/notepads/order"
+      ],
+      "manualReview": [
+        "Number-of-pads quantity choices unavailable.",
+        "Exact size/printing/sheet-count compatibility matrix unverified."
+      ],
+      "facts": [
+        "Glued at top.",
+        "Backed with 22 pt. kraft chipboard."
+      ],
+      "quantityUnit": "pads",
+      "imageSmall": "/assets/products/product-notepads-600.webp",
+      "versionMode": "per-version"
+    },
+    {
+      "id": "remittance-envelopes",
+      "name": "Remittance Envelopes",
+      "category": "Business essentials",
+      "headline": "Make the next step easy.",
+      "description": "Printed response envelopes for contributions, payments, and return correspondence.",
+      "image": "/assets/products/product-remittance-envelopes-1200.webp",
+      "imageAlt": "Alder remittance envelopes photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": "Remittance Envelopes",
+      "config": {
+        "fields": [],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": false,
+      "sourceStatus": "Reused from supplied Churches backup",
+      "imageSmall": "/assets/products/product-remittance-envelopes-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "brochures",
+      "name": "Brochures",
+      "category": "Marketing materials",
+      "headline": "Give your story room to unfold.",
+      "description": "Turn the details of your business into a clear, tangible introduction—ready for sales meetings, displays, and direct conversations.",
+      "image": "/assets/products/product-brochures-1200.webp",
+      "imageAlt": "Northline brochures photographed on a soft neutral studio background",
+      "featured": true,
+      "legacyName": "Brochures",
+      "config": {
+        "fields": [],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": false,
+      "sourceStatus": "Reused from supplied Churches backup",
+      "imageSmall": "/assets/products/product-brochures-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "flyers",
+      "name": "Flyers",
+      "category": "Marketing materials",
+      "headline": "Get the word out. Beautifully.",
+      "description": "Put offers, announcements, and campaign messages into circulation with printed flyers.",
+      "image": "/assets/products/product-flyers-1200.webp",
+      "imageAlt": "Northline flyers photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": "Flyers",
+      "config": {
+        "fields": [],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": false,
+      "sourceStatus": "Reused from supplied Churches backup",
+      "imageSmall": "/assets/products/product-flyers-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "postcards",
+      "name": "Postcards",
+      "category": "Marketing materials",
+      "headline": "Something worth picking up.",
+      "description": "Bring your next launch, offer, or announcement to the mailbox. Request printing on its own or ask about mailing.",
+      "image": "/assets/products/product-postcards-1200.webp",
+      "imageAlt": "Northline postcards photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": "Postcards",
+      "config": {
+        "fields": [],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": false,
+      "sourceStatus": "Reused from supplied Churches backup",
+      "imageSmall": "/assets/products/product-postcards-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "booklets-catalogs",
+      "name": "Booklets & Catalogs",
+      "category": "Marketing materials",
+      "headline": "A closer look at what you do best.",
+      "description": "Bring collections, services, and company stories together in a printed piece people can spend time with.",
+      "image": "/assets/products/studio-acre-booklets-1200.webp",
+      "imageAlt": "Acre booklets & catalogs photographed on a soft neutral studio background",
+      "featured": true,
+      "legacyName": null,
+      "config": {
+        "fields": [
+          {
+            "label": "Finished size",
+            "required": true,
+            "options": [
+              "5.5 x 8.5 in",
+              "6 x 9 in",
+              "8.5 x 11 in"
+            ]
+          },
+          {
+            "label": "Interior paper",
+            "required": true,
+            "options": [
+              "100 lb. Gloss Book",
+              "70 lb. Opaque Smooth White",
+              "80 lb. Gloss Book",
+              "80 lb. Matte Text"
+            ]
+          },
+          {
+            "label": "Cover",
+            "required": true,
+            "options": [
+              "Self Cover",
+              "100 lb. Gloss Cover",
+              "14 pt. Gloss Cover (UV Coating All Sides)",
+              "14 pt. Gloss Cover (UV Coating Front & Back Cover)",
+              "14 pt. Uncoated Cover",
+              "100 lb. Matte Cover"
+            ]
+          },
+          {
+            "label": "Binding",
+            "required": true,
+            "options": [
+              "Saddle Stitch",
+              "Perfect Binding"
+            ]
+          },
+          {
+            "label": "Page count including cover",
+            "required": true,
+            "type": "integer",
+            "min": 8,
+            "max": 96,
+            "help": "Include the cover in your page count. We’ll confirm the final pagination."
+          }
+        ],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": true,
+      "sourceStatus": "static_product_details_verified_dynamic_matrix_unverified",
+      "sources": [
+        "https://www.gotprint.com/products/catalogs/order"
+      ],
+      "manualReview": [
+        "Exact page-count increments, stock/cover combinations, orientation matrix and offset quantity list unavailable.",
+        "Static page conflicts: overview says digital is 25/50 and offset starts at 100; coating note says quantities of 100 or fewer on gloss stocks are digital without coating. Do not expose a guaranteed printing-process choice at 100.",
+        "Binding page counts explicitly include cover; spine-width reference table explicitly excludes covers. Do not mix these."
+      ],
+      "facts": [
+        "Saddle stitched or perfect bound publications; page-count limits include cover.",
+        "Runs of 25 or 50 booklets use portrait orientation with stitching along the left edge."
+      ],
+      "imageSmall": "/assets/products/studio-acre-booklets-600.webp",
+      "versionMode": "breakdown",
+      "quantityUnit": "booklets"
+    },
+    {
+      "id": "greeting-cards",
+      "name": "Greeting Cards",
+      "category": "Marketing materials",
+      "headline": "Make the moment feel personal.",
+      "description": "Printed cards for customer appreciation, business milestones, and occasions worth remembering.",
+      "image": "/assets/products/product-greeting-cards-1200.webp",
+      "imageAlt": "Morrow greeting cards photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": null,
+      "config": {
+        "fields": [
+          {
+            "label": "Folded size",
+            "required": true,
+            "options": [
+              "3 x 3 in",
+              "3 x 4 in",
+              "4 x 4 in",
+              "3.5 x 4.75 in",
+              "5 x 5 in",
+              "4 x 5.5 in",
+              "4.25 x 5.5 in",
+              "4 x 6 in",
+              "4.25 x 6 in",
+              "6 x 6 in",
+              "4.5 x 6.25 in",
+              "5 x 7 in",
+              "5.5 x 8.5 in"
+            ]
+          },
+          {
+            "label": "Paper",
+            "required": true,
+            "options": [
+              "100 lb. Gloss Cover",
+              "14 pt. Gloss Cover",
+              "14 pt. Uncoated Cover",
+              "13 pt. Premium Linen",
+              "16 pt. Premium Matte Cover",
+              "18 pt. Ultra Premium Pearl",
+              "18 pt. Premium Kraft",
+              "18 pt. Ultra Premium Smooth White",
+              "100 lb. Matte Cover"
+            ]
+          },
+          {
+            "label": "Printing",
+            "required": true,
+            "options": [
+              "Full Color Outside and Inside",
+              "Full Color Outside, Blank Inside"
+            ]
+          },
+          {
+            "label": "Gloss coating",
+            "required": true,
+            "when": {
+              "Paper": "14 pt. Gloss Cover"
+            },
+            "optionsBy": {
+              "field": "Printing",
+              "values": {
+                "Full Color Outside and Inside": [
+                  "High gloss UV outside and inside",
+                  "High gloss UV outside only"
+                ]
+              },
+              "fallback": [
+                "High gloss UV outside only"
+              ]
+            },
+            "help": "UV-coated areas cannot be written on."
+          },
+          {
+            "label": "Specialty finish",
+            "required": true,
+            "options": [
+              "None",
+              "Raised UV",
+              "Raised Foil"
+            ],
+            "optionsBy": {
+              "field": "Paper",
+              "values": {
+                "16 pt. Premium Matte Cover": [
+                  "None",
+                  "Raised UV",
+                  "Raised Foil"
+                ]
+              },
+              "fallback": [
+                "None"
+              ]
+            }
+          },
+          {
+            "label": "Foil color",
+            "required": true,
+            "options": [
+              "Gold",
+              "Silver",
+              "Rose Gold"
+            ],
+            "when": {
+              "Specialty finish": "Raised Foil"
+            }
+          },
+          {
+            "label": "Matching envelopes",
+            "options": [
+              "Not needed",
+              "Please include in my quote"
+            ],
+            "required": true
+          }
+        ],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": true,
+      "sourceStatus": "static_product_details_verified_dynamic_matrix_unverified",
+      "sources": [
+        "https://www.gotprint.com/products/greeting-cards/order"
+      ],
+      "manualReview": [
+        "Stock-specific quantities and complete size/paper/finish matrix unverified.",
+        "Envelope selection is a separate Quixprint service choice; vendor explicitly excludes envelopes from greeting-card orders."
+      ],
+      "facts": [
+        "Cards ship scored, not folded."
+      ],
+      "imageSmall": "/assets/products/product-greeting-cards-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "calendars",
+      "name": "Calendars",
+      "category": "Marketing materials",
+      "headline": "Stay in view, all year.",
+      "description": "Give customers and teams a practical printed piece that keeps your business part of the everyday.",
+      "image": "/assets/products/product-calendars-1200.webp",
+      "imageAlt": "Acre calendars photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": "Calendars",
+      "config": {
+        "fields": [],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": false,
+      "sourceStatus": "Reused from supplied Churches backup",
+      "imageSmall": "/assets/products/product-calendars-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "door-hangers",
+      "name": "Door Hangers",
+      "category": "Marketing materials",
+      "headline": "Reach them right at the door.",
+      "description": "Put a local offer, service introduction, or neighborhood announcement directly in sight.",
+      "image": "/assets/products/product-door-hangers-1200.webp",
+      "imageAlt": "Daymark door hangers photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": "Door hangers",
+      "config": {
+        "fields": [],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": false,
+      "sourceStatus": "Reused from supplied Churches backup",
+      "imageSmall": "/assets/products/product-door-hangers-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "roll-labels",
+      "name": "Roll Labels",
+      "category": "Labels & stickers",
+      "headline": "Put your name on something great.",
+      "description": "Bring your brand to packaging, products, and everyday customer touchpoints with custom printed roll labels.",
+      "image": "/assets/products/studio-morrow-labels-1200.webp",
+      "imageAlt": "Morrow roll labels photographed on a soft neutral studio background",
+      "featured": true,
+      "legacyName": null,
+      "config": {
+        "fields": [
+          {
+            "label": "Shape",
+            "required": true,
+            "options": [
+              "Rectangle",
+              "Square",
+              "Circle",
+              "Oval",
+              "Custom Cut"
+            ],
+            "ui": "shape"
+          },
+          {
+            "label": "Size",
+            "required": true,
+            "optionsBy": {
+              "field": "Shape",
+              "values": {
+                "Rectangle": [
+                  "2 x 3 in",
+                  "2 x 3.5 in",
+                  "2 x 4 in",
+                  "2 x 4.5 in",
+                  "3 x 4 in",
+                  "3 x 5 in",
+                  "3.5 x 6 in",
+                  "4 x 6 in",
+                  "4 x 8 in",
+                  "4 x 9 in",
+                  "4 x 11 in",
+                  "5 x 7 in",
+                  "5 x 8 in",
+                  "5 x 9 in",
+                  "5 x 10 in",
+                  "5.5 x 8.5 in",
+                  "5.5 x 11 in",
+                  "6 x 9 in",
+                  "6 x 12 in",
+                  "6.5 x 9 in",
+                  "6.5 x 11 in",
+                  "6.5 x 12 in",
+                  "8 x 11 in",
+                  "8.5 x 11 in",
+                  "8.5 x 12 in",
+                  "9 x 10 in",
+                  "9 x 12 in",
+                  "Custom size"
+                ],
+                "Square": [
+                  "0.5 x 0.5 in",
+                  "1 x 1 in",
+                  "1.5 x 1.5 in",
+                  "2 x 2 in",
+                  "2.5 x 2.5 in",
+                  "3 x 3 in",
+                  "3.5 x 3.5 in",
+                  "4 x 4 in",
+                  "4.5 x 4.5 in",
+                  "5 x 5 in",
+                  "5.5 x 5.5 in",
+                  "6 x 6 in",
+                  "6.5 x 6.5 in",
+                  "7 x 7 in",
+                  "7.5 x 7.5 in",
+                  "8 x 8 in",
+                  "8.5 x 8.5 in",
+                  "Custom size"
+                ],
+                "Circle": [
+                  "0.5 x 0.5 in",
+                  "1 x 1 in",
+                  "1.5 x 1.5 in",
+                  "2 x 2 in",
+                  "2.5 x 2.5 in",
+                  "3 x 3 in",
+                  "3.5 x 3.5 in",
+                  "4 x 4 in",
+                  "4.5 x 4.5 in",
+                  "5 x 5 in",
+                  "5.5 x 5.5 in",
+                  "6 x 6 in",
+                  "6.5 x 6.5 in",
+                  "7 x 7 in",
+                  "7.5 x 7.5 in",
+                  "8 x 8 in",
+                  "8.5 x 8.5 in",
+                  "Custom size"
+                ],
+                "Oval": [
+                  "2 x 3 in",
+                  "2 x 3.5 in",
+                  "2 x 4 in",
+                  "2 x 4.5 in",
+                  "3 x 4 in",
+                  "3 x 5 in",
+                  "3.5 x 6 in",
+                  "4 x 6 in",
+                  "4 x 8 in",
+                  "5 x 7 in",
+                  "5 x 8 in",
+                  "5 x 9 in",
+                  "5 x 10 in",
+                  "5.5 x 8.5 in",
+                  "6 x 9 in",
+                  "6 x 12 in",
+                  "6.5 x 9 in",
+                  "6.5 x 11 in",
+                  "Custom size"
+                ],
+                "Custom Cut": [
+                  "Custom size"
+                ]
+              }
+            },
+            "customSize": true
+          },
+          {
+            "label": "Width (in)",
+            "type": "dimension",
+            "required": true,
+            "min": 0.01,
+            "when": {
+              "Size": "Custom size"
+            }
+          },
+          {
+            "label": "Height (in)",
+            "type": "dimension",
+            "required": true,
+            "min": 0.01,
+            "when": {
+              "Size": "Custom size"
+            }
+          },
+          {
+            "label": "Orientation",
+            "required": true,
+            "options": [
+              "Portrait",
+              "Landscape"
+            ],
+            "ui": "orientation",
+            "when": {
+              "Shape": [
+                "Rectangle",
+                "Oval"
+              ],
+              "Size": [
+                "2 x 3 in",
+                "2 x 3.5 in",
+                "2 x 4 in",
+                "2 x 4.5 in",
+                "3 x 4 in",
+                "3 x 5 in",
+                "3.5 x 6 in",
+                "4 x 6 in",
+                "4 x 8 in",
+                "4 x 9 in",
+                "4 x 11 in",
+                "5 x 7 in",
+                "5 x 8 in",
+                "5 x 9 in",
+                "5 x 10 in",
+                "5.5 x 8.5 in",
+                "5.5 x 11 in",
+                "6 x 9 in",
+                "6 x 12 in",
+                "6.5 x 9 in",
+                "6.5 x 11 in",
+                "6.5 x 12 in",
+                "8 x 11 in",
+                "8.5 x 11 in",
+                "8.5 x 12 in",
+                "9 x 10 in",
+                "9 x 12 in"
+              ]
+            }
+          },
+          {
+            "label": "Material",
+            "required": true,
+            "options": [
+              "White Matte BOPP",
+              "Silver Gloss BOPP",
+              "Clear Gloss BOPP",
+              "60# Semi-Gloss Paper",
+              "Silver Gloss Paper",
+              "Holographic Gloss BOPP",
+              "60# White Uncoated Paper",
+              "Kraft Paper",
+              "White Vinyl"
+            ],
+            "ui": "material"
+          },
+          {
+            "label": "Print color",
+            "required": true,
+            "optionsBy": {
+              "field": "Material",
+              "values": {
+                "Silver Gloss BOPP": [
+                  "Full Color + White (5/0)"
+                ],
+                "Clear Gloss BOPP": [
+                  "Full Color + White (5/0)"
+                ],
+                "Silver Gloss Paper": [
+                  "Full Color + White (5/0)"
+                ],
+                "Holographic Gloss BOPP": [
+                  "Full Color + White (5/0)"
+                ],
+                "Kraft Paper": [
+                  "Full Color + White (5/0)"
+                ]
+              },
+              "fallback": [
+                "Full Color (4/0)"
+              ]
+            }
+          },
+          {
+            "label": "Lamination",
+            "required": true,
+            "optionsBy": {
+              "field": "Material",
+              "values": {
+                "60# White Uncoated Paper": [
+                  "No"
+                ],
+                "Kraft Paper": [
+                  "No"
+                ]
+              },
+              "fallback": [
+                "No",
+                "Matte",
+                "Gloss",
+                "Soft Touch"
+              ]
+            }
+          },
+          {
+            "label": "Liner",
+            "required": true,
+            "optionsBy": {
+              "field": "Material",
+              "values": {
+                "White Matte BOPP": [
+                  "40# Paper Liner",
+                  "Clear 1.2Mil PET Liner"
+                ],
+                "Clear Gloss BOPP": [
+                  "Clear 1.2Mil PET Liner"
+                ],
+                "White Vinyl": [
+                  "78# Paper Liner"
+                ]
+              },
+              "fallback": [
+                "40# Paper Liner"
+              ]
+            }
+          },
+          {
+            "label": "Roll unwind",
+            "required": true,
+            "options": [
+              "Any",
+              "#1",
+              "#2",
+              "#3",
+              "#4"
+            ],
+            "default": "#3",
+            "help": "Choose Any for hand application.",
+            "guide": "unwind"
+          }
+        ],
+        "quantities": [
+          "250",
+          "500",
+          "1000",
+          "1500",
+          "2000",
+          "2500",
+          "3000",
+          "3500",
+          "4000",
+          "4500",
+          "5000",
+          "6000",
+          "7000",
+          "8000",
+          "9000",
+          "10000",
+          "11000",
+          "12000",
+          "13000",
+          "14000",
+          "15000",
+          "16000",
+          "17000",
+          "18000",
+          "19000",
+          "20000",
+          "25000",
+          "30000",
+          "40000",
+          "50000",
+          "60000",
+          "70000",
+          "80000",
+          "90000",
+          "100000",
+          "150000",
+          "200000"
+        ]
+      },
+      "reviewRequired": true,
+      "sourceStatus": "live_configurator_observed_2026_10_10",
+      "facts": [
+        "Individual labels supplied on rolls. Quantity counts labels, not rolls.",
+        "Choose a preset size or enter your own width and height."
+      ],
+      "imageSmall": "/assets/products/studio-morrow-labels-600.webp",
+      "customOnly": false,
+      "sources": [
+        "https://axiomprint.com/product/roll-labels-335"
+      ],
+      "quantityUnit": "labels",
+      "manualReview": [
+        "Live UI choices and key material/shape dependencies inspected. Pricing, turnaround, and exhaustive size limits not replicated."
+      ],
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "stickers",
+      "name": "Stickers",
+      "category": "Labels & stickers",
+      "headline": "Made to make your brand stick.",
+      "description": "Individual stickers, sheets, and kiss-cut formats for packaging, promotions, and the details that make your brand recognizable.",
+      "image": "/assets/products/product-stickers-1200.webp",
+      "imageAlt": "Morrow stickers photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": null,
+      "config": {
+        "fields": [
+          {
+            "label": "Format",
+            "required": true,
+            "options": [
+              "Individual Stickers",
+              "Sticker Sheets",
+              "Kiss-Cut Stickers",
+              "Kiss-Cut Sticker Sheets"
+            ]
+          }
+        ],
+        "variantField": "Format",
+        "variants": {
+          "Individual Stickers": {
+            "fields": [
+              {
+                "label": "Shape",
+                "required": true,
+                "options": [
+                  "Rectangle",
+                  "Square",
+                  "Circle",
+                  "Die Cut"
+                ],
+                "ui": "shape"
+              },
+              {
+                "label": "Size",
+                "required": true,
+                "optionsBy": {
+                  "field": "Shape",
+                  "values": {
+                    "Rectangle": [
+                      "3 x 2 in",
+                      "4 x 2 in",
+                      "6 x 2 in",
+                      "4 x 3 in",
+                      "6 x 3 in",
+                      "6 x 4 in",
+                      "8.5 x 5.5 in",
+                      "Custom size"
+                    ],
+                    "Square": [
+                      "2 x 2 in",
+                      "3 x 3 in",
+                      "4 x 4 in",
+                      "Custom size"
+                    ],
+                    "Circle": [
+                      "2 x 2 in",
+                      "3 x 3 in",
+                      "4 x 4 in",
+                      "Custom size"
+                    ],
+                    "Die Cut": [
+                      "3 x 2 in",
+                      "2 x 2 in",
+                      "4 x 2 in",
+                      "6 x 2 in",
+                      "3 x 3 in",
+                      "4 x 3 in",
+                      "6 x 3 in",
+                      "4 x 4 in",
+                      "6 x 4 in",
+                      "8.5 x 5.5 in",
+                      "Custom size"
+                    ]
+                  }
+                },
+                "customSize": true,
+                "default": "3 x 2 in"
+              },
+              {
+                "label": "Width (in)",
+                "type": "dimension",
+                "required": true,
+                "min": 0.01,
+                "when": {
+                  "Size": "Custom size"
+                }
+              },
+              {
+                "label": "Height (in)",
+                "type": "dimension",
+                "required": true,
+                "min": 0.01,
+                "when": {
+                  "Size": "Custom size"
+                }
+              },
+              {
+                "label": "Orientation",
+                "required": true,
+                "options": [
+                  "Landscape",
+                  "Portrait"
+                ],
+                "ui": "orientation",
+                "when": {
+                  "Shape": [
+                    "Rectangle",
+                    "Die Cut"
+                  ]
+                }
+              },
+              {
+                "label": "Material",
+                "required": true,
+                "options": [
+                  "60# Uncoated Paper",
+                  "58# Gloss Paper",
+                  "White Matte Vinyl",
+                  "Clear Gloss Vinyl"
+                ],
+                "default": "White Matte Vinyl",
+                "ui": "material"
+              },
+              {
+                "label": "Back liner",
+                "required": true,
+                "options": [
+                  "Crack & Peel"
+                ],
+                "when": {
+                  "Material": [
+                    "60# Uncoated Paper",
+                    "58# Gloss Paper",
+                    "White Matte Vinyl"
+                  ]
+                }
+              },
+              {
+                "label": "Print color",
+                "required": true,
+                "optionsBy": {
+                  "field": "Material",
+                  "values": {
+                    "60# Uncoated Paper": [
+                      "Full Color (4/0)"
+                    ],
+                    "58# Gloss Paper": [
+                      "Full Color (4/0)"
+                    ],
+                    "White Matte Vinyl": [
+                      "Full Color (4/0)"
+                    ],
+                    "Clear Gloss Vinyl": [
+                      "Full Color + White (5/0)"
+                    ]
+                  }
+                }
+              },
+              {
+                "label": "Round corners",
+                "required": true,
+                "options": [
+                  "No",
+                  "1/8 in",
+                  "1/4 in"
+                ],
+                "ui": "segmented",
+                "when": {
+                  "Shape": [
+                    "Rectangle",
+                    "Square"
+                  ]
+                }
+              },
+              {
+                "label": "Finishing",
+                "required": true,
+                "optionsBy": {
+                  "field": "Material",
+                  "values": {
+                    "60# Uncoated Paper": [
+                      "Uncoated"
+                    ],
+                    "58# Gloss Paper": [
+                      "Glossy Finish",
+                      "UV High-Gloss Coated",
+                      "Soft Touch Lamination - 1 Mil",
+                      "Gloss Lamination - 1 Mil",
+                      "Gloss Lamination - 5 Mil",
+                      "Matte Lamination - 1 Mil"
+                    ],
+                    "White Matte Vinyl": [
+                      "Matte Finish",
+                      "UV High-Gloss Coated",
+                      "Soft Touch Lamination - 1 Mil",
+                      "Gloss Lamination - 1 Mil",
+                      "Gloss Lamination - 5 Mil",
+                      "Matte Lamination - 1 Mil"
+                    ],
+                    "Clear Gloss Vinyl": [
+                      "Gloss Lamination - 1 Mil"
+                    ]
+                  }
+                }
+              },
+              {
+                "label": "Foil option",
+                "required": true,
+                "options": [
+                  "No",
+                  "Digital Foil",
+                  "Raised Foil"
+                ]
+              },
+              {
+                "label": "Foil color",
+                "required": true,
+                "options": [
+                  "Gold (shiny)",
+                  "Gold (matte)",
+                  "Silver (shiny)",
+                  "Silver (matte)",
+                  "Copper",
+                  "Rose gold",
+                  "Holographic",
+                  "Custom"
+                ],
+                "when": {
+                  "Foil option": [
+                    "Digital Foil",
+                    "Raised Foil"
+                  ]
+                }
+              },
+              {
+                "label": "Custom foil color",
+                "type": "text",
+                "required": true,
+                "when": {
+                  "Foil color": "Custom"
+                }
+              },
+              {
+                "label": "Raised spot UV",
+                "required": true,
+                "options": [
+                  "No",
+                  "Raised Spot UV (30 Micron)"
+                ]
+              }
+            ],
+            "quantities": [
+              "50",
+              "100",
+              "150",
+              "200",
+              "250",
+              "300",
+              "400",
+              "500",
+              "600",
+              "700",
+              "800",
+              "900",
+              "1000",
+              "1500",
+              "2000",
+              "2500",
+              "3000",
+              "4000",
+              "5000"
+            ]
+          },
+          "Sticker Sheets": {
+            "fields": [
+              {
+                "label": "Shape",
+                "required": true,
+                "options": [
+                  "Rectangle",
+                  "Circle",
+                  "Custom Shape"
+                ],
+                "ui": "shape"
+              },
+              {
+                "label": "Size",
+                "required": true,
+                "optionsBy": {
+                  "field": "Shape",
+                  "values": {
+                    "Rectangle": [
+                      "2 x 1 in",
+                      "3 x 2 in",
+                      "4 x 2 in",
+                      "6 x 3 in",
+                      "6 x 4 in",
+                      "8.5 x 5.5 in",
+                      "Custom size"
+                    ],
+                    "Circle": [
+                      "1 x 1 in",
+                      "2 x 2 in",
+                      "3 x 3 in",
+                      "4 x 4 in",
+                      "Custom size"
+                    ],
+                    "Custom Shape": [
+                      "2 x 1 in",
+                      "3 x 2 in",
+                      "4 x 2 in",
+                      "6 x 3 in",
+                      "6 x 4 in",
+                      "8.5 x 5.5 in",
+                      "Custom size"
+                    ]
+                  }
+                },
+                "customSize": true,
+                "default": "3 x 2 in",
+                "help": "Finished size of each sticker. For multiple designs on one sheet, choose Kiss-Cut Sticker Sheets."
+              },
+              {
+                "label": "Width (in)",
+                "type": "dimension",
+                "required": true,
+                "min": 0.01,
+                "when": {
+                  "Size": "Custom size"
+                }
+              },
+              {
+                "label": "Height (in)",
+                "type": "dimension",
+                "required": true,
+                "min": 0.01,
+                "when": {
+                  "Size": "Custom size"
+                }
+              },
+              {
+                "label": "Orientation",
+                "required": true,
+                "options": [
+                  "Landscape",
+                  "Portrait"
+                ],
+                "ui": "orientation",
+                "when": {
+                  "Shape": [
+                    "Rectangle",
+                    "Custom Shape"
+                  ]
+                }
+              },
+              {
+                "label": "Material",
+                "required": true,
+                "options": [
+                  "60# Uncoated Paper",
+                  "58# Gloss Paper",
+                  "White Matte Vinyl",
+                  "Clear Matte Vinyl",
+                  "Clear Gloss Vinyl",
+                  "Silver Metallic"
+                ],
+                "default": "58# Gloss Paper",
+                "ui": "material"
+              },
+              {
+                "label": "Finishing",
+                "required": true,
+                "optionsBy": {
+                  "field": "Material",
+                  "values": {
+                    "60# Uncoated Paper": [
+                      "Uncoated"
+                    ],
+                    "58# Gloss Paper": [
+                      "Gloss",
+                      "UV High-Gloss",
+                      "Matte Lamination - 1 Mil",
+                      "Soft Touch Lamination - 1 Mil",
+                      "Gloss Lamination - 1 Mil",
+                      "Gloss Lamination - 5 Mil",
+                      "Grit Lamination - 1 Mil"
+                    ],
+                    "White Matte Vinyl": [
+                      "Matte",
+                      "UV High-Gloss",
+                      "Matte Lamination - 1 Mil",
+                      "Soft Touch Lamination - 1 Mil",
+                      "Gloss Lamination - 1 Mil",
+                      "Gloss Lamination - 5 Mil",
+                      "Grit Lamination - 1 Mil"
+                    ],
+                    "Clear Matte Vinyl": [
+                      "Matte"
+                    ],
+                    "Clear Gloss Vinyl": [
+                      "Gloss Lamination - 1 Mil"
+                    ],
+                    "Silver Metallic": [
+                      "Gloss",
+                      "Matte Lamination - 1 Mil",
+                      "Soft Touch Lamination - 1 Mil",
+                      "Gloss Lamination - 1 Mil"
+                    ]
+                  }
+                }
+              },
+              {
+                "label": "Round corners",
+                "required": true,
+                "options": [
+                  "No",
+                  "1/8 in",
+                  "1/4 in"
+                ],
+                "ui": "segmented",
+                "when": {
+                  "Shape": "Rectangle"
+                }
+              },
+              {
+                "label": "Foil option",
+                "required": true,
+                "options": [
+                  "No",
+                  "Digital Foil",
+                  "Raised Foil"
+                ]
+              },
+              {
+                "label": "Foil color",
+                "required": true,
+                "options": [
+                  "Gold (shiny)",
+                  "Gold (matte)",
+                  "Silver (shiny)",
+                  "Silver (matte)",
+                  "Copper",
+                  "Rose gold",
+                  "Holographic",
+                  "Custom"
+                ],
+                "when": {
+                  "Foil option": [
+                    "Digital Foil",
+                    "Raised Foil"
+                  ]
+                }
+              },
+              {
+                "label": "Custom foil color",
+                "type": "text",
+                "required": true,
+                "when": {
+                  "Foil color": "Custom"
+                }
+              },
+              {
+                "label": "Raised spot UV",
+                "required": true,
+                "options": [
+                  "No",
+                  "Raised Spot UV (30 Micron)",
+                  "Raised Spot UV (60 Micron)"
+                ]
+              }
+            ],
+            "quantities": [
+              "50",
+              "100",
+              "150",
+              "200",
+              "250",
+              "300",
+              "400",
+              "500",
+              "600",
+              "700",
+              "800",
+              "900",
+              "1000",
+              "1500",
+              "2000",
+              "2500",
+              "3000",
+              "4000",
+              "5000"
+            ]
+          },
+          "Kiss-Cut Stickers": {
+            "fields": [
+              {
+                "label": "Cut",
+                "required": true,
+                "options": [
+                  "Kiss Cut"
+                ]
+              },
+              {
+                "label": "Size",
+                "required": true,
+                "options": [
+                  "2 x 2 in",
+                  "4 x 2 in",
+                  "6 x 2 in",
+                  "3 x 3 in",
+                  "4 x 3 in",
+                  "6 x 3 in",
+                  "4 x 4 in",
+                  "6 x 4 in",
+                  "8 x 4 in",
+                  "8.5 x 5.5 in",
+                  "Custom size"
+                ],
+                "customSize": true
+              },
+              {
+                "label": "Width (in)",
+                "type": "dimension",
+                "required": true,
+                "min": 0.01,
+                "when": {
+                  "Size": "Custom size"
+                }
+              },
+              {
+                "label": "Height (in)",
+                "type": "dimension",
+                "required": true,
+                "min": 0.01,
+                "when": {
+                  "Size": "Custom size"
+                }
+              },
+              {
+                "label": "Orientation",
+                "required": true,
+                "options": [
+                  "Landscape",
+                  "Portrait"
+                ],
+                "ui": "orientation"
+              },
+              {
+                "label": "Material",
+                "required": true,
+                "options": [
+                  "60# Uncoated Paper",
+                  "58# Gloss Paper",
+                  "White Matte Vinyl",
+                  "Clear Matte Vinyl",
+                  "Clear Gloss Vinyl",
+                  "Holographic Vinyl",
+                  "Silver Vinyl"
+                ],
+                "default": "White Matte Vinyl",
+                "ui": "material"
+              },
+              {
+                "label": "Print color",
+                "required": true,
+                "optionsBy": {
+                  "field": "Material",
+                  "values": {
+                    "60# Uncoated Paper": [
+                      "Full Color (4/0)"
+                    ],
+                    "58# Gloss Paper": [
+                      "Full Color (4/0)"
+                    ],
+                    "White Matte Vinyl": [
+                      "Full Color (4/0)"
+                    ],
+                    "Clear Matte Vinyl": [
+                      "Full Color + White (5/0)"
+                    ],
+                    "Clear Gloss Vinyl": [
+                      "Full Color + White (5/0)"
+                    ],
+                    "Holographic Vinyl": [
+                      "Full Color + White (5/0)"
+                    ],
+                    "Silver Vinyl": [
+                      "Full Color + White (5/0)"
+                    ]
+                  }
+                }
+              },
+              {
+                "label": "Finishing",
+                "required": true,
+                "optionsBy": {
+                  "field": "Material",
+                  "values": {
+                    "60# Uncoated Paper": [
+                      "Uncoated"
+                    ],
+                    "58# Gloss Paper": [
+                      "Glossy Finish",
+                      "UV High-Gloss Coated",
+                      "Soft Touch Lamination - 1 Mil Thick",
+                      "Gloss Lamination - 1 Mil Thick",
+                      "Gloss Lamination - 5 Mil Thick",
+                      "Matte Lamination - 1 Mil Thick"
+                    ],
+                    "White Matte Vinyl": [
+                      "Matte Finish",
+                      "UV High-Gloss Coated",
+                      "Soft Touch Lamination - 1 Mil Thick",
+                      "Gloss Lamination - 1 Mil Thick",
+                      "Gloss Lamination - 5 Mil Thick",
+                      "Matte Lamination - 1 Mil Thick"
+                    ],
+                    "Clear Matte Vinyl": [
+                      "Matte Finish"
+                    ],
+                    "Clear Gloss Vinyl": [],
+                    "Holographic Vinyl": [
+                      "Gloss Lamination - 1 Mil Thick",
+                      "Gloss Lamination - 5 Mil Thick",
+                      "Matte Lamination - 1 Mil Thick"
+                    ],
+                    "Silver Vinyl": [
+                      "Gloss Lamination - 1 Mil Thick",
+                      "Gloss Lamination - 5 Mil Thick",
+                      "Matte Lamination - 1 Mil Thick"
+                    ]
+                  }
+                }
+              },
+              {
+                "label": "Foil option",
+                "required": true,
+                "options": [
+                  "No",
+                  "Digital Foil",
+                  "Raised Foil"
+                ]
+              },
+              {
+                "label": "Foil color",
+                "required": true,
+                "options": [
+                  "Gold (shiny)",
+                  "Gold (matte)",
+                  "Silver (shiny)",
+                  "Silver (matte)",
+                  "Copper",
+                  "Rose gold",
+                  "Holographic",
+                  "Custom"
+                ],
+                "when": {
+                  "Foil option": [
+                    "Digital Foil",
+                    "Raised Foil"
+                  ]
+                }
+              },
+              {
+                "label": "Custom foil color",
+                "type": "text",
+                "required": true,
+                "when": {
+                  "Foil color": "Custom"
+                }
+              },
+              {
+                "label": "Raised spot UV",
+                "required": true,
+                "options": [
+                  "No",
+                  "40 Micron"
+                ]
+              }
+            ],
+            "quantities": [
+              "50",
+              "100",
+              "150",
+              "200",
+              "250",
+              "300",
+              "400",
+              "500",
+              "600",
+              "700",
+              "800",
+              "900",
+              "1000",
+              "1500",
+              "2000",
+              "2500",
+              "3000",
+              "4000",
+              "5000"
+            ]
+          },
+          "Kiss-Cut Sticker Sheets": {
+            "fields": [
+              {
+                "label": "Size",
+                "required": true,
+                "options": [
+                  "4 x 4 in",
+                  "6 x 4 in",
+                  "5 x 7 in",
+                  "8.5 x 3.5 in",
+                  "8.5 x 5.5 in",
+                  "8.5 x 11 in",
+                  "Custom size"
+                ],
+                "customSize": true,
+                "default": "8.5 x 5.5 in",
+                "help": "Finished sheet size. Include the sticker arrangement in your artwork."
+              },
+              {
+                "label": "Width (in)",
+                "type": "dimension",
+                "required": true,
+                "min": 0.01,
+                "when": {
+                  "Size": "Custom size"
+                }
+              },
+              {
+                "label": "Height (in)",
+                "type": "dimension",
+                "required": true,
+                "min": 0.01,
+                "when": {
+                  "Size": "Custom size"
+                }
+              },
+              {
+                "label": "Orientation",
+                "required": true,
+                "options": [
+                  "Landscape",
+                  "Portrait"
+                ],
+                "ui": "orientation"
+              },
+              {
+                "label": "Material",
+                "required": true,
+                "options": [
+                  "60# Uncoated Paper",
+                  "58# Gloss Paper",
+                  "White Matte Vinyl",
+                  "Clear Matte Vinyl",
+                  "Clear Gloss Vinyl",
+                  "White Bopp"
+                ],
+                "default": "58# Gloss Paper",
+                "ui": "material"
+              },
+              {
+                "label": "Print color",
+                "required": true,
+                "optionsBy": {
+                  "field": "Material",
+                  "values": {
+                    "60# Uncoated Paper": [
+                      "Full Color (4/0)"
+                    ],
+                    "58# Gloss Paper": [
+                      "Full Color (4/0)"
+                    ],
+                    "White Matte Vinyl": [
+                      "Full Color (4/0)"
+                    ],
+                    "Clear Matte Vinyl": [
+                      "Full Color + White (5/0)"
+                    ],
+                    "Clear Gloss Vinyl": [
+                      "Full Color + White (5/0)"
+                    ],
+                    "White Bopp": [
+                      "Full Color (4/0)"
+                    ]
+                  }
+                }
+              },
+              {
+                "label": "Finishing",
+                "required": true,
+                "optionsBy": {
+                  "field": "Material",
+                  "values": {
+                    "60# Uncoated Paper": [
+                      "Uncoated"
+                    ],
+                    "58# Gloss Paper": [
+                      "Glossy Finish",
+                      "Matte Lamination - 1 Mil Thick",
+                      "UV High-Gloss Coated",
+                      "Soft Touch Lamination - 1 Mil Thick",
+                      "Gloss Lamination - 1 Mil Thick"
+                    ],
+                    "White Matte Vinyl": [
+                      "Matte Finish",
+                      "Matte Lamination - 1 Mil Thick",
+                      "UV High-Gloss Coated",
+                      "Soft Touch Lamination - 1 Mil Thick",
+                      "Gloss Lamination - 1 Mil Thick"
+                    ],
+                    "Clear Matte Vinyl": [
+                      "Matte Finish"
+                    ],
+                    "Clear Gloss Vinyl": [
+                      "Glossy Finish"
+                    ],
+                    "White Bopp": [
+                      "Gloss Lamination"
+                    ]
+                  }
+                }
+              },
+              {
+                "label": "Foil option",
+                "required": true,
+                "options": [
+                  "No",
+                  "Digital Foil",
+                  "Raised Foil"
+                ]
+              },
+              {
+                "label": "Foil color",
+                "required": true,
+                "options": [
+                  "Gold (shiny)",
+                  "Gold (matte)",
+                  "Silver (shiny)",
+                  "Silver (matte)",
+                  "Copper",
+                  "Rose gold",
+                  "Holographic",
+                  "Custom"
+                ],
+                "when": {
+                  "Foil option": [
+                    "Digital Foil",
+                    "Raised Foil"
+                  ]
+                }
+              },
+              {
+                "label": "Custom foil color",
+                "type": "text",
+                "required": true,
+                "when": {
+                  "Foil color": "Custom"
+                }
+              },
+              {
+                "label": "Raised spot UV",
+                "required": true,
+                "options": [
+                  "No",
+                  "40 Micron"
+                ]
+              }
+            ],
+            "quantities": [
+              "50",
+              "100",
+              "150",
+              "200",
+              "250",
+              "300",
+              "400",
+              "500",
+              "600",
+              "700",
+              "800",
+              "900",
+              "1000",
+              "1500",
+              "2000",
+              "2500",
+              "3000",
+              "4000",
+              "5000"
+            ]
+          }
+        }
+      },
+      "reviewRequired": true,
+      "sourceStatus": "Live Axiom controls observed 2026-10-10; selected material and shape dependencies verified. Prices and turnaround omitted; exhaustive finishing interactions remain a launch check.",
+      "facts": [
+        "Four formats, each with its own materials and finishing options.",
+        "Choose Sticker Sheets for repeated stickers on a backing sheet, or Kiss-Cut Sticker Sheets for a composed sheet of designs."
+      ],
+      "imageSmall": "/assets/products/product-stickers-600.webp",
+      "versionMode": "breakdown",
+      "quantityUnit": "stickers"
+    },
+    {
+      "id": "a-frame-signs",
+      "name": "A-Frame Signs",
+      "category": "Signs & displays",
+      "headline": "Turn passing attention into a visit.",
+      "description": "Bring your message to the sidewalk with a freestanding sign for storefronts and events.",
+      "image": "/assets/products/studio-daymark-signs-1200.webp",
+      "imageAlt": "Daymark a-frame signs photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": null,
+      "config": {
+        "fields": [
+          {
+            "label": "Size",
+            "required": true,
+            "options": [
+              "24 x 36 in"
+            ]
+          },
+          {
+            "label": "Frame",
+            "required": true,
+            "options": [
+              "White Plastic A-Sign",
+              "Black Plastic A-Sign",
+              "Replacement Print (No Stand)"
+            ],
+            "ui": "segmented"
+          },
+          {
+            "label": "Graphic material",
+            "required": true,
+            "options": [
+              "1/8 in White PVC"
+            ]
+          },
+          {
+            "label": "Design",
+            "required": true,
+            "options": [
+              "Same on Both Sides",
+              "Different on Each Side"
+            ]
+          }
+        ],
+        "quantities": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "25"
+        ]
+      },
+      "reviewRequired": true,
+      "sourceStatus": "Live Axiom controls observed 2026-10-10; listed menus and key dependencies verified, exhaustive combinations remain a launch check.",
+      "facts": [
+        "A 24 × 36 inch sidewalk display with replaceable graphics.",
+        "Choose a white or black frame, or replacement prints for your existing stand."
+      ],
+      "imageSmall": "/assets/products/studio-daymark-signs-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "yard-signs",
+      "name": "Yard Signs",
+      "category": "Signs & displays",
+      "headline": "Get noticed in the neighborhood.",
+      "description": "Put a business, property, or campaign message in view with outdoor signage.",
+      "image": "/assets/products/product-yard-signs-1200.webp",
+      "imageAlt": "Daymark yard signs photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": "Yard signs",
+      "config": {
+        "fields": [],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": false,
+      "sourceStatus": "Reused from supplied Churches backup",
+      "imageSmall": "/assets/products/product-yard-signs-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "car-magnets",
+      "name": "Car Magnets",
+      "category": "Signs & displays",
+      "headline": "Take your business with you.",
+      "description": "Bring your branding along for the drive with printed vehicle magnets.",
+      "image": "/assets/products/product-car-magnets-1200.webp",
+      "imageAlt": "Morrow car magnets photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": null,
+      "config": {
+        "fields": [
+          {
+            "label": "Shape",
+            "required": true,
+            "options": [
+              "Rectangle",
+              "Rounded Rectangle",
+              "Square",
+              "Rounded Square",
+              "Circle",
+              "Half Circle",
+              "Octagon",
+              "Arrow",
+              "Star",
+              "House",
+              "Apartment"
+            ]
+          },
+          {
+            "label": "Size",
+            "required": true,
+            "type": "text",
+            "optionsBy": {
+              "field": "Shape",
+              "values": {
+                "Rectangle": [
+                  "8 x 12 in",
+                  "9 x 18 in",
+                  "9 x 24 in",
+                  "11 x 17 in",
+                  "12 x 18 in",
+                  "12 x 24 in",
+                  "16 x 23 in",
+                  "18 x 24 in",
+                  "18 x 36 in",
+                  "20 x 30 in",
+                  "22 x 23 in",
+                  "22 x 28 in",
+                  "24 x 36 in",
+                  "24 x 48 in",
+                  "28 x 40 in",
+                  "30 x 60 in",
+                  "32 x 48 in",
+                  "36 x 48 in",
+                  "36 x 72 in",
+                  "42 x 84 in"
+                ],
+                "Rounded Rectangle": [
+                  "8 x 12 in",
+                  "9 x 18 in",
+                  "9 x 24 in",
+                  "11 x 17 in",
+                  "12 x 18 in",
+                  "12 x 24 in",
+                  "16 x 23 in",
+                  "18 x 24 in",
+                  "18 x 36 in",
+                  "20 x 30 in",
+                  "22 x 23 in",
+                  "22 x 28 in",
+                  "24 x 36 in",
+                  "24 x 48 in",
+                  "28 x 40 in",
+                  "30 x 60 in",
+                  "32 x 48 in",
+                  "36 x 48 in",
+                  "36 x 72 in",
+                  "42 x 84 in"
+                ],
+                "Square": [
+                  "18 x 18 in",
+                  "23 x 23 in",
+                  "24 x 24 in",
+                  "36 x 36 in"
+                ],
+                "Rounded Square": [
+                  "18 x 18 in",
+                  "23 x 23 in",
+                  "24 x 24 in",
+                  "36 x 36 in"
+                ],
+                "Circle": [
+                  "18 x 18 in",
+                  "23 x 23 in",
+                  "24 x 24 in",
+                  "36 x 36 in"
+                ],
+                "Half Circle": [
+                  "9 x 18 in",
+                  "18 x 36 in",
+                  "24 x 48 in",
+                  "30 x 60 in",
+                  "42 x 84 in"
+                ],
+                "Octagon": [
+                  "23 x 23 in"
+                ],
+                "Arrow": [
+                  "18 x 24 in"
+                ],
+                "Star": [
+                  "22 x 23 in"
+                ],
+                "House": [
+                  "23 x 23 in"
+                ],
+                "Apartment": [
+                  "23 x 23 in"
+                ]
+              }
+            }
+          },
+          {
+            "label": "Center split",
+            "required": true,
+            "when": {
+              "Shape": [
+                "Rectangle",
+                "Rounded Rectangle"
+              ],
+              "Size": [
+                "28 x 40 in",
+                "32 x 48 in"
+              ]
+            },
+            "options": [
+              "No split",
+              "Split into two panels"
+            ]
+          },
+          {
+            "label": "Material",
+            "required": true,
+            "options": [
+              "30 mil White Vinyl Magnetic Material"
+            ]
+          },
+          {
+            "label": "Finish",
+            "required": true,
+            "options": [
+              "Matte Surface"
+            ]
+          }
+        ],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": true,
+      "sourceStatus": "static_product_details_verified_dynamic_matrix_unverified",
+      "sources": [
+        "https://www.gotprint.com/products/car-magnets/order"
+      ],
+      "manualReview": [
+        "Quantity options unavailable.",
+        "Some shape table rows have no linked templates; omitted instead of inferring missing shape sizes.",
+        "All shape/size availability should be checked against live dynamic order form before launch."
+      ],
+      "facts": [
+        "For compatible magnetic metal surfaces.",
+        "Matte surface; indoor or outdoor use."
+      ],
+      "imageSmall": "/assets/products/product-car-magnets-600.webp",
+      "versionMode": "breakdown",
+      "quantityUnit": "magnets"
+    },
+    {
+      "id": "window-decals",
+      "name": "Window Decals",
+      "category": "Signs & displays",
+      "headline": "Make your windows work harder.",
+      "description": "Turn glass into a visible introduction to your brand, hours, offers, or next campaign.",
+      "image": "/assets/products/product-window-decals-1200.webp",
+      "imageAlt": "Acre window decals photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": null,
+      "config": {
+        "fields": [],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": true,
+      "sourceStatus": "Existing source describes clings; adhesive decal specification requires manual review",
+      "customOnly": true,
+      "imageSmall": "/assets/products/product-window-decals-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "window-clings",
+      "name": "Window Clings",
+      "category": "Signs & displays",
+      "headline": "A fresh message for your glass.",
+      "description": "Printed window graphics for changing promotions and customer-facing spaces.",
+      "image": "/assets/products/product-window-clings-1200.webp",
+      "imageAlt": "Morrow window clings photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": null,
+      "config": {
+        "fields": [
+          {
+            "label": "Shape",
+            "required": true,
+            "options": [
+              "Rectangle",
+              "Square",
+              "Circle",
+              "Custom Shape"
+            ],
+            "ui": "shape"
+          },
+          {
+            "label": "Size",
+            "required": true,
+            "optionsBy": {
+              "field": "Shape",
+              "values": {
+                "Rectangle": [
+                  "6 x 4 in",
+                  "20 x 16 in",
+                  "30 x 20 in",
+                  "36 x 24 in",
+                  "Custom size"
+                ],
+                "Square": [
+                  "4 x 4 in",
+                  "6 x 6 in",
+                  "9 x 9 in",
+                  "18 x 18 in",
+                  "Custom size"
+                ],
+                "Circle": [
+                  "4 x 4 in",
+                  "6 x 6 in",
+                  "9 x 9 in",
+                  "18 x 18 in",
+                  "Custom size"
+                ],
+                "Custom Shape": [
+                  "6 x 6 in",
+                  "20 x 16 in",
+                  "36 x 24 in",
+                  "Custom size"
+                ]
+              }
+            },
+            "customSize": true
+          },
+          {
+            "label": "Width (in)",
+            "type": "dimension",
+            "required": true,
+            "min": 0.01,
+            "when": {
+              "Size": "Custom size"
+            }
+          },
+          {
+            "label": "Height (in)",
+            "type": "dimension",
+            "required": true,
+            "min": 0.01,
+            "when": {
+              "Size": "Custom size"
+            }
+          },
+          {
+            "label": "Orientation",
+            "required": true,
+            "options": [
+              "Landscape",
+              "Portrait"
+            ],
+            "ui": "orientation",
+            "when": {
+              "Shape": [
+                "Rectangle",
+                "Custom Shape"
+              ]
+            }
+          },
+          {
+            "label": "Material",
+            "required": true,
+            "options": [
+              "White Cling",
+              "Clear Cling"
+            ],
+            "ui": "material"
+          },
+          {
+            "label": "Printed sides",
+            "required": true,
+            "optionsBy": {
+              "field": "Material",
+              "values": {
+                "White Cling": [
+                  "Front Only"
+                ],
+                "Clear Cling": [
+                  "Front Only",
+                  "Front and Back"
+                ]
+              }
+            },
+            "ui": "segmented"
+          }
+        ],
+        "quantities": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "15",
+          "20",
+          "25",
+          "30",
+          "40",
+          "50",
+          "60",
+          "70",
+          "80",
+          "90",
+          "100"
+        ]
+      },
+      "reviewRequired": true,
+      "sourceStatus": "Live Axiom controls observed 2026-10-10; listed menus and key dependencies verified, exhaustive combinations remain a launch check.",
+      "facts": [
+        "Adhesive-free window graphics.",
+        "Tell us about the glass surface and how the graphic will be viewed."
+      ],
+      "imageSmall": "/assets/products/product-window-clings-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "bulk-posters",
+      "name": "Bulk Posters",
+      "category": "Signs & displays",
+      "headline": "One message. More places.",
+      "description": "Printed posters for campaigns that need a consistent presence across multiple locations.",
+      "image": "/assets/products/product-bulk-posters-1200.webp",
+      "imageAlt": "Acre bulk posters photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": null,
+      "config": {
+        "fields": [
+          {
+            "label": "Size",
+            "required": true,
+            "options": [
+              "8 x 10 in",
+              "11 x 14 in",
+              "11 x 17 in",
+              "12 x 12 in",
+              "13 x 19 in",
+              "16 x 20 in",
+              "18 x 24 in",
+              "19 x 27 in",
+              "20 x 24 in",
+              "24 x 36 in",
+              "24 x 38 in",
+              "26 x 39 in",
+              "27 x 39 in"
+            ]
+          },
+          {
+            "label": "Paper",
+            "required": true,
+            "options": [
+              "100 lb. Gloss Book",
+              "80 lb. Gloss Book",
+              "80 lb. Matte Text"
+            ]
+          },
+          {
+            "label": "Printing",
+            "required": true,
+            "options": [
+              "Full Color Both Sides",
+              "Full Color Front, Blank Back"
+            ]
+          }
+        ],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": true,
+      "sourceStatus": "static_product_details_verified_dynamic_matrix_unverified",
+      "sources": [
+        "https://www.gotprint.com/products/posters/order"
+      ],
+      "manualReview": [
+        "Paper-dependent quantities and size/paper/print compatibility unavailable."
+      ],
+      "facts": [
+        "Paper posters for campaigns that need to appear in more than one place.",
+        {
+          "text": "For larger individual prints, explore ",
+          "linkText": "Large Format Posters",
+          "href": "/products/large-format-posters/",
+          "suffix": "."
+        }
+      ],
+      "imageSmall": "/assets/products/product-bulk-posters-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "large-format-posters",
+      "name": "Large Format Posters",
+      "category": "Signs & displays",
+      "headline": "Give your message more room.",
+      "description": "Make a strong visual statement in offices, retail spaces, and event environments.",
+      "image": "/assets/products/product-large-format-posters-1200.webp",
+      "imageAlt": "Acre large format posters photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": "Posters",
+      "config": {
+        "fields": [],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": false,
+      "sourceStatus": "Reused from supplied Churches backup",
+      "imageSmall": "/assets/products/product-large-format-posters-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "outdoor-banners",
+      "name": "Outdoor Banners",
+      "category": "Banners",
+      "headline": "Make your presence known.",
+      "description": "Bring a clear, visible message to openings, events, and outdoor promotions.",
+      "image": "/assets/products/product-outdoor-banners-1200.webp",
+      "imageAlt": "Northline outdoor banners photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": "Outdoor banners",
+      "config": {
+        "fields": [],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": false,
+      "sourceStatus": "Reused from supplied Churches backup",
+      "imageSmall": "/assets/products/product-outdoor-banners-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "retractable-banners",
+      "name": "Retractable Banners",
+      "category": "Banners",
+      "headline": "Show up looking ready.",
+      "description": "A portable display for conferences, presentations, and the places your brand meets its audience.",
+      "image": "/assets/products/studio-northline-banners-1200.webp",
+      "imageAlt": "Northline retractable banners photographed on a soft neutral studio background",
+      "featured": true,
+      "legacyName": "Retractable banners with stand",
+      "config": {
+        "fields": [],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": false,
+      "sourceStatus": "Reused from supplied Churches backup",
+      "imageSmall": "/assets/products/studio-northline-banners-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "x-frame-banners",
+      "name": "X-Frame Banners",
+      "category": "Banners",
+      "headline": "Keep your message in view.",
+      "description": "A freestanding display for promotions, events, and welcoming spaces.",
+      "image": "/assets/products/product-x-frame-banners-1200.webp",
+      "imageAlt": "Northline x-frame banners photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": "X-frame banners",
+      "config": {
+        "fields": [],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": false,
+      "sourceStatus": "Reused from supplied Churches backup",
+      "imageSmall": "/assets/products/product-x-frame-banners-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "flag-banners",
+      "name": "Flag Banners",
+      "category": "Banners",
+      "headline": "Stand out beyond the storefront.",
+      "description": "A distinctive way to draw attention to a location, event, or promotion.",
+      "image": "/assets/products/product-flag-banners-1200.webp",
+      "imageAlt": "Northline flag banners photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": "Flag banners",
+      "config": {
+        "fields": [],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": false,
+      "sourceStatus": "Reused from supplied Churches backup",
+      "imageSmall": "/assets/products/product-flag-banners-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "laminated-menus",
+      "name": "Laminated Menus",
+      "category": "Menus & counters",
+      "headline": "A menu made for the table.",
+      "description": "Present your food and drink offering in a printed menu intended for repeat handling.",
+      "image": "/assets/products/product-laminated-menus-1200.webp",
+      "imageAlt": "Sora laminated menus photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": null,
+      "config": {
+        "fields": [
+          {
+            "label": "Size",
+            "required": true,
+            "options": [
+              "8.5 x 11 in",
+              "11 x 17 in",
+              "8.5 x 14 in",
+              "Custom size"
+            ],
+            "customSize": true
+          },
+          {
+            "label": "Width (in)",
+            "type": "dimension",
+            "required": true,
+            "min": 0.01,
+            "when": {
+              "Size": "Custom size"
+            }
+          },
+          {
+            "label": "Height (in)",
+            "type": "dimension",
+            "required": true,
+            "min": 0.01,
+            "when": {
+              "Size": "Custom size"
+            }
+          },
+          {
+            "label": "Orientation",
+            "required": true,
+            "options": [
+              "Landscape",
+              "Portrait"
+            ],
+            "ui": "orientation"
+          },
+          {
+            "label": "Printed sides",
+            "required": true,
+            "options": [
+              "Front and Back",
+              "Front Only"
+            ],
+            "ui": "segmented"
+          },
+          {
+            "label": "Lamination",
+            "required": true,
+            "options": [
+              "5 Mil Gloss Lamination, 2 Sides",
+              "1 Mil Gloss Lamination, 2 Sides",
+              "10 Mil Gloss Lamination, 2 Sides",
+              "1 Mil Soft Touch Lamination, 2 Sides",
+              "1 Mil Matte Lamination, 2 Sides",
+              "5 Mil Matte Lamination, 2 Sides"
+            ],
+            "default": "1 Mil Gloss Lamination, 2 Sides"
+          },
+          {
+            "label": "Foil option",
+            "required": true,
+            "options": [
+              "No",
+              "Digital Foil (Front)",
+              "Digital Foil (Back)",
+              "Digital Foil (2 Sides)"
+            ]
+          },
+          {
+            "label": "Foil color",
+            "required": true,
+            "options": [
+              "Gold (shiny)",
+              "Gold (matte)",
+              "Silver (shiny)",
+              "Silver (matte)",
+              "Copper",
+              "Rose gold",
+              "Red",
+              "Holographic",
+              "Custom"
+            ],
+            "when": {
+              "Foil option": [
+                "Digital Foil (Front)",
+                "Digital Foil (Back)",
+                "Digital Foil (2 Sides)"
+              ]
+            }
+          },
+          {
+            "label": "Custom foil color",
+            "type": "text",
+            "required": true,
+            "when": {
+              "Foil color": "Custom"
+            }
+          },
+          {
+            "label": "Finish edge",
+            "required": true,
+            "options": [
+              "Flush Cut",
+              "Flush Cut Round-Corners",
+              "Encapsulated",
+              "Encapsulated Round-Corners"
+            ],
+            "ui": "segmented"
+          }
+        ],
+        "quantities": [
+          "1",
+          "5",
+          "10",
+          "25",
+          "50",
+          "75",
+          "100",
+          "150",
+          "200",
+          "250",
+          "300",
+          "350",
+          "400",
+          "450",
+          "500",
+          "1000"
+        ]
+      },
+      "reviewRequired": true,
+      "sourceStatus": "Live Axiom controls observed 2026-10-10; listed menus and key dependencies verified, exhaustive combinations remain a launch check.",
+      "facts": [
+        "Laminated menus for repeat handling.",
+        "Choose a preferred finish and edge treatment for your quote."
+      ],
+      "imageSmall": "/assets/products/product-laminated-menus-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "takeout-menus",
+      "name": "Takeout Menus",
+      "category": "Menus & counters",
+      "headline": "Keep your next order within reach.",
+      "description": "Put your menu in customers’ hands and give them a reason to come back.",
+      "image": "/assets/products/product-takeout-menus-1200.webp",
+      "imageAlt": "Sora takeout menus photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": null,
+      "config": {
+        "fields": [
+          {
+            "label": "Paper",
+            "required": true,
+            "options": [
+              "100# Gloss Text",
+              "100# Gloss Cover",
+              "70# Uncoated Text"
+            ]
+          },
+          {
+            "label": "Size",
+            "required": true,
+            "options": [
+              "8.5 x 11 in",
+              "5.5 x 8.5 in",
+              "4.25 x 11 in",
+              "4.25 x 5.5 in",
+              "11 x 17 in",
+              "Custom size"
+            ],
+            "customSize": true
+          },
+          {
+            "label": "Width (in)",
+            "type": "dimension",
+            "required": true,
+            "min": 0.01,
+            "when": {
+              "Size": "Custom size"
+            }
+          },
+          {
+            "label": "Height (in)",
+            "type": "dimension",
+            "required": true,
+            "min": 0.01,
+            "when": {
+              "Size": "Custom size"
+            }
+          },
+          {
+            "label": "Orientation",
+            "required": true,
+            "options": [
+              "Landscape",
+              "Portrait"
+            ],
+            "ui": "orientation"
+          },
+          {
+            "label": "Printed sides",
+            "required": true,
+            "options": [
+              "Front and Back",
+              "Front Only"
+            ],
+            "ui": "segmented"
+          },
+          {
+            "label": "Finishing",
+            "required": true,
+            "optionsBy": {
+              "field": "Paper",
+              "values": {
+                "100# Gloss Text": [
+                  "Gloss Coated, 2 Sides",
+                  "UV High-Gloss Coated, 2 Sides",
+                  "Dull Matte Coating, 2 Sides"
+                ],
+                "100# Gloss Cover": [
+                  "Gloss Coated, 2 Sides",
+                  "UV High-Gloss Coated, 2 Sides",
+                  "Dull Matte Coating, 2 Sides"
+                ],
+                "70# Uncoated Text": [
+                  "Uncoated, 2 Sides"
+                ]
+              }
+            }
+          },
+          {
+            "label": "Folding",
+            "required": true,
+            "options": [
+              "No",
+              "Tri-Fold",
+              "Half-Fold",
+              "Z-Fold",
+              "Gate-Fold",
+              "4-Panel Roll Fold",
+              "Accordion Fold"
+            ]
+          }
+        ],
+        "quantities": [
+          "50",
+          "100",
+          "150",
+          "200",
+          "250",
+          "500",
+          "1000",
+          "2500",
+          "5000",
+          "10000",
+          "15000",
+          "20000"
+        ]
+      },
+      "reviewRequired": true,
+      "sourceStatus": "Live Axiom controls observed 2026-10-10; listed menus and key dependencies verified, exhaustive combinations remain a launch check.",
+      "facts": [
+        "Printed menus customers can take with them.",
+        "Paper, finish, and folding combinations are confirmed during quotation."
+      ],
+      "imageSmall": "/assets/products/product-takeout-menus-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "table-tents",
+      "name": "Table Tents",
+      "category": "Menus & counters",
+      "headline": "Make the most of a small space.",
+      "description": "Bring promotions and useful information to tables, reception desks, and counters.",
+      "image": "/assets/products/product-table-tents-1200.webp",
+      "imageAlt": "Sora table tents photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": null,
+      "config": {
+        "fields": [
+          {
+            "label": "Display size",
+            "required": true,
+            "options": [
+              "4 x 4 in",
+              "4 x 6 in",
+              "4 x 6.5 in",
+              "4 x 8 in",
+              "4.25 x 6 in",
+              "5 x 5.5 in"
+            ]
+          },
+          {
+            "label": "Paper",
+            "required": true,
+            "options": [
+              "100 lb. Gloss Cover",
+              "14 pt. Gloss Cover",
+              "14 pt. Uncoated Cover",
+              "100 lb. Matte Cover"
+            ]
+          },
+          {
+            "label": "Printing",
+            "required": true,
+            "options": [
+              "Full Color Outside, Blank Inside"
+            ]
+          }
+        ],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": true,
+      "sourceStatus": "static_product_details_verified_dynamic_matrix_unverified",
+      "sources": [
+        "https://www.gotprint.com/products/table-tents/order"
+      ],
+      "manualReview": [
+        "Paper-dependent quantities unavailable.",
+        "Display/flat sizes follow vendor published labels; artwork template still required to include base tabs correctly."
+      ],
+      "facts": [
+        "Ships flat and scored, ready for assembly.",
+        "Three score lines and two die-cut slits create an interlocking base without glue."
+      ],
+      "imageSmall": "/assets/products/product-table-tents-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "counter-mats",
+      "name": "Counter Mats",
+      "category": "Menus & counters",
+      "headline": "Meet customers at the counter.",
+      "description": "Put a helpful message, offer, or product guide where conversations and decisions happen.",
+      "image": "/assets/products/product-counter-mats-1200.webp",
+      "imageAlt": "Northline counter mats photographed on a soft neutral studio background",
+      "featured": true,
+      "legacyName": null,
+      "config": {
+        "fields": [
+          {
+            "label": "Size",
+            "required": true,
+            "options": [
+              "9 x 14 in",
+              "10 x 15 in",
+              "11 x 17 in"
+            ]
+          },
+          {
+            "label": "Material",
+            "required": true,
+            "options": [
+              "6 mil white vinyl — hard surface"
+            ]
+          },
+          {
+            "label": "Printing",
+            "required": true,
+            "options": [
+              "Full color front"
+            ]
+          },
+          {
+            "label": "Lamination",
+            "required": true,
+            "options": [
+              "Matte",
+              "Gloss"
+            ],
+            "ui": "segmented"
+          },
+          {
+            "label": "Round corners",
+            "required": true,
+            "options": [
+              "1/4 in",
+              "No"
+            ],
+            "ui": "segmented"
+          }
+        ],
+        "quantityMode": "requested",
+        "quantities": [
+          "1",
+          "5",
+          "10",
+          "25",
+          "50",
+          "100",
+          "150",
+          "200",
+          "250",
+          "300",
+          "350",
+          "400",
+          "450",
+          "500",
+          "600",
+          "700",
+          "800",
+          "900",
+          "1000",
+          "1100",
+          "1200",
+          "1300",
+          "1400",
+          "1500",
+          "2000",
+          "2500",
+          "3000",
+          "4000",
+          "5000"
+        ]
+      },
+      "reviewRequired": true,
+      "sourceStatus": "Quixprint user-specified offering; current supplier page differs in material and size. Fulfillment confirmation required.",
+      "facts": [
+        "Hard-surface counter mats in three practical sizes.",
+        "Choose a matte or gloss finish with square or rounded corners."
+      ],
+      "imageSmall": "/assets/products/product-counter-mats-600.webp",
+      "versionMode": "breakdown"
+    },
+    {
+      "id": "custom-printing",
+      "name": "Custom Printing",
+      "category": "Custom projects",
+      "headline": "Something else in mind?",
+      "description": "Tell us about the piece you want to create. Share the size, material, quantity, and any details that matter—we’ll help you work through the possibilities.",
+      "image": "/assets/products/hero-forma-v2.webp",
+      "imageAlt": "Coordinated Forma printed materials including a catalog, brochure, folder and stationery",
+      "customOnly": true,
+      "reviewRequired": true,
+      "config": {
+        "fields": [],
+        "quantityMode": "requested"
+      },
+      "versionMode": "per-version"
+    }
+  ]
+}

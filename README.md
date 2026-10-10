@@ -1,57 +1,41 @@
-# Quixprint Website — Original Layout
+# Quixprint — production deployment source
 
-This version keeps the first homepage layout and wording, with only the requested updates:
+Approved design through Revision 14, with production deployment configuration and a corrected Netlify runtime context check for quote delivery. The live website has not been changed by preparing this package.
 
-- Uses the supplied Quixprint logo in the header
-- Removes “Commercial Printing, Done Better.”
-- Adds a period to the main headline
-- Uses only:
-  - White `#FFFFFF`
-  - Black `#000000`
-  - Light grey `#E1DFD9`
-  - Blue `#147EE0`
-- Replaces the geometric hero artwork with printing photography
-- Keeps the original product list, client section, contact section, footer, mobile menu, and scroll animations
+**Start with docs/DEPLOYMENT.md.** Use the existing GitHub repository and Netlify project. Do not upload the portable preview as the website.
 
-## Run locally
+## What stays the same
 
-Open `index.html`, or run:
+Churches retains its existing design, layout, products, cart, and quote endpoint. Its generated HTML receives the shared GA4 initializer, as requested for all pages. Original Churches source and endpoint remain unchanged.
 
-```bash
-python3 -m http.server 8080
+## Build
+
+Requires Node.js 22 or later. No package dependencies or database are required.
+
+```sh
+npm run build
+npm test
 ```
 
-## Hero photo update
-- Kept the existing catalog photo.
-- Replaced the label photo with the supplied label-roll image.
-- Replaced the packaging photo with the supplied printed marketing-materials image.
-- Removed the “Catalogs · Labels · Packaging” caption.
+Local builds default to preview. Netlify production builds use live mode through netlify.toml; branch deploys and Deploy Previews use preview mode. Set production runtime variables in the Netlify UI as described in the deployment guide. Values in netlify.toml alone are not available to serverless functions.
 
+Build command: npm run build. Publish directory: dist. Functions directory: netlify/functions. Repository root must contain package.json and netlify.toml.
 
-## Modern refinement update
-- Preserved the existing structure and four-color palette.
-- Refined typography, spacing, button styling, and image treatment.
-- Added a concise proof strip below the hero.
-- Simplified several lines of copy.
-- Added subtle staggered scroll reveals.
-- Improved mobile spacing and navigation.
+For a local production build:
 
+```sh
+SITE_MODE=live QUOTE_MODE=live npm run build
+npm test
+```
 
-## Copy positioning update
-- Revised key messaging to make clear that Quixprint produces and delivers printed materials directly.
-- Emphasized full-service production and management from quote to delivery.
-- Reduced wording that could make the company sound primarily consultative.
+## Included
 
+- Homepage, full catalog, 30 product configurators, custom inquiry, journal, policies, and preserved Churches section.
+- Browser-saved multi-item quote cart, artwork version quantities, and quote checkout.
+- Netlify quote endpoint with Brevo sales notification and customer acknowledgement.
+- GA4 G-D2CW5LWNT1 on all 75 HTML pages; active only on production domains in live mode.
+- SEO metadata, sitemap, robots rules, optimized product imagery, and automated checks.
 
-## Messaging refinement
-- Shifted emphasis away from delivery and toward print quality, service, turnaround, and competitive pricing.
-- Updated proof points to avoid repeating “delivery.”
-- Reworked the contact call-to-action to communicate a complete, competitively priced printing solution.
-- Changed the address heading to the neutral label “Address.”
+This is a quote-request website: no payment processing, instant prices, customer login, or order-management database. See docs/REVIEW-STATUS.md for remaining product option research limits. Automated tests use mocked email responses; real delivery and analytics receipt must be verified after publishing.
 
-
-## Final website copy
-- Preserved the final approved design, layout, photography, color palette, and animations.
-- Refined copy to emphasize production quality, personal service, turnaround, competitive pricing, and full-service execution.
-- Reduced repetitive references to delivery and consulting.
-- Updated product descriptions and calls to action for clarity and stronger engagement.
+The compact production ZIP contains optimized web assets and build sources. Original high-resolution artwork and research are retained in the separate full source archive. The build also generates Quixprint-Full-Preview.html for offline review; that preview never sends quotes or loads analytics.

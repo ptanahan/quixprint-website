@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+import {gzipSync} from 'node:zlib';
+const html=fs.readFileSync('Quixprint-Full-Preview.html','utf8');
+const scripts=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m=>m[1]);
+const context={window:{},document:{querySelectorAll:()=>[]}};vm.runInNewContext(scripts[0],context);
+const w=context.window;delete w.QXP_HYDRATE;
+fs.writeFileSync('../inline-review-data.json',JSON.stringify(w));
+fs.writeFileSync('../inline-review-shell.html',html.match(/<body>([\s\S]*?)<script>/)[1]);
+fs.writeFileSync('../inline-review-style.css',html.match(/<style>([\s\S]*?)<\/style>/)[1]);
