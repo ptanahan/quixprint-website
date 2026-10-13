@@ -13,6 +13,8 @@ function resolve(id,previous={}) {
       if(!matches(f.when,state))return;
       let options=f.options;
       if(f.optionsBy)options=f.optionsBy.values[state[f.optionsBy.field]]||f.optionsBy.fallback||[];
+      if(id==='window-decals'&&f.label==='Size'&&state.Units==='Feet')options=options.map(v=>v==='Custom size'?v:v.replace(/([\d.]+) x ([\d.]+) in/,(_,w,h)=>(Number(w)/12)+' x '+(Number(h)/12)+' ft'));
+      if(id==='business-cards'&&state.Printing!=='Full Color Both Sides'&&['Coating','Raised Print'].includes(f.label)&&options)options=options.filter(v=>!v.includes('Both Sides'));
       if(options && !options.length)return;
       const value=options?(options.includes(previous[f.label])?previous[f.label]:(options.includes(f.default)?f.default:options[0])):String(previous[f.label]??f.default??'');
       state[f.label]=value;fields.push({...f,options,value});
@@ -24,8 +26,9 @@ function resolve(id,previous={}) {
       for(const [label,options] of Object.entries(rule.options||{})){const f=fields.find(x=>x.label===label);if(f){f.options=options;f.value=options.includes(previous[label])?previous[label]:options[0];state[label]=f.value;}}
       for(const label of rule.hide||[]){const index=fields.findIndex(f=>f.label===label);if(index>=0)fields.splice(index,1);delete state[label];}
     }
-    out={fields,state,quantities:config.quantities||[]};
+    out={fields,state,quantities:config.quantitiesBy?(config.quantitiesBy.values[state[config.quantitiesBy.field]]||config.quantitiesBy.fallback||[]):config.quantities||[]};
   }
+  for(const rule of p.config?.quantityRules||[])if(matches(rule.when,out.state))out.quantities=rule.quantities;
   const addSelect=(label,options)=>{const value=options.includes(previous[label])?previous[label]:options[0];out.state[label]=value;out.fields.push({label,options,value,required:true});return value;};
   const addInput=(label,type,required=false)=>{const value=String(previous[label]??'');out.state[label]=value;out.fields.push({label,type,value,required,maxLength:500});};
   if(id==='flyers') {
@@ -33,8 +36,10 @@ function resolve(id,previous={}) {
   }
   if(out.state.Mailing==='With mailing')addInput('Mailing details','text');
   if(p.customOnly){addInput('Project description','textarea',true);addInput('Width (in)','dimension');addInput('Height (in)','dimension');addInput('Preferred material / finish','text');}
-  if(!out.fields.some(f=>f.label==='Versions')){const value=String(previous.Versions??'1');out.state.Versions=value;out.fields.push({label:'Versions',type:'integer',value,required:true,min:1,max:10000});}
-  if(id==='booklets-catalogs'){const pages=out.fields.find(f=>f.label==='Page count including cover');if(pages){pages.min=out.state.Binding==='Perfect Binding'?48:8;pages.help='Including cover. '+(pages.min===48?'Perfect binding starts at 48 pages.':'Saddle-stitched booklets start at 8 pages.');}}
+  if(p.versionMode==='none'){out.fields=out.fields.filter(f=>f.label!=='Versions');delete out.state.Versions;}
+  if(p.versionMode!=='none'&&!out.fields.some(f=>f.label==='Versions')){const value=String(previous.Versions??'1');out.state.Versions=value;out.fields.push({label:'Versions',type:'integer',value,required:true,min:1,max:10000});}
+  if(id==='postcards'&&out.state.Mailing==='With mailing'){const f=out.fields.find(f=>f.label==='Coating');if(f){f.options=f.options.filter(value=>!/UV.*Both Sides/i.test(value));f.value=f.options.includes(out.state.Coating)?out.state.Coating:f.options[0];out.state.Coating=f.value;f.help='The mailing side stays free of UV coating for addressing.';}}
+
   return out;
 }
 function quantityUnit(p,choices={}){if(p.id==='stickers')return choices.Format==='Kiss-Cut Sticker Sheets'?'sheets':'stickers';return p.quantityUnit||(p.id==='notepads'?'pads':'pieces');}
@@ -65,12 +70,14 @@ function validateItem(raw) {
     const total=artworkVersions.reduce((n,v)=>n+v.quantity,0);if(total!==quantity||total>10000000)throw new Error('The total quantity must equal the quantities for all artwork versions.');
   }
   for(const prefix of ['', 'Sheet ', 'Sticker ']){const w=resolved.state[prefix+'Width (in)'],h=resolved.state[prefix+'Height (in)'];if((w&&!h)||(h&&!w))throw new Error('Enter both width and height.');}
-  if(['Square','Circle'].includes(resolved.state.Shape)&&resolved.state.Size==='Custom size'&&Number(resolved.state['Width (in)'])!==Number(resolved.state['Height (in)']))throw new Error('Use matching width and height for a square or circle.');
+  if(['Square','Circle'].includes(resolved.state.Shape)&&resolved.state.Size==='Custom size'&&'Width (in)' in resolved.state&&Number(resolved.state['Width (in)'])!==Number(resolved.state['Height (in)']))throw new Error('Use matching width and height for a square or circle.');
+  if(resolved.state.Shape==='Circle'&&resolved.state.Size==='Custom size'&&resolved.state.Units==='Feet'&&Number(resolved.state['Width (ft)'])!==Number(resolved.state['Height (ft)']))throw new Error('Use matching width and height for a circle.');
   if(p.id==='booklets-catalogs'){
     const c=resolved.state,pages=Number(c['Page count including cover']);
     if(c.Binding==='Perfect Binding'&&pages<48)throw new Error('Perfect-bound booklets require at least 48 pages including cover.');
-    if((artworkVersions?artworkVersions.some(v=>[25,50].includes(v.quantity)):[25,50].includes(quantity)) && (c['Interior paper']!=='100 lb. Gloss Book'||!['Self Cover','100 lb. Gloss Cover'].includes(c.Cover)||c.Binding!=='Saddle Stitch'||pages>40))throw new Error('For 25 or 50 booklets, choose 100 lb. Gloss Book, Self Cover or 100 lb. Gloss Cover, Saddle Stitch, and 8–40 pages. Otherwise request a custom project.');
+    if([25,50].includes(quantity) && (c['Interior paper']!=='100 lb. Gloss Book'||!['Self Cover','100 lb. Gloss Cover'].includes(c.Cover)||c.Binding!=='Saddle Stitch'||pages>40||c.Orientation!=='Vertical'||c.Stitching!=='Left Edge (Album Style)'))throw new Error('For 25 or 50 booklets, choose vertical orientation, 100 lb. Gloss Book, Self Cover or 100 lb. Gloss Cover, Saddle Stitch on the left edge, and 8–40 pages.');
   }
+  if(p.fixedQuantity&&(raw.quantityCustom||!resolved.quantities.includes(String(quantity))))throw new Error('Choose one of the listed quantities.');
   const quantityCustom=Boolean(raw.quantityCustom)||!resolved.quantities.length||(breakdown&&versions>1);
   if(!quantityCustom && !resolved.quantities.includes(String(quantity)))throw new Error('Select an available quantity or request a custom quantity.');
   const buying=raw.buying===true;

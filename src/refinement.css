@@ -116,3 +116,12 @@ button.hero-slides{display:block;width:100%;padding:0;border:0;color:inherit;tex
 .q-brand.logo-playing .logo-motion{display:block}
 .q-brand .logo-motion img{position:absolute;left:-4.6%;top:-36.7%;width:111%;height:177%;max-width:none;object-fit:fill}
 @media(prefers-reduced-motion:reduce){.q-brand.logo-playing>img{visibility:visible}.q-brand.logo-playing .logo-motion{display:none}}
+
+/* Product and checkout refinements — October 12, 2026. */
+.template-note{font-size:12px;line-height:1.65;color:var(--muted);margin:0 0 24px}.template-note a{text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.field-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.field{min-width:0}.field input,.field select,.field textarea{min-width:0;max-width:100%;width:100%}.field input[type=date]{box-sizing:border-box;min-height:46px;appearance:none;-webkit-appearance:none}.field input[type=date]::-webkit-date-and-time-value{text-align:left;min-height:1.2em}
+@media(max-width:600px){.checkout-extras{grid-template-columns:minmax(0,1fr);gap:4px}}
+.config-panel .quantity-row.fixed-quantity{grid-template-columns:minmax(0,1fr)}
+
+.spec-options:has(.option-diagram){display:grid;grid-template-columns:repeat(auto-fit,minmax(105px,1fr))}
+.option-diagram{display:block;width:80px;margin:0 auto 8px;color:#66809e}.finishing-diagram{display:block;width:100%;height:auto}.spec-options button:has(.option-diagram){display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:12px 10px;min-height:105px;text-align:center}.spec-options button[aria-pressed=true] .option-diagram{color:var(--blue)}

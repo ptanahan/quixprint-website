@@ -42,6 +42,7 @@ function initProduct(){
     const set=document.createElement('fieldset');set.className='spec-option-field span-full';const legend=document.createElement('legend');legend.textContent=f.label;set.append(legend);
     const buttons=document.createElement('div');buttons.className='spec-options '+(f.ui==='shape'?'shape-options':f.ui==='material'?'material-options':'');
     f.options.forEach(value=>{const button=document.createElement('button');button.type='button';button.dataset.spec=f.label;button.dataset.value=value;button.setAttribute('aria-pressed',String(value===f.value));
+     if(f.ui==='diagram'&&f.icons?.[value]){const diagram=document.createElement('span');diagram.className='option-diagram';diagram.innerHTML=icon(f.icons[value]);button.append(diagram);}
      if(['shape','orientation','material'].includes(f.ui)){const icon=document.createElement('span');icon.setAttribute('aria-hidden','true');icon.className=f.ui==='shape'?'shape-icon shape-'+value.toLowerCase().replaceAll(' ','-'):f.ui==='orientation'?'orientation-icon orientation-'+value.toLowerCase():'material-swatch '+(/holographic/i.test(value)?'holographic':/silver/i.test(value)?'silver':/clear/i.test(value)?'clear':/kraft/i.test(value)?'kraft':'');button.append(icon);}
      const caption=document.createElement('span');caption.textContent=value;button.append(caption);button.addEventListener('click',()=>choose(f,value));buttons.append(button);
     });set.append(buttons);if(f.help){const help=document.createElement('p');help.className='field-help';help.textContent=f.help;set.append(help);}grid.append(set);return;
@@ -61,11 +62,11 @@ function initProduct(){
  function updateTotal(){if(split&&count()>1){quantity=total();const el=$('#quantity-total');if(el)el.value=Number(quantity).toLocaleString();const text=$('#version-total');if(text)text.textContent=Number(quantity).toLocaleString()+' '+Q.quantityUnit(p,choices);}}
  function setVersions(value){choices.Versions=String(value);const n=Number(value);if(!Number.isInteger(n)||n<1||n>10000)return;const base=versionRows[0]?.quantity||quantity||resolved.quantities[0]||'';while(versionRows.length<n)versionRows.push({name:'',quantity:base});if(n===1){quantity=versionRows[0]?.quantity||quantity;quantityCustom=!resolved.quantities.includes(String(quantity));}renderQuantity();}
  function renderQuantity(){
-  const root=$('#quantity-fields');root.replaceChildren();const breakdown=$('#version-breakdown');breakdown.replaceChildren();
+  const root=$('#quantity-fields');root.className='field-grid quantity-row'+(p.versionMode==='none'?' fixed-quantity':'');root.replaceChildren();const breakdown=$('#version-breakdown');breakdown.replaceChildren();
   const n=count(),many=split&&n>1,qlabel=document.createElement('label');qlabel.className='field';qlabel.textContent=(many?'Total quantity':p.id==='notepads'?'Quantity (pads)':'Quantity')+' *';
   if(many){const input=document.createElement('input');input.id='quantity-total';input.type='text';input.readOnly=true;input.className='quantity-total';input.value=total().toLocaleString();qlabel.append(input);root.append(qlabel);quantity=total();}
   else{
-   if(resolved.quantities.length){const s=document.createElement('select');s.id='quantity-select';for(const q of resolved.quantities){const o=document.createElement('option');o.value=q;o.textContent=Number(q).toLocaleString();s.append(o);}const other=document.createElement('option');other.value='custom';other.textContent='Custom quantity';s.append(other);
+   if(resolved.quantities.length){const s=document.createElement('select');s.id='quantity-select';for(const q of resolved.quantities){const o=document.createElement('option');o.value=q;o.textContent=Number(q).toLocaleString();s.append(o);}if(!p.fixedQuantity){const other=document.createElement('option');other.value='custom';other.textContent='Custom quantity';s.append(other);}else quantityCustom=false;
     if(!quantity)quantity=resolved.quantities[0];if(!quantityCustom&&!resolved.quantities.includes(String(quantity)))quantity=resolved.quantities[0];s.value=quantityCustom?'custom':String(quantity);
     s.addEventListener('change',()=>{quantityCustom=s.value==='custom';quantity=quantityCustom?'':s.value;versionRows[0]={...(versionRows[0]||{}),quantity};renderQuantity();$('#custom-quantity')?.focus();});qlabel.append(s);
    }else quantityCustom=true;
@@ -74,10 +75,12 @@ function initProduct(){
     if(resolved.quantities.length){const label=document.createElement('label');label.className='field';label.textContent='Custom quantity *';label.append(input);root.append(label);}else qlabel.append(input);
    }versionRows[0]={...(versionRows[0]||{name:''}),quantity};
   }
+  if(p.versionMode!=='none'){
   const label=document.createElement('label');label.className='field';label.textContent='Artwork versions *';const stepper=document.createElement('div');stepper.className='versions-stepper';
   const minus=document.createElement('button');minus.type='button';minus.innerHTML=icon('minus');minus.setAttribute('aria-label','Remove an artwork version');minus.disabled=n<=1;minus.addEventListener('click',()=>setVersions(Math.max(1,n-1)));
   const input=document.createElement('input');input.id='artwork-versions';input.setAttribute('aria-label','Number of artwork versions');input.type='number';input.min=1;input.max=10000;input.step=1;input.value=choices.Versions||'1';input.required=true;input.addEventListener('input',()=>choices.Versions=input.value);input.addEventListener('change',()=>setVersions(input.value));
   const plus=document.createElement('button');plus.type='button';plus.innerHTML=icon('plus');plus.setAttribute('aria-label','Add an artwork version');plus.disabled=n>=10000;plus.addEventListener('click',()=>setVersions(n+1));stepper.append(minus,input,plus);label.append(stepper);root.append(label);
+  }
   if(many&&Number.isInteger(n)&&n<=10000){
    const box=document.createElement('div');box.className='version-breakdown';const heading=document.createElement('div');heading.className='version-breakdown-heading';heading.textContent='Your artwork breakdown';box.append(heading);
    for(let i=0;i<n;i++){
@@ -87,7 +90,7 @@ function initProduct(){
    }
    const summary=document.createElement('div');summary.className='version-total';const caption=document.createElement('span');caption.textContent='Total';const value=document.createElement('span');value.id='version-total';value.setAttribute('aria-live','polite');summary.append(caption,value);box.append(summary);breakdown.append(box);updateTotal();
   }
-  $('#quantity-help').textContent=p.id==='notepads'?'Quantity is per artwork version. A pad contains the selected number of sheets.':p.id==='custom-printing'?'Quantity is per artwork version.':Q.quantityUnit(p,choices)==='sheets'?'Quantity counts printed sheets.':p.id==='roll-labels'?'Quantity counts individual labels.':p.id==='stickers'&&choices.Format==='Sticker Sheets'?'Quantity counts individual stickers, supplied on sheets.':'';
+  $('#quantity-help').textContent=p.id==='notepads'?'A pad contains the selected number of sheets.':p.id==='custom-printing'?'Quantity is per artwork version.':Q.quantityUnit(p,choices)==='sheets'?'Quantity counts printed sheets.':p.id==='roll-labels'?'Quantity counts individual labels.':p.id==='stickers'&&choices.Format==='Sticker Sheets'?'Quantity counts individual stickers, supplied on sheets.':'';
  }
  function syncBuyingFields(){const active=$('#already-buying').checked;$('#buying-fields').hidden=!active;$$('input,textarea',$('#buying-fields')).forEach(el=>el.disabled=!active);}syncBuyingFields();$('#already-buying').addEventListener('change',syncBuyingFields);
  form.addEventListener('submit',e=>{e.preventDefault();error($('#product-error'),'');try{
@@ -136,7 +139,7 @@ function initReceipt(){
  <div class="actions receipt-actions"><a class="button" href="${r.preview?'/quote/cart/':'/products/'}">${r.preview?'Back to your quote':'Continue browsing'} ${icon('arrow-right')}</a><button type="button" class="text-button" id="print-receipt">Print / save summary</button></div>`;
  $('#print-receipt').addEventListener('click',()=>print());
 }
-function initHomeJournal(){const root=$('#home-journal');if(!root)return;const cards=$$('[data-journal-index]',root).sort((a,b)=>Number(a.dataset.journalIndex)-Number(b.dataset.journalIndex));if(!cards.length)return;const day=Math.floor(Date.now()/86400000),count=Math.min(3,cards.length),start=(day*3)%cards.length;cards.forEach(card=>card.hidden=true);for(let i=0;i<count;i++){const card=cards[(start+i)%cards.length];card.hidden=false;root.append(card);}}
+function initHomeJournal(){const root=$('#home-journal');if(!root)return;const cards=$$('[data-journal-index]',root).sort((a,b)=>Number(a.dataset.journalIndex)-Number(b.dataset.journalIndex));if(!cards.length)return;const day=Math.floor(Date.now()/86400000),count=Math.min(4,cards.length),start=(day*4)%cards.length;cards.forEach(card=>card.hidden=true);for(let i=0;i<count;i++){const card=cards[(start+i)%cards.length];card.hidden=false;root.append(card);}}
 function initLogo(){
  // The header selects its image before first paint. Only stop an existing
  // intro when the portable preview navigates away from the homepage.

@@ -37,14 +37,21 @@ function fixture(productId='business-cards') {
   const versions=value=>{const el=$('#artwork-versions');el.value=String(value);el.fire('input');el.fire('change');};
   const version=(i,quantity,name)=>{const q=all().find(e=>e.dataset.versionQuantity===String(i));q.value=String(quantity);q.fire('input');const n=all().find(e=>e.dataset.versionName===String(i));n.value=name;n.fire('input');};
   ctx.start();
-  return {nodes,field,choose,quantity,versions,version,submit:()=>nodes['product-form'].fire('submit'),items:()=>items,edit:()=>{edit=items[0].id;ctx.start();}};
+  return {nodes,field,choose,quantity,versions,version,find:$,submit:()=>nodes['product-form'].fire('submit'),items:()=>items,edit:()=>{edit=items[0].id;ctx.start();}};
 }
+
+test('laminated menu controller renders paper stock and preserves 16PT through add and edit',()=>{
+ const f=fixture('laminated-menus');assert.ok(f.field('Paper stock'));
+ assert.deepEqual(f.field('Paper stock').children.map(o=>o.value),['14PT Coated 2 Sides','16PT Coated 2 Sides']);
+ f.choose('Paper stock','16PT Coated 2 Sides');f.submit();assert.equal(f.items()[0].choices['Paper stock'],'16PT Coated 2 Sides');
+ f.edit();assert.equal(f.field('Paper stock').value,'16PT Coated 2 Sides');
+});
 
 test('business card finish changes clear inactive foil details and preserve quantity/versions',()=>{
   const f=fixture();f.quantity(500);f.versions(3);
-  f.choose('Paper','16 pt. Premium Matte Cover');f.choose('Specialty finish','Raised Foil');f.choose('Foil color','Rose Gold');
+  f.choose('Paper','16 pt. Premium Matte Cover');f.choose('Raised Print','Raised Foil Print Front');f.choose('Foil color','Rose Gold');
   f.submit();assert.equal(f.items()[0].choices['Foil color'],'Rose Gold');assert.equal(f.items()[0].choices.Versions,'3');
-  f.choose('Paper','14 pt. Uncoated Cover');assert.equal(f.field('Specialty finish').value,'None');assert.equal(f.field('Foil color'),undefined);
+  f.choose('Paper','14 pt. Uncoated Cover');assert.equal(f.field('Raised Print'),undefined);assert.equal(f.field('Foil color'),undefined);
   f.submit();assert.equal(f.items()[1].quantity,1500);assert.ok(!('Foil color' in f.items()[1].choices));
 });
 
@@ -74,3 +81,11 @@ test('roll-label shape controls and custom dimensions carry through an unequal-v
 });
 
 test('reducing versions preserves the first custom quantity',()=>{const f=fixture('roll-labels');f.versions(2);f.version(0,375,'Small run');f.version(1,625,'Large run');f.versions(1);f.submit();assert.equal(f.items()[0].quantity,375);assert.equal(f.items()[0].artworkVersions[0].name,'Small run');});
+
+
+test('fixed quantity controller has no custom or version input and submits one selected run',()=>{
+ for(const id of ['notepads','table-tents','greeting-cards','bulk-posters','booklets-catalogs','laminated-menus']){
+  const f=fixture(id),select=f.find('#quantity-select');assert.ok(select,id);assert.ok(select.children.every(o=>o.value!=='custom'),id);assert.equal(f.find('#artwork-versions'),undefined,id);assert.equal(f.find('#custom-quantity'),undefined,id);
+  select.value=select.children[0].value;select.fire('change');f.submit();assert.equal(f.items().length,1,id+': '+f.nodes['product-error'].textContent);assert.ok(!('Versions' in f.items()[0].choices));f.edit();assert.equal(f.find('#custom-quantity'),undefined,id);
+ }
+});

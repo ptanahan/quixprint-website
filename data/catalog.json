@@ -108,7 +108,7 @@
           "slug": "car-magnets"
         },
         {
-          "label": "Window Decals",
+          "label": "Clear Window Decals",
           "slug": "window-decals"
         },
         {
@@ -193,6 +193,15 @@
             ]
           },
           {
+            "label": "Orientation",
+            "required": true,
+            "options": [
+              "Horizontal",
+              "Vertical"
+            ],
+            "ui": "orientation"
+          },
+          {
             "label": "Paper",
             "required": true,
             "options": [
@@ -213,52 +222,168 @@
           {
             "label": "Printing",
             "required": true,
-            "options": [
-              "Full Color Both Sides",
-              "Full Color Front, Grayscale Back",
-              "Full Color Front, Blank Back"
-            ]
+            "optionsBy": {
+              "field": "Paper",
+              "values": {
+                "14 pt. Gloss Cover": [
+                  "Full Color Front, Blank Back",
+                  "Full Color Front, Grayscale Back",
+                  "Full Color Both Sides"
+                ],
+                "14 pt. Uncoated Cover": [
+                  "Full Color Front, Blank Back",
+                  "Full Color Front, Grayscale Back",
+                  "Full Color Both Sides"
+                ],
+                "13 pt. Premium Linen": [
+                  "Full Color Front, Blank Back",
+                  "Full Color Both Sides"
+                ],
+                "16 pt. Premium Matte Cover": [
+                  "Full Color Front, Blank Back",
+                  "Full Color Front, Grayscale Back",
+                  "Full Color Both Sides"
+                ],
+                "18 pt. Ultra Premium Pearl": [
+                  "Full Color Front, Blank Back",
+                  "Full Color Both Sides"
+                ],
+                "18 pt. Premium Kraft": [
+                  "Full Color Front, Blank Back",
+                  "Full Color Both Sides"
+                ],
+                "18 pt. Ultra Premium Smooth White": [
+                  "Full Color Front, Blank Back",
+                  "Full Color Both Sides"
+                ],
+                "24 pt. Trifecta Green with Velvet Finish": [
+                  "Full Color Front, Blank Back",
+                  "Full Color Both Sides"
+                ],
+                "38 pt. Trifecta Black with Velvet Finish": [
+                  "Full Color Front, Blank Back",
+                  "Full Color Both Sides"
+                ],
+                "38 pt. Trifecta Red with Velvet Finish": [
+                  "Full Color Front, Blank Back",
+                  "Full Color Both Sides"
+                ],
+                "38 pt. Trifecta Blue with Velvet Finish": [
+                  "Full Color Front, Blank Back",
+                  "Full Color Both Sides"
+                ],
+                "100 lb. Matte Cover": [
+                  "Full Color Front, Blank Back",
+                  "Full Color Both Sides"
+                ]
+              }
+            }
           },
           {
-            "label": "Gloss coating",
+            "label": "Rounded Corner",
             "required": true,
-            "when": {
-              "Paper": "14 pt. Gloss Cover"
-            },
             "optionsBy": {
-              "field": "Printing",
+              "field": "Paper",
               "values": {
-                "Full Color Both Sides": [
-                  "High gloss UV both sides",
-                  "High gloss UV front only"
+                "14 pt. Gloss Cover": [
+                  "None",
+                  "Round Corners"
+                ],
+                "14 pt. Uncoated Cover": [
+                  "None",
+                  "Round Corners"
+                ],
+                "13 pt. Premium Linen": [
+                  "None",
+                  "Round Corners"
+                ],
+                "16 pt. Premium Matte Cover": [
+                  "None",
+                  "Round Corners"
+                ],
+                "18 pt. Ultra Premium Pearl": [
+                  "None",
+                  "Round Corners"
+                ],
+                "18 pt. Premium Kraft": [
+                  "None",
+                  "Round Corners"
+                ],
+                "18 pt. Ultra Premium Smooth White": [
+                  "None",
+                  "Round Corners"
+                ],
+                "24 pt. Trifecta Green with Velvet Finish": [
+                  "None",
+                  "Round Corners"
+                ],
+                "100 lb. Matte Cover": [
+                  "None",
+                  "Round Corners"
                 ]
               },
-              "fallback": [
-                "High gloss UV front only"
-              ]
-            },
-            "help": "UV-coated areas cannot be written on."
+              "fallback": []
+            }
           },
           {
-            "label": "Specialty finish",
+            "label": "Coating",
             "required": true,
-            "options": [
-              "None",
-              "Raised UV",
-              "Raised Foil"
-            ],
+            "optionsBy": {
+              "field": "Paper",
+              "values": {
+                "14 pt. Gloss Cover": [
+                  "High Gloss UV Coating Front",
+                  "High Gloss UV Coating Both Sides"
+                ],
+                "16 pt. Premium Matte Cover": [
+                  "Matte Aqueous Coating",
+                  "High Gloss UV Coating Front",
+                  "High Gloss UV Coating Both Sides"
+                ],
+                "100 lb. Matte Cover": [
+                  "Matte Aqueous Coating"
+                ]
+              },
+              "fallback": []
+            }
+          },
+          {
+            "label": "Finish",
+            "required": true,
+            "optionsBy": {
+              "field": "Paper",
+              "values": {
+                "24 pt. Trifecta Green with Velvet Finish": [
+                  "Velvet"
+                ],
+                "38 pt. Trifecta Black with Velvet Finish": [
+                  "Velvet"
+                ],
+                "38 pt. Trifecta Red with Velvet Finish": [
+                  "Velvet"
+                ],
+                "38 pt. Trifecta Blue with Velvet Finish": [
+                  "Velvet"
+                ]
+              },
+              "fallback": []
+            }
+          },
+          {
+            "label": "Raised Print",
+            "required": true,
             "optionsBy": {
               "field": "Paper",
               "values": {
                 "16 pt. Premium Matte Cover": [
                   "None",
-                  "Raised UV",
-                  "Raised Foil"
+                  "Raised UV Print Front",
+                  "Raised UV Print Both Sides",
+                  "Raised Foil Print Front",
+                  "Raised Foil Print Both Sides"
                 ]
               },
-              "fallback": [
-                "None"
-              ]
+              "fallback": []
             }
           },
           {
@@ -266,18 +391,196 @@
             "required": true,
             "options": [
               "Gold",
-              "Silver",
-              "Rose Gold"
+              "Rose Gold",
+              "Silver"
             ],
             "when": {
-              "Specialty finish": "Raised Foil"
+              "Raised Print": [
+                "Raised Foil Print Front",
+                "Raised Foil Print Both Sides"
+              ]
             }
           }
         ],
-        "quantityMode": "requested"
+        "quantitiesBy": {
+          "field": "Paper",
+          "values": {
+            "14 pt. Gloss Cover": [
+              "50",
+              "100",
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000",
+              "15000",
+              "20000",
+              "25000",
+              "30000",
+              "35000",
+              "40000",
+              "45000",
+              "50000",
+              "55000",
+              "60000",
+              "65000",
+              "70000",
+              "75000",
+              "80000",
+              "85000",
+              "90000",
+              "95000",
+              "100000"
+            ],
+            "14 pt. Uncoated Cover": [
+              "50",
+              "100",
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000",
+              "15000",
+              "20000",
+              "25000",
+              "30000",
+              "35000",
+              "40000",
+              "45000",
+              "50000",
+              "55000",
+              "60000",
+              "65000",
+              "70000",
+              "75000",
+              "80000",
+              "85000",
+              "90000",
+              "95000",
+              "100000"
+            ],
+            "13 pt. Premium Linen": [
+              "25",
+              "50",
+              "100",
+              "250",
+              "500",
+              "1000"
+            ],
+            "16 pt. Premium Matte Cover": [
+              "50",
+              "100",
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000",
+              "15000",
+              "20000",
+              "25000",
+              "30000",
+              "35000",
+              "40000",
+              "45000",
+              "50000",
+              "55000",
+              "60000",
+              "65000",
+              "70000",
+              "75000",
+              "80000",
+              "85000",
+              "90000",
+              "95000",
+              "100000"
+            ],
+            "18 pt. Ultra Premium Pearl": [
+              "25",
+              "50",
+              "100",
+              "250",
+              "500",
+              "1000"
+            ],
+            "18 pt. Premium Kraft": [
+              "25",
+              "50",
+              "100",
+              "250",
+              "500",
+              "1000"
+            ],
+            "18 pt. Ultra Premium Smooth White": [
+              "25",
+              "50",
+              "100",
+              "250",
+              "500",
+              "1000"
+            ],
+            "24 pt. Trifecta Green with Velvet Finish": [
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000"
+            ],
+            "38 pt. Trifecta Black with Velvet Finish": [
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000"
+            ],
+            "38 pt. Trifecta Red with Velvet Finish": [
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000"
+            ],
+            "38 pt. Trifecta Blue with Velvet Finish": [
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000"
+            ],
+            "100 lb. Matte Cover": [
+              "100",
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000",
+              "15000",
+              "20000",
+              "25000",
+              "30000",
+              "35000",
+              "40000",
+              "45000",
+              "50000",
+              "55000",
+              "60000",
+              "65000",
+              "70000",
+              "75000",
+              "80000",
+              "85000",
+              "90000",
+              "95000",
+              "100000"
+            ]
+          }
+        }
       },
       "reviewRequired": true,
-      "sourceStatus": "static_product_details_verified_dynamic_matrix_unverified",
+      "sourceStatus": "Live stock and finish controls reviewed October 12, 2026",
       "sources": [
         "https://www.gotprint.com/products/business-cards/order"
       ],
@@ -286,7 +589,11 @@
         "Rounded-corner stock compatibility unavailable.",
         "Size/paper/finish combinations not exhaustively verified."
       ],
-      "facts": [],
+      "facts": [
+        "Standard, slim, and European sizes",
+        "Paper-dependent coatings, rounded corners, and finishes",
+        "Raised UV or foil on 16 pt. Premium Matte Cover"
+      ],
       "imageSmall": "/assets/products/product-business-cards-600.webp",
       "versionMode": "breakdown"
     },
@@ -313,7 +620,7 @@
       "id": "envelopes",
       "name": "Envelopes",
       "category": "Business essentials",
-      "headline": "Make an impression before it’s opened.",
+      "headline": "Make an impression before it\u2019s opened.",
       "description": "Carry your identity from the outside in with printed envelopes for business correspondence and campaigns.",
       "image": "/assets/products/product-envelopes-1200.webp",
       "imageAlt": "Alder envelopes photographed on a soft neutral studio background",
@@ -395,7 +702,31 @@
             ]
           }
         ],
-        "quantityMode": "requested"
+        "quantities": [
+          "10",
+          "20",
+          "50",
+          "100",
+          "200",
+          "300",
+          "400",
+          "500",
+          "600",
+          "700",
+          "800",
+          "900",
+          "1000",
+          "1100",
+          "1200",
+          "1300",
+          "1400",
+          "1500",
+          "1600",
+          "1700",
+          "1800",
+          "1900",
+          "2000"
+        ]
       },
       "reviewRequired": true,
       "sourceStatus": "static_product_details_verified_dynamic_matrix_unverified",
@@ -412,7 +743,8 @@
       ],
       "quantityUnit": "pads",
       "imageSmall": "/assets/products/product-notepads-600.webp",
-      "versionMode": "per-version"
+      "versionMode": "none",
+      "fixedQuantity": true
     },
     {
       "id": "remittance-envelopes",
@@ -438,7 +770,7 @@
       "name": "Brochures",
       "category": "Marketing materials",
       "headline": "Give your story room to unfold.",
-      "description": "Turn the details of your business into a clear, tangible introduction—ready for sales meetings, displays, and direct conversations.",
+      "description": "Turn the details of your business into a clear, tangible introduction\u2014ready for sales meetings, displays, and direct conversations.",
       "image": "/assets/products/product-brochures-1200.webp",
       "imageAlt": "Northline brochures photographed on a soft neutral studio background",
       "featured": true,
@@ -512,6 +844,15 @@
             ]
           },
           {
+            "label": "Orientation",
+            "required": true,
+            "options": [
+              "Vertical",
+              "Horizontal"
+            ],
+            "ui": "orientation"
+          },
+          {
             "label": "Interior paper",
             "required": true,
             "options": [
@@ -522,53 +863,588 @@
             ]
           },
           {
-            "label": "Cover",
+            "label": "Page count including cover",
             "required": true,
-            "options": [
-              "Self Cover",
-              "100 lb. Gloss Cover",
-              "14 pt. Gloss Cover (UV Coating All Sides)",
-              "14 pt. Gloss Cover (UV Coating Front & Back Cover)",
-              "14 pt. Uncoated Cover",
-              "100 lb. Matte Cover"
-            ]
+            "help": "Count every page, including the cover. Perfect binding starts at 48 pages.",
+            "optionsBy": {
+              "field": "Interior paper",
+              "values": {
+                "100 lb. Gloss Book": [
+                  "8",
+                  "12",
+                  "16",
+                  "20",
+                  "24",
+                  "28",
+                  "32",
+                  "36",
+                  "40",
+                  "44",
+                  "48",
+                  "52",
+                  "56",
+                  "60",
+                  "64",
+                  "68",
+                  "72",
+                  "76",
+                  "80",
+                  "84"
+                ]
+              },
+              "fallback": [
+                "8",
+                "12",
+                "16",
+                "20",
+                "24",
+                "28",
+                "32",
+                "36",
+                "40",
+                "44",
+                "48",
+                "52",
+                "56",
+                "60",
+                "64",
+                "68",
+                "72",
+                "76",
+                "80",
+                "84",
+                "88",
+                "92",
+                "96"
+              ]
+            }
           },
           {
             "label": "Binding",
             "required": true,
+            "optionsBy": {
+              "field": "Page count including cover",
+              "values": {
+                "48": [
+                  "Saddle Stitch",
+                  "Perfect Binding"
+                ],
+                "52": [
+                  "Saddle Stitch",
+                  "Perfect Binding"
+                ],
+                "56": [
+                  "Saddle Stitch",
+                  "Perfect Binding"
+                ],
+                "60": [
+                  "Saddle Stitch",
+                  "Perfect Binding"
+                ],
+                "64": [
+                  "Saddle Stitch",
+                  "Perfect Binding"
+                ],
+                "68": [
+                  "Saddle Stitch",
+                  "Perfect Binding"
+                ],
+                "72": [
+                  "Saddle Stitch",
+                  "Perfect Binding"
+                ],
+                "76": [
+                  "Saddle Stitch",
+                  "Perfect Binding"
+                ],
+                "80": [
+                  "Saddle Stitch",
+                  "Perfect Binding"
+                ],
+                "84": [
+                  "Saddle Stitch",
+                  "Perfect Binding"
+                ],
+                "88": [
+                  "Saddle Stitch",
+                  "Perfect Binding"
+                ],
+                "92": [
+                  "Saddle Stitch",
+                  "Perfect Binding"
+                ],
+                "96": [
+                  "Saddle Stitch",
+                  "Perfect Binding"
+                ]
+              },
+              "fallback": [
+                "Saddle Stitch"
+              ]
+            }
+          },
+          {
+            "label": "Cover",
+            "required": true,
+            "optionsBy": {
+              "field": "Binding",
+              "values": {
+                "Saddle Stitch": [
+                  "Self Cover",
+                  "100 lb. Gloss Cover",
+                  "14 pt. Gloss Cover (UV Coating All Sides)",
+                  "14 pt. Gloss Cover (UV Coating Front & Back Cover)",
+                  "14 pt. Uncoated Cover",
+                  "100 lb. Matte Cover"
+                ],
+                "Perfect Binding": [
+                  "100 lb. Gloss Cover",
+                  "14 pt. Gloss Cover (UV Coating All Sides)",
+                  "14 pt. Gloss Cover (UV Coating Front & Back Cover)",
+                  "14 pt. Uncoated Cover",
+                  "100 lb. Matte Cover"
+                ]
+              }
+            }
+          },
+          {
+            "label": "Stitching",
+            "required": true,
             "options": [
-              "Saddle Stitch",
-              "Perfect Binding"
+              "Left Edge (Album Style)",
+              "Top Edge (Calendar Style)"
+            ],
+            "when": {
+              "Binding": "Saddle Stitch"
+            }
+          }
+        ],
+        "quantitiesBy": {
+          "field": "Interior paper",
+          "values": {
+            "100 lb. Gloss Book": [
+              "100",
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000",
+              "15000",
+              "20000",
+              "25000",
+              "30000",
+              "35000",
+              "40000",
+              "45000",
+              "50000",
+              "55000",
+              "60000",
+              "65000",
+              "70000",
+              "75000",
+              "80000",
+              "85000",
+              "90000",
+              "95000",
+              "100000"
+            ],
+            "70 lb. Opaque Smooth White": [
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000",
+              "15000",
+              "20000",
+              "25000",
+              "30000",
+              "35000",
+              "40000",
+              "45000",
+              "50000",
+              "55000",
+              "60000",
+              "65000",
+              "70000",
+              "75000",
+              "80000",
+              "85000",
+              "90000",
+              "95000",
+              "100000"
+            ],
+            "80 lb. Gloss Book": [
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000",
+              "15000",
+              "20000",
+              "25000",
+              "30000",
+              "35000",
+              "40000",
+              "45000",
+              "50000",
+              "55000",
+              "60000",
+              "65000",
+              "70000",
+              "75000",
+              "80000",
+              "85000",
+              "90000",
+              "95000",
+              "100000"
+            ],
+            "80 lb. Matte Text": [
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000",
+              "15000",
+              "20000",
+              "25000",
+              "30000",
+              "35000",
+              "40000",
+              "45000",
+              "50000",
+              "55000",
+              "60000",
+              "65000",
+              "70000",
+              "75000",
+              "80000",
+              "85000",
+              "90000",
+              "95000",
+              "100000"
+            ]
+          }
+        },
+        "quantityRules": [
+          {
+            "when": {
+              "Interior paper": "100 lb. Gloss Book",
+              "Page count including cover": [
+                "40",
+                "44",
+                "48",
+                "52",
+                "56",
+                "60",
+                "64",
+                "68",
+                "72",
+                "76",
+                "80",
+                "84",
+                "88",
+                "92",
+                "96"
+              ]
+            },
+            "quantities": [
+              "100",
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000",
+              "15000",
+              "20000",
+              "25000"
             ]
           },
           {
-            "label": "Page count including cover",
-            "required": true,
-            "type": "integer",
-            "min": 8,
-            "max": 96,
-            "help": "Include the cover in your page count. We’ll confirm the final pagination."
+            "when": {
+              "Interior paper": "70 lb. Opaque Smooth White",
+              "Page count including cover": [
+                "40",
+                "44",
+                "48",
+                "52",
+                "56",
+                "60",
+                "64",
+                "68",
+                "72",
+                "76",
+                "80",
+                "84",
+                "88",
+                "92",
+                "96"
+              ]
+            },
+            "quantities": [
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000",
+              "15000",
+              "20000",
+              "25000"
+            ]
+          },
+          {
+            "when": {
+              "Interior paper": "80 lb. Gloss Book",
+              "Page count including cover": [
+                "40",
+                "44",
+                "48",
+                "52",
+                "56",
+                "60",
+                "64",
+                "68",
+                "72",
+                "76",
+                "80",
+                "84",
+                "88",
+                "92",
+                "96"
+              ]
+            },
+            "quantities": [
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000",
+              "15000",
+              "20000",
+              "25000"
+            ]
+          },
+          {
+            "when": {
+              "Interior paper": "80 lb. Matte Text",
+              "Page count including cover": [
+                "40",
+                "44",
+                "48",
+                "52",
+                "56",
+                "60",
+                "64",
+                "68",
+                "72",
+                "76",
+                "80",
+                "84",
+                "88",
+                "92",
+                "96"
+              ]
+            },
+            "quantities": [
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000",
+              "15000",
+              "20000",
+              "25000"
+            ]
+          },
+          {
+            "when": {
+              "Interior paper": "100 lb. Gloss Book",
+              "Cover": [
+                "Self Cover",
+                "100 lb. Gloss Cover"
+              ],
+              "Binding": "Saddle Stitch",
+              "Orientation": "Vertical",
+              "Stitching": "Left Edge (Album Style)",
+              "Page count including cover": [
+                "8",
+                "12",
+                "16",
+                "20",
+                "24",
+                "28",
+                "32",
+                "36"
+              ]
+            },
+            "quantities": [
+              "25",
+              "50",
+              "100",
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000",
+              "15000",
+              "20000",
+              "25000",
+              "30000",
+              "35000",
+              "40000",
+              "45000",
+              "50000",
+              "55000",
+              "60000",
+              "65000",
+              "70000",
+              "75000",
+              "80000",
+              "85000",
+              "90000",
+              "95000",
+              "100000"
+            ]
+          },
+          {
+            "when": {
+              "Interior paper": "100 lb. Gloss Book",
+              "Cover": [
+                "Self Cover",
+                "100 lb. Gloss Cover"
+              ],
+              "Binding": "Saddle Stitch",
+              "Orientation": "Vertical",
+              "Stitching": "Left Edge (Album Style)",
+              "Page count including cover": [
+                "40"
+              ]
+            },
+            "quantities": [
+              "25",
+              "50",
+              "100",
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000",
+              "15000",
+              "20000",
+              "25000"
+            ]
+          },
+          {
+            "when": {
+              "Interior paper": "100 lb. Gloss Book",
+              "Cover": [
+                "14 pt. Gloss Cover (UV Coating All Sides)",
+                "14 pt. Gloss Cover (UV Coating Front & Back Cover)",
+                "14 pt. Uncoated Cover",
+                "100 lb. Matte Cover"
+              ],
+              "Page count including cover": [
+                "8",
+                "12",
+                "16",
+                "20",
+                "24",
+                "28",
+                "32",
+                "36"
+              ]
+            },
+            "quantities": [
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000",
+              "15000",
+              "20000",
+              "25000",
+              "30000",
+              "35000",
+              "40000",
+              "45000",
+              "50000",
+              "55000",
+              "60000",
+              "65000",
+              "70000",
+              "75000",
+              "80000",
+              "85000",
+              "90000",
+              "95000",
+              "100000"
+            ]
+          },
+          {
+            "when": {
+              "Interior paper": "100 lb. Gloss Book",
+              "Cover": [
+                "14 pt. Gloss Cover (UV Coating All Sides)",
+                "14 pt. Gloss Cover (UV Coating Front & Back Cover)",
+                "14 pt. Uncoated Cover",
+                "100 lb. Matte Cover"
+              ],
+              "Page count including cover": [
+                "40",
+                "44",
+                "48",
+                "52",
+                "56",
+                "60",
+                "64",
+                "68",
+                "72",
+                "76",
+                "80",
+                "84",
+                "88",
+                "92",
+                "96"
+              ]
+            },
+            "quantities": [
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000",
+              "15000",
+              "20000",
+              "25000"
+            ]
           }
-        ],
-        "quantityMode": "requested"
+        ]
       },
       "reviewRequired": true,
-      "sourceStatus": "static_product_details_verified_dynamic_matrix_unverified",
+      "sourceStatus": "live_configurator_reviewed",
       "sources": [
         "https://www.gotprint.com/products/catalogs/order"
       ],
       "manualReview": [
-        "Exact page-count increments, stock/cover combinations, orientation matrix and offset quantity list unavailable.",
-        "Static page conflicts: overview says digital is 25/50 and offset starts at 100; coating note says quantities of 100 or fewer on gloss stocks are digital without coating. Do not expose a guaranteed printing-process choice at 100.",
-        "Binding page counts explicitly include cover; spine-width reference table explicitly excludes covers. Do not mix these."
+        "Supplier pages may change. Printing process and pricing are confirmed at quote time."
       ],
       "facts": [
         "Saddle stitched or perfect bound publications; page-count limits include cover.",
         "Runs of 25 or 50 booklets use portrait orientation with stitching along the left edge."
       ],
       "imageSmall": "/assets/products/studio-acre-booklets-600.webp",
-      "versionMode": "breakdown",
-      "quantityUnit": "booklets"
+      "versionMode": "none",
+      "quantityUnit": "booklets",
+      "fixedQuantity": true
     },
     {
       "id": "greeting-cards",
@@ -679,15 +1555,196 @@
             }
           },
           {
-            "label": "Matching envelopes",
+            "label": "Envelopes",
+            "required": true,
             "options": [
-              "Not needed",
-              "Please include in my quote"
-            ],
-            "required": true
+              "Without envelopes",
+              "With envelopes"
+            ]
           }
         ],
-        "quantityMode": "requested"
+        "quantitiesBy": {
+          "field": "Paper",
+          "values": {
+            "100 lb. Gloss Cover": [
+              "50",
+              "100",
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000",
+              "15000",
+              "20000",
+              "25000",
+              "30000",
+              "35000",
+              "40000",
+              "45000",
+              "50000",
+              "55000",
+              "60000",
+              "65000",
+              "70000",
+              "75000",
+              "80000",
+              "85000",
+              "90000",
+              "95000",
+              "100000"
+            ],
+            "14 pt. Gloss Cover": [
+              "25",
+              "50",
+              "100",
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000",
+              "15000",
+              "20000",
+              "25000",
+              "30000",
+              "35000",
+              "40000",
+              "45000",
+              "50000",
+              "55000",
+              "60000",
+              "65000",
+              "70000",
+              "75000",
+              "80000",
+              "85000",
+              "90000",
+              "95000",
+              "100000"
+            ],
+            "14 pt. Uncoated Cover": [
+              "50",
+              "100",
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000",
+              "15000",
+              "20000",
+              "25000",
+              "30000",
+              "35000",
+              "40000",
+              "45000",
+              "50000",
+              "55000",
+              "60000",
+              "65000",
+              "70000",
+              "75000",
+              "80000",
+              "85000",
+              "90000",
+              "95000",
+              "100000"
+            ],
+            "13 pt. Premium Linen": [
+              "25",
+              "50",
+              "100",
+              "250",
+              "500",
+              "1000",
+              "2500"
+            ],
+            "16 pt. Premium Matte Cover": [
+              "50",
+              "100",
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000",
+              "15000",
+              "20000",
+              "25000",
+              "30000",
+              "35000",
+              "40000",
+              "45000",
+              "50000",
+              "55000",
+              "60000",
+              "65000",
+              "70000",
+              "75000",
+              "80000",
+              "85000",
+              "90000",
+              "95000",
+              "100000"
+            ],
+            "18 pt. Ultra Premium Pearl": [
+              "25",
+              "50",
+              "100",
+              "250",
+              "500",
+              "1000",
+              "2500"
+            ],
+            "18 pt. Premium Kraft": [
+              "25",
+              "50",
+              "100",
+              "250",
+              "500",
+              "1000",
+              "2500"
+            ],
+            "18 pt. Ultra Premium Smooth White": [
+              "25",
+              "50",
+              "100",
+              "250",
+              "500",
+              "1000",
+              "2500"
+            ],
+            "100 lb. Matte Cover": [
+              "50",
+              "100",
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000",
+              "15000",
+              "20000",
+              "25000",
+              "30000",
+              "35000",
+              "40000",
+              "45000",
+              "50000",
+              "55000",
+              "60000",
+              "65000",
+              "70000",
+              "75000",
+              "80000",
+              "85000",
+              "90000",
+              "95000",
+              "100000"
+            ]
+          }
+        }
       },
       "reviewRequired": true,
       "sourceStatus": "static_product_details_verified_dynamic_matrix_unverified",
@@ -702,7 +1759,8 @@
         "Cards ship scored, not folded."
       ],
       "imageSmall": "/assets/products/product-greeting-cards-600.webp",
-      "versionMode": "breakdown"
+      "versionMode": "none",
+      "fixedQuantity": true
     },
     {
       "id": "calendars",
@@ -997,6 +2055,56 @@
             }
           },
           {
+            "label": "Round corners",
+            "required": true,
+            "options": [
+              "No",
+              "Rounded corners"
+            ],
+            "ui": "segmented",
+            "when": {
+              "Shape": [
+                "Rectangle",
+                "Square"
+              ]
+            },
+            "help": "Sharp corners may require a custom die.",
+            "default": "Rounded corners"
+          },
+          {
+            "label": "Foil option",
+            "required": true,
+            "options": [
+              "No",
+              "Digital Foil"
+            ]
+          },
+          {
+            "label": "Foil color",
+            "required": true,
+            "options": [
+              "Gold",
+              "Silver",
+              "Rose Gold",
+              "Green",
+              "Blue",
+              "Red"
+            ],
+            "when": {
+              "Foil option": "Digital Foil"
+            }
+          },
+          {
+            "label": "Raised spot UV",
+            "required": true,
+            "options": [
+              "No",
+              "2D Spot UV",
+              "3D Raised Spot UV"
+            ],
+            "help": "Foil and spot UV placement are reviewed with your artwork."
+          },
+          {
             "label": "Liner",
             "required": true,
             "optionsBy": {
@@ -1082,7 +2190,10 @@
       "imageSmall": "/assets/products/studio-morrow-labels-600.webp",
       "customOnly": false,
       "sources": [
-        "https://axiomprint.com/product/roll-labels-335"
+        "https://axiomprint.com/product/roll-labels-335",
+        "https://quadrigalabel.com/",
+        "https://quadrigalabel.com/faq",
+        "https://mail.quadrigausa.com/faq"
       ],
       "quantityUnit": "labels",
       "manualReview": [
@@ -2071,7 +3182,7 @@
       "reviewRequired": true,
       "sourceStatus": "Live Axiom controls observed 2026-10-10; listed menus and key dependencies verified, exhaustive combinations remain a launch check.",
       "facts": [
-        "A 24 × 36 inch sidewalk display with replaceable graphics.",
+        "A 24 \u00d7 36 inch sidewalk display with replaceable graphics.",
         "Choose a white or black frame, or replacement prints for your existing stand."
       ],
       "imageSmall": "/assets/products/studio-daymark-signs-600.webp",
@@ -2274,23 +3385,178 @@
     },
     {
       "id": "window-decals",
-      "name": "Window Decals",
+      "name": "Clear Window Decals",
       "category": "Signs & displays",
-      "headline": "Make your windows work harder.",
-      "description": "Turn glass into a visible introduction to your brand, hours, offers, or next campaign.",
-      "image": "/assets/products/product-window-decals-1200.webp",
-      "imageAlt": "Acre window decals photographed on a soft neutral studio background",
+      "headline": "Clear graphics. A clean view.",
+      "description": "Custom graphics on clear vinyl for storefronts, glass doors, and interior windows. Choose a gloss or matte finish and direct, reverse, or two-sided printing.",
+      "image": "/assets/products/product-clear-window-decals-r02-1200.webp",
+      "imageAlt": "Transparent Acre window decal with black printed lettering on clear glass",
       "featured": false,
       "legacyName": null,
       "config": {
-        "fields": [],
-        "quantityMode": "requested"
+        "fields": [
+          {
+            "label": "Shape",
+            "required": true,
+            "options": [
+              "Rectangle",
+              "Circle",
+              "Custom Cut"
+            ],
+            "ui": "shape"
+          },
+          {
+            "label": "Units",
+            "required": true,
+            "options": [
+              "Inches",
+              "Feet"
+            ],
+            "ui": "segmented"
+          },
+          {
+            "label": "Size",
+            "required": true,
+            "optionsBy": {
+              "field": "Shape",
+              "values": {
+                "Rectangle": [
+                  "24 x 36 in",
+                  "24 x 48 in",
+                  "36 x 48 in",
+                  "48 x 60 in",
+                  "Custom size"
+                ],
+                "Circle": [
+                  "24 x 24 in",
+                  "36 x 36 in",
+                  "48 x 48 in",
+                  "Custom size"
+                ],
+                "Custom Cut": [
+                  "Custom size"
+                ]
+              }
+            },
+            "customSize": true
+          },
+          {
+            "label": "Width (in)",
+            "type": "dimension",
+            "required": true,
+            "min": 0.01,
+            "when": {
+              "Size": "Custom size",
+              "Units": "Inches"
+            }
+          },
+          {
+            "label": "Height (in)",
+            "type": "dimension",
+            "required": true,
+            "min": 0.01,
+            "when": {
+              "Size": "Custom size",
+              "Units": "Inches"
+            }
+          },
+          {
+            "label": "Width (ft)",
+            "type": "dimension",
+            "required": true,
+            "min": 0.01,
+            "when": {
+              "Size": "Custom size",
+              "Units": "Feet"
+            }
+          },
+          {
+            "label": "Height (ft)",
+            "type": "dimension",
+            "required": true,
+            "min": 0.01,
+            "when": {
+              "Size": "Custom size",
+              "Units": "Feet"
+            }
+          },
+          {
+            "label": "Orientation",
+            "required": true,
+            "options": [
+              "Portrait",
+              "Landscape"
+            ],
+            "ui": "orientation",
+            "when": {
+              "Shape": [
+                "Rectangle",
+                "Custom Cut"
+              ]
+            }
+          },
+          {
+            "label": "Material",
+            "required": true,
+            "options": [
+              "Clear Gloss Vinyl",
+              "Clear Matte Vinyl"
+            ]
+          },
+          {
+            "label": "Print sides",
+            "required": true,
+            "options": [
+              "Front Only (Direct)",
+              "Front Only (Reverse)",
+              "Front and Back"
+            ]
+          }
+        ],
+        "quantities": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "25",
+          "30",
+          "40",
+          "50",
+          "100",
+          "200"
+        ]
       },
       "reviewRequired": true,
-      "sourceStatus": "Existing source describes clings; adhesive decal specification requires manual review",
-      "customOnly": true,
-      "imageSmall": "/assets/products/product-window-decals-600.webp",
-      "versionMode": "breakdown"
+      "sourceStatus": "live_configurator_reviewed",
+      "imageSmall": "/assets/products/product-clear-window-decals-r02-600.webp",
+      "versionMode": "breakdown",
+      "facts": [
+        "Rectangle, circle, or custom-cut shapes",
+        "Clear gloss or clear matte vinyl",
+        "Direct, reverse, or front-and-back printing"
+      ],
+      "sources": [
+        "https://axiomprint.com/product/clear-window-decals-1068"
+      ],
+      "manualReview": [
+        "Custom cuts and artwork are reviewed before quoting."
+      ]
     },
     {
       "id": "window-clings",
@@ -2494,7 +3760,45 @@
             ]
           }
         ],
-        "quantityMode": "requested"
+        "quantities": [
+          "100",
+          "250",
+          "500",
+          "1000",
+          "2500",
+          "5000",
+          "10000"
+        ],
+        "quantitiesBy": {
+          "field": "Paper",
+          "values": {
+            "100 lb. Gloss Book": [
+              "100",
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000"
+            ],
+            "80 lb. Gloss Book": [
+              "100",
+              "250",
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000"
+            ],
+            "80 lb. Matte Text": [
+              "500",
+              "1000",
+              "2500",
+              "5000",
+              "10000"
+            ]
+          }
+        }
       },
       "reviewRequired": true,
       "sourceStatus": "static_product_details_verified_dynamic_matrix_unverified",
@@ -2514,7 +3818,8 @@
         }
       ],
       "imageSmall": "/assets/products/product-bulk-posters-600.webp",
-      "versionMode": "breakdown"
+      "versionMode": "none",
+      "fixedQuantity": true
     },
     {
       "id": "large-format-posters",
@@ -2544,15 +3849,237 @@
       "image": "/assets/products/product-outdoor-banners-1200.webp",
       "imageAlt": "Northline outdoor banners photographed on a soft neutral studio background",
       "featured": false,
-      "legacyName": "Outdoor banners",
       "config": {
-        "fields": [],
-        "quantityMode": "requested"
+        "fields": [
+          {
+            "label": "Units",
+            "required": true,
+            "options": [
+              "Inches",
+              "Feet"
+            ],
+            "ui": "segmented"
+          },
+          {
+            "label": "Size",
+            "required": true,
+            "optionsBy": {
+              "field": "Units",
+              "values": {
+                "Inches": [
+                  "48 x 24 in",
+                  "72 x 24 in",
+                  "96 x 24 in",
+                  "48 x 36 in",
+                  "72 x 36 in",
+                  "96 x 36 in",
+                  "72 x 48 in",
+                  "96 x 48 in",
+                  "120 x 48 in",
+                  "Custom size"
+                ],
+                "Feet": [
+                  "4 x 2 ft",
+                  "6 x 2 ft",
+                  "8 x 2 ft",
+                  "4 x 3 ft",
+                  "6 x 3 ft",
+                  "8 x 3 ft",
+                  "6 x 4 ft",
+                  "8 x 4 ft",
+                  "10 x 4 ft",
+                  "Custom size"
+                ]
+              }
+            },
+            "customSize": true,
+            "default": "96 x 36 in"
+          },
+          {
+            "label": "Width (in)",
+            "type": "dimension",
+            "required": true,
+            "min": 0.01,
+            "when": {
+              "Size": "Custom size",
+              "Units": "Inches"
+            }
+          },
+          {
+            "label": "Height (in)",
+            "type": "dimension",
+            "required": true,
+            "min": 0.01,
+            "when": {
+              "Size": "Custom size",
+              "Units": "Inches"
+            }
+          },
+          {
+            "label": "Width (ft)",
+            "type": "dimension",
+            "required": true,
+            "min": 0.01,
+            "when": {
+              "Size": "Custom size",
+              "Units": "Feet"
+            }
+          },
+          {
+            "label": "Height (ft)",
+            "type": "dimension",
+            "required": true,
+            "min": 0.01,
+            "when": {
+              "Size": "Custom size",
+              "Units": "Feet"
+            }
+          },
+          {
+            "label": "Orientation",
+            "required": true,
+            "options": [
+              "Landscape",
+              "Portrait"
+            ],
+            "ui": "orientation"
+          },
+          {
+            "label": "Material",
+            "required": true,
+            "options": [
+              "13 oz. Matte Vinyl",
+              "16 oz. Matte Vinyl"
+            ],
+            "ui": "material"
+          },
+          {
+            "label": "Print sides",
+            "required": true,
+            "options": [
+              "Front Only",
+              "Front and Back"
+            ],
+            "ui": "diagram",
+            "icons": {
+              "Front Only": "banner-front",
+              "Front and Back": "banner-both"
+            }
+          },
+          {
+            "label": "Pole pockets",
+            "required": true,
+            "options": [
+              "No",
+              "Top & Bottom",
+              "Left & Right",
+              "Top Only",
+              "Left Only",
+              "Bottom Only"
+            ],
+            "ui": "diagram",
+            "icons": {
+              "No": "hem-none",
+              "Top & Bottom": "pocket-top-bottom",
+              "Left & Right": "pocket-left-right",
+              "Top Only": "pocket-top",
+              "Left Only": "pocket-left",
+              "Bottom Only": "pocket-bottom"
+            }
+          },
+          {
+            "label": "Hemming",
+            "required": true,
+            "ui": "diagram",
+            "icons": {
+              "4 Sides": "hem-all",
+              "No": "hem-none"
+            },
+            "optionsBy": {
+              "field": "Pole pockets",
+              "values": {
+                "No": [
+                  "4 Sides",
+                  "No"
+                ]
+              },
+              "fallback": [
+                "No"
+              ]
+            }
+          },
+          {
+            "label": "Grommets",
+            "required": true,
+            "options": [
+              "4 Corners",
+              "Every 2 ft",
+              "Top 2 Corners",
+              "No",
+              "Custom"
+            ],
+            "ui": "diagram",
+            "icons": {
+              "4 Corners": "grommets-corners",
+              "Every 2 ft": "grommets-every",
+              "Top 2 Corners": "grommets-top",
+              "No": "hem-none",
+              "Custom": "grommets-custom"
+            }
+          },
+          {
+            "label": "Grommet placement",
+            "type": "text",
+            "required": true,
+            "when": {
+              "Grommets": "Custom"
+            },
+            "help": "Describe the spacing and edges for your grommets."
+          }
+        ],
+        "quantities": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20",
+          "21",
+          "22",
+          "23",
+          "24",
+          "25",
+          "50",
+          "100"
+        ]
       },
       "reviewRequired": false,
-      "sourceStatus": "Reused from supplied Churches backup",
+      "sourceStatus": "Live Axiom configurator reviewed October 2026",
       "imageSmall": "/assets/products/product-outdoor-banners-600.webp",
-      "versionMode": "breakdown"
+      "versionMode": "breakdown",
+      "sources": [
+        "https://axiomprint.com/product/vinyl-banner-163"
+      ],
+      "facts": [
+        "13 oz. or 16 oz. matte vinyl",
+        "Single- or double-sided printing",
+        "Hemming, pole pockets, and grommet placement options"
+      ],
+      "manualReview": []
     },
     {
       "id": "retractable-banners",
@@ -2662,6 +4189,14 @@
             "ui": "orientation"
           },
           {
+            "label": "Paper stock",
+            "required": true,
+            "options": [
+              "14PT Coated 2 Sides",
+              "16PT Coated 2 Sides"
+            ]
+          },
+          {
             "label": "Printed sides",
             "required": true,
             "options": [
@@ -2755,44 +4290,148 @@
         ]
       },
       "reviewRequired": true,
-      "sourceStatus": "Live Axiom controls observed 2026-10-10; listed menus and key dependencies verified, exhaustive combinations remain a launch check.",
+      "sourceStatus": "Axiom options reviewed; paper stocks confirmed by owner October 12, 2026.",
       "facts": [
         "Laminated menus for repeat handling.",
         "Choose a preferred finish and edge treatment for your quote."
       ],
       "imageSmall": "/assets/products/product-laminated-menus-600.webp",
-      "versionMode": "breakdown"
+      "versionMode": "none",
+      "fixedQuantity": true
     },
     {
       "id": "takeout-menus",
       "name": "Takeout Menus",
       "category": "Menus & counters",
       "headline": "Keep your next order within reach.",
-      "description": "Put your menu in customers’ hands and give them a reason to come back.",
+      "description": "Put your menu in customers\u2019 hands and give them a reason to come back.",
       "image": "/assets/products/product-takeout-menus-1200.webp",
       "imageAlt": "Sora takeout menus photographed on a soft neutral studio background",
+      "featured": false,
+      "legacyName": "Brochures",
+      "config": {
+        "fields": [],
+        "quantityMode": "requested"
+      },
+      "reviewRequired": true,
+      "sourceStatus": "Same data and resolver as Quixprint Brochures, as requested.",
+      "facts": [
+        "The same paper, size, folding, and quantity choices as our brochures",
+        "Full-color printing for clear, easy-to-read menus"
+      ],
+      "imageSmall": "/assets/products/product-takeout-menus-600.webp",
+      "versionMode": "breakdown",
+      "sources": [
+        "https://quixprint.com/products/brochures/"
+      ]
+    },
+    {
+      "id": "table-tents",
+      "name": "Table Tents",
+      "category": "Menus & counters",
+      "headline": "Make the most of a small space.",
+      "description": "Bring promotions and useful information to tables, reception desks, and counters.",
+      "image": "/assets/products/product-table-tents-1200.webp",
+      "imageAlt": "Sora table tents photographed on a soft neutral studio background",
       "featured": false,
       "legacyName": null,
       "config": {
         "fields": [
           {
+            "label": "Size (flat / folded)",
+            "required": true,
+            "options": [
+              "4 x 8 in / 4 x 4 in",
+              "4 x 12 in / 4 x 6 in",
+              "4 x 13 in / 4 x 6.5 in",
+              "4 x 16 in / 4 x 8 in",
+              "4.25 x 12 in / 4.25 x 6 in",
+              "5 x 11 in / 5 x 5.5 in"
+            ],
+            "help": "Flat print dimensions followed by the finished folded size."
+          },
+          {
             "label": "Paper",
             "required": true,
             "options": [
-              "100# Gloss Text",
-              "100# Gloss Cover",
-              "70# Uncoated Text"
+              "100 lb. Gloss Cover",
+              "14 pt. Gloss Cover",
+              "14 pt. Uncoated Cover",
+              "100 lb. Matte Cover"
             ]
           },
+          {
+            "label": "Printing",
+            "required": true,
+            "options": [
+              "Full Color Outside, Blank Inside"
+            ]
+          }
+        ],
+        "quantities": [
+          "50",
+          "100",
+          "250",
+          "500",
+          "1000",
+          "2500",
+          "5000",
+          "10000",
+          "15000",
+          "20000",
+          "25000",
+          "30000",
+          "35000",
+          "40000",
+          "45000",
+          "50000",
+          "55000",
+          "60000",
+          "65000",
+          "70000",
+          "75000",
+          "80000",
+          "85000",
+          "90000",
+          "95000",
+          "100000"
+        ]
+      },
+      "reviewRequired": true,
+      "sourceStatus": "static_product_details_verified_dynamic_matrix_unverified",
+      "sources": [
+        "https://www.gotprint.com/products/table-tents/order"
+      ],
+      "manualReview": [
+        "Paper-dependent quantities unavailable.",
+        "Display/flat sizes follow vendor published labels; artwork template still required to include base tabs correctly."
+      ],
+      "facts": [
+        "Ships flat and scored, ready for assembly.",
+        "Three score lines and two die-cut slits create an interlocking base without glue."
+      ],
+      "imageSmall": "/assets/products/product-table-tents-600.webp",
+      "versionMode": "none",
+      "fixedQuantity": true
+    },
+    {
+      "id": "counter-mats",
+      "name": "Counter Mats",
+      "category": "Menus & counters",
+      "headline": "Meet customers at the counter.",
+      "description": "Full-color counter mats for reception desks, service counters, and retail checkout areas. Choose your size, material thickness, and finish.",
+      "image": "/assets/products/product-counter-mats-1200.webp",
+      "imageAlt": "Northline counter mats photographed on a soft neutral studio background",
+      "featured": true,
+      "legacyName": null,
+      "config": {
+        "fields": [
           {
             "label": "Size",
             "required": true,
             "options": [
-              "8.5 x 11 in",
-              "5.5 x 8.5 in",
-              "4.25 x 11 in",
-              "4.25 x 5.5 in",
-              "11 x 17 in",
+              "18 x 12 in",
+              "24 x 16 in",
               "Custom size"
             ],
             "customSize": true
@@ -2825,160 +4464,11 @@
             "ui": "orientation"
           },
           {
-            "label": "Printed sides",
-            "required": true,
-            "options": [
-              "Front and Back",
-              "Front Only"
-            ],
-            "ui": "segmented"
-          },
-          {
-            "label": "Finishing",
-            "required": true,
-            "optionsBy": {
-              "field": "Paper",
-              "values": {
-                "100# Gloss Text": [
-                  "Gloss Coated, 2 Sides",
-                  "UV High-Gloss Coated, 2 Sides",
-                  "Dull Matte Coating, 2 Sides"
-                ],
-                "100# Gloss Cover": [
-                  "Gloss Coated, 2 Sides",
-                  "UV High-Gloss Coated, 2 Sides",
-                  "Dull Matte Coating, 2 Sides"
-                ],
-                "70# Uncoated Text": [
-                  "Uncoated, 2 Sides"
-                ]
-              }
-            }
-          },
-          {
-            "label": "Folding",
-            "required": true,
-            "options": [
-              "No",
-              "Tri-Fold",
-              "Half-Fold",
-              "Z-Fold",
-              "Gate-Fold",
-              "4-Panel Roll Fold",
-              "Accordion Fold"
-            ]
-          }
-        ],
-        "quantities": [
-          "50",
-          "100",
-          "150",
-          "200",
-          "250",
-          "500",
-          "1000",
-          "2500",
-          "5000",
-          "10000",
-          "15000",
-          "20000"
-        ]
-      },
-      "reviewRequired": true,
-      "sourceStatus": "Live Axiom controls observed 2026-10-10; listed menus and key dependencies verified, exhaustive combinations remain a launch check.",
-      "facts": [
-        "Printed menus customers can take with them.",
-        "Paper, finish, and folding combinations are confirmed during quotation."
-      ],
-      "imageSmall": "/assets/products/product-takeout-menus-600.webp",
-      "versionMode": "breakdown"
-    },
-    {
-      "id": "table-tents",
-      "name": "Table Tents",
-      "category": "Menus & counters",
-      "headline": "Make the most of a small space.",
-      "description": "Bring promotions and useful information to tables, reception desks, and counters.",
-      "image": "/assets/products/product-table-tents-1200.webp",
-      "imageAlt": "Sora table tents photographed on a soft neutral studio background",
-      "featured": false,
-      "legacyName": null,
-      "config": {
-        "fields": [
-          {
-            "label": "Display size",
-            "required": true,
-            "options": [
-              "4 x 4 in",
-              "4 x 6 in",
-              "4 x 6.5 in",
-              "4 x 8 in",
-              "4.25 x 6 in",
-              "5 x 5.5 in"
-            ]
-          },
-          {
-            "label": "Paper",
-            "required": true,
-            "options": [
-              "100 lb. Gloss Cover",
-              "14 pt. Gloss Cover",
-              "14 pt. Uncoated Cover",
-              "100 lb. Matte Cover"
-            ]
-          },
-          {
-            "label": "Printing",
-            "required": true,
-            "options": [
-              "Full Color Outside, Blank Inside"
-            ]
-          }
-        ],
-        "quantityMode": "requested"
-      },
-      "reviewRequired": true,
-      "sourceStatus": "static_product_details_verified_dynamic_matrix_unverified",
-      "sources": [
-        "https://www.gotprint.com/products/table-tents/order"
-      ],
-      "manualReview": [
-        "Paper-dependent quantities unavailable.",
-        "Display/flat sizes follow vendor published labels; artwork template still required to include base tabs correctly."
-      ],
-      "facts": [
-        "Ships flat and scored, ready for assembly.",
-        "Three score lines and two die-cut slits create an interlocking base without glue."
-      ],
-      "imageSmall": "/assets/products/product-table-tents-600.webp",
-      "versionMode": "breakdown"
-    },
-    {
-      "id": "counter-mats",
-      "name": "Counter Mats",
-      "category": "Menus & counters",
-      "headline": "Meet customers at the counter.",
-      "description": "Put a helpful message, offer, or product guide where conversations and decisions happen.",
-      "image": "/assets/products/product-counter-mats-1200.webp",
-      "imageAlt": "Northline counter mats photographed on a soft neutral studio background",
-      "featured": true,
-      "legacyName": null,
-      "config": {
-        "fields": [
-          {
-            "label": "Size",
-            "required": true,
-            "options": [
-              "9 x 14 in",
-              "10 x 15 in",
-              "11 x 17 in"
-            ]
-          },
-          {
             "label": "Material",
             "required": true,
             "options": [
-              "6 mil white vinyl — hard surface"
+              "Econo (6 Mil)",
+              "Standard (20 Mil)"
             ]
           },
           {
@@ -3041,20 +4531,22 @@
         ]
       },
       "reviewRequired": true,
-      "sourceStatus": "Quixprint user-specified offering; current supplier page differs in material and size. Fulfillment confirmation required.",
+      "sourceStatus": "Live Axiom configurator reviewed October 2026",
       "facts": [
-        "Hard-surface counter mats in three practical sizes.",
-        "Choose a matte or gloss finish with square or rounded corners."
+        "18 \u00d7 12 and 24 \u00d7 16 inches, plus custom sizes",
+        "Econo 6 mil or Standard 20 mil PVC",
+        "Matte or gloss lamination; square or 1/4-inch rounded corners"
       ],
       "imageSmall": "/assets/products/product-counter-mats-600.webp",
-      "versionMode": "breakdown"
+      "versionMode": "breakdown",
+      "manualReview": []
     },
     {
       "id": "custom-printing",
       "name": "Custom Printing",
       "category": "Custom projects",
       "headline": "Something else in mind?",
-      "description": "Tell us about the piece you want to create. Share the size, material, quantity, and any details that matter—we’ll help you work through the possibilities.",
+      "description": "Tell us about the piece you want to create. Share the size, material, quantity, and any details that matter\u2014we\u2019ll help you work through the possibilities.",
       "image": "/assets/products/hero-forma-v2.webp",
       "imageAlt": "Coordinated Forma printed materials including a catalog, brochure, folder and stationery",
       "customOnly": true,
