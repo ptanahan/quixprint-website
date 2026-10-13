@@ -2001,8 +2001,7 @@
               "Silver Gloss Paper",
               "Holographic Gloss BOPP",
               "60# White Uncoated Paper",
-              "Kraft Paper",
-              "White Vinyl"
+              "Kraft Paper"
             ],
             "ui": "material"
           },
@@ -2072,12 +2071,14 @@
             "default": "Rounded corners"
           },
           {
-            "label": "Foil option",
-            "required": true,
+            "label": "Foil Stamping",
             "options": [
               "No",
-              "Digital Foil"
-            ]
+              "2D Foil Stamping",
+              "3D Foil Stamping"
+            ],
+            "required": true,
+            "default": "No"
           },
           {
             "label": "Foil color",
@@ -2086,21 +2087,34 @@
               "Gold",
               "Silver",
               "Rose Gold",
-              "Green",
               "Blue",
-              "Red"
+              "Red",
+              "Holographic"
             ],
             "when": {
-              "Foil option": "Digital Foil"
+              "Foil Stamping": [
+                "2D Foil Stamping",
+                "3D Foil Stamping"
+              ]
+            },
+            "ui": "color-dropdown",
+            "swatches": {
+              "Gold": "gold",
+              "Silver": "silver",
+              "Rose Gold": "rose-gold",
+              "Blue": "blue",
+              "Red": "red",
+              "Holographic": "holographic"
             }
           },
           {
-            "label": "Raised spot UV",
+            "label": "Spot UV Varnish",
             "required": true,
             "options": [
               "No",
-              "2D Spot UV",
-              "3D Raised Spot UV"
+              "2D Spot UV Varnish",
+              "3D Spot UV Varnish",
+              "2D+3D Spot UV Varnish"
             ],
             "help": "Foil and spot UV placement are reviewed with your artwork."
           },
@@ -2116,9 +2130,6 @@
                 ],
                 "Clear Gloss BOPP": [
                   "Clear 1.2Mil PET Liner"
-                ],
-                "White Vinyl": [
-                  "78# Paper Liner"
                 ]
               },
               "fallback": [

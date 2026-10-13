@@ -7,7 +7,7 @@ import {icons} from '../src/icons.mjs';
 
 // Exercise the actual product controller with a small event/element fixture.
 // This checks controller behavior, not browser layout or native form validity.
-function fixture(productId='business-cards') {
+function fixture(productId='business-cards',finePointer=false) {
   class Element {
     constructor(tag='div'){this.tagName=tag.toUpperCase();this.children=[];this.listeners={};this.dataset={};this.value='';this.checked=false;this.hidden=false;this.disabled=false;}
     append(...items){this.children.push(...items);}
@@ -15,7 +15,8 @@ function fixture(productId='business-cards') {
     addEventListener(name,fn){this.listeners[name]=fn;}
     fire(name){this.listeners[name]?.({target:this,preventDefault(){}});}
     setAttribute(key,value){this[key]=value;}
-    focus(){}
+    focus(){this.focused=true;}
+    blur(){this.blurred=true;this.focused=false;}
     showModal(){this.open=true;}
   }
   const ids=['product-form','config-fields','quantity-fields','version-breakdown','quantity-help','item-note','already-buying','buying-fields','buying-details','supplier','current-price','buying-notes','add-to-quote','product-error','added-title','added-description','added-dialog'];
@@ -28,7 +29,7 @@ function fixture(productId='business-cards') {
   const $=selector=>nodes[selector.slice(1)]||all().find(e=>e.id===selector.slice(1));
   const $$=(selector,root)=>selector==='[data-spec]'?all().filter(e=>e.dataset.spec):descendants(root).filter(e=>['INPUT','TEXTAREA'].includes(e.tagName));
   let items=[],edit='',serial=0;
-  const ctx={icon:name=>icons[name],Q:engine,$,$$,document:{createElement:tag=>new Element(tag)},route:()=>new URL('https://example.invalid/?edit='+edit),cart:()=>items,saveCart:v=>{items=v;},uid:()=>`review-${++serial}`,error:(el,message)=>{el.textContent=message;},quantityText:(item)=>`${item.quantity} pieces`};
+  const ctx={matchMedia:()=>({matches:finePointer}),icon:name=>icons[name],Q:engine,$,$$,document:{createElement:tag=>new Element(tag)},route:()=>new URL('https://example.invalid/?edit='+edit),cart:()=>items,saveCart:v=>{items=v;},uid:()=>`review-${++serial}`,error:(el,message)=>{el.textContent=message;},quantityText:(item)=>`${item.quantity} pieces`};
   const app=fs.readFileSync(new URL('../src/app.js',import.meta.url),'utf8');
   vm.runInNewContext(app.slice(app.indexOf('function initProduct()'),app.indexOf('function buyingHTML('))+';this.start=initProduct;',ctx);
   const field=label=>all().find(e=>e.dataset.spec===label);
@@ -88,4 +89,13 @@ test('fixed quantity controller has no custom or version input and submits one s
   const f=fixture(id),select=f.find('#quantity-select');assert.ok(select,id);assert.ok(select.children.every(o=>o.value!=='custom'),id);assert.equal(f.find('#artwork-versions'),undefined,id);assert.equal(f.find('#custom-quantity'),undefined,id);
   select.value=select.children[0].value;select.fire('change');f.submit();assert.equal(f.items().length,1,id+': '+f.nodes['product-error'].textContent);assert.ok(!('Versions' in f.items()[0].choices));f.edit();assert.equal(f.find('#custom-quantity'),undefined,id);
  }
+});
+
+
+test('native product selects blur and do not refocus on touch devices after changing',()=>{
+ const f=fixture('laminated-menus'),before=f.field('Paper stock');f.choose('Paper stock','16PT Coated 2 Sides');assert.equal(before.blurred,true);assert.ok(!f.field('Paper stock').focused);assert.equal(f.field('Paper stock').value,'16PT Coated 2 Sides');
+ const desktop=fixture('laminated-menus',true);desktop.choose('Paper stock','16PT Coated 2 Sides');assert.equal(desktop.field('Paper stock').focused,true);
+});
+test('foil color menu closes after selection and persists finishes through quote editing',()=>{
+ const f=fixture('roll-labels');f.choose('Foil Stamping','3D Foil Stamping');f.choose('Foil color','Holographic');f.choose('Spot UV Varnish','2D+3D Spot UV Varnish');assert.equal(f.field('Foil color').tagName,'SUMMARY');assert.equal(f.field('Foil color').value,'Holographic');f.submit();assert.equal(f.items()[0].choices['Foil Stamping'],'3D Foil Stamping');f.edit();assert.equal(f.field('Foil color').value,'Holographic');f.choose('Foil Stamping','No');assert.equal(f.field('Foil color'),undefined);f.submit();assert.equal(f.items()[0].choices['Foil Stamping'],'No');assert.ok(!('Foil color' in f.items()[0].choices));
 });
