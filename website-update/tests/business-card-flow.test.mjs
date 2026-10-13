@@ -98,13 +98,13 @@ test('native product selects blur and do not refocus on touch devices after chan
  const desktop=fixture('laminated-menus',true);desktop.choose('Paper stock','16PT Coated 2 Sides');assert.equal(desktop.field('Paper stock').focused,true);
 });
 test('foil color menu closes after selection and persists finishes through quote editing',()=>{
- const f=fixture('roll-labels');f.choose('Foil Stamping','3D Foil Stamping');f.choose('Foil color','Holographic');f.choose('Spot UV Varnish','2D+3D Spot UV Varnish');assert.equal(f.field('Foil color').tagName,'SUMMARY');assert.equal(f.field('Foil color').value,'Holographic');f.submit();assert.equal(f.items()[0].choices['Foil Stamping'],'3D Foil Stamping');f.edit();assert.equal(f.field('Foil color').value,'Holographic');f.choose('Foil Stamping','No');assert.equal(f.field('Foil color'),undefined);f.submit();assert.equal(f.items()[0].choices['Foil Stamping'],'No');assert.ok(!('Foil color' in f.items()[0].choices));
+ const f=fixture('roll-labels',true);f.choose('Foil Stamping','3D Foil Stamping');f.choose('Foil color','Holographic');f.choose('Spot UV Varnish','2D+3D Spot UV Varnish');assert.equal(f.field('Foil color').tagName,'SUMMARY');assert.equal(f.field('Foil color').value,'Holographic');f.submit();assert.equal(f.items()[0].choices['Foil Stamping'],'3D Foil Stamping');f.edit();assert.equal(f.field('Foil color').value,'Holographic');f.choose('Foil Stamping','No');assert.equal(f.field('Foil color'),undefined);f.submit();assert.equal(f.items()[0].choices['Foil Stamping'],'No');assert.ok(!('Foil color' in f.items()[0].choices));
 });
 
 
 test('touch blur before a foil-color click does not close the menu or lose the tapped color',()=>{
  for(const color of ['Silver','Rose Gold','Blue','Red','Holographic']){
-  const f=fixture('roll-labels');f.choose('Foil Stamping','2D Foil Stamping');
+  const f=fixture('roll-labels',true);f.choose('Foil Stamping','2D Foil Stamping');
   const dropdown=f.elements().find(e=>e.className==='color-dropdown');dropdown.open=true;
   dropdown.fire('focusout',{relatedTarget:null});assert.equal(dropdown.open,true,'menu must stay open for the pending tap');
   f.choose('Foil color',color);assert.equal(dropdown.open,false);assert.equal(f.field('Foil color').value,color);
@@ -112,5 +112,14 @@ test('touch blur before a foil-color click does not close the menu or lose the t
  }
 });
 test('foil-color menu still closes for keyboard focus moving outside',()=>{
- const f=fixture('roll-labels');f.choose('Foil Stamping','3D Foil Stamping');const dropdown=f.elements().find(e=>e.className==='color-dropdown');dropdown.open=true;dropdown.fire('focusout',{relatedTarget:f.nodes['item-note']});assert.equal(dropdown.open,false);
+ const f=fixture('roll-labels',true);f.choose('Foil Stamping','3D Foil Stamping');const dropdown=f.elements().find(e=>e.className==='color-dropdown');dropdown.open=true;dropdown.fire('focusout',{relatedTarget:f.nodes['item-note']});assert.equal(dropdown.open,false);
+});
+
+
+test('touch foil colors use a stable native picker and preserve every color through add/edit',()=>{
+ for(const finish of ['2D Foil Stamping','3D Foil Stamping'])for(const color of ['Gold','Silver','Rose Gold','Blue','Red','Holographic']){
+  const f=fixture('roll-labels');f.choose('Foil Stamping',finish);const select=f.field('Foil color');assert.equal(select.tagName,'SELECT');assert.ok(!f.elements().some(e=>e.className==='color-dropdown'));
+  f.choose('Foil color',color);assert.equal(f.field('Foil color'),select,'the OS picker must not be replaced on change');assert.equal(select.value,color);assert.equal(select.blurred,true);
+  f.submit();assert.equal(f.items()[0].choices['Foil color'],color);f.edit();assert.equal(f.field('Foil color').value,color);
+ }
 });

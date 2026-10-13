@@ -39,6 +39,14 @@ function initProduct(){
   const root=$('#config-fields');root.replaceChildren();const grid=document.createElement('div');grid.className='field-grid';
   resolved.fields.filter(f=>f.label!=='Versions').forEach((f,i)=>{
    if(f.ui==='color-dropdown'){
+    // Use the OS picker for touch input. Color is a leaf field, so changing it
+    // updates the value and swatch without replacing the active select element.
+    if(!(typeof matchMedia==='function'&&matchMedia('(hover: hover) and (pointer: fine)').matches)){
+     const field=document.createElement('label');field.className='field';const text=document.createElement('span');text.textContent=f.label+' *';field.append(text);
+     const control=document.createElement('span');control.className='native-foil-control';const dot=document.createElement('span');dot.className='foil-swatch foil-'+f.swatches[f.value];dot.setAttribute('aria-hidden','true');
+     const select=document.createElement('select');select.id='spec-'+i;select.dataset.spec=f.label;select.required=true;f.options.forEach(value=>{const option=document.createElement('option');option.value=value;option.textContent=value;select.append(option);});select.value=f.value;
+     select.addEventListener('change',()=>{choices[f.label]=select.value;dot.className='foil-swatch foil-'+f.swatches[select.value];select.blur();});control.append(dot,select);field.append(control);grid.append(field);return;
+    }
     const field=document.createElement('div');field.className='field';const label=document.createElement('span');label.id='spec-label-'+i;label.textContent=f.label+' *';field.append(label);
     const dropdown=document.createElement('details');dropdown.className='color-dropdown';const trigger=document.createElement('summary');trigger.dataset.spec=f.label;trigger.value=f.value;trigger.id='spec-'+i;trigger.setAttribute('aria-labelledby',label.id+' spec-value-'+i);
     function colorLabel(parent,value){const dot=document.createElement('span');dot.className='foil-swatch foil-'+f.swatches[value];dot.setAttribute('aria-hidden','true');const name=document.createElement('span');name.textContent=value;parent.append(dot,name);return name;}

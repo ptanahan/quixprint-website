@@ -1,4 +1,4 @@
-QUIXPRINT — REVISION 05
+QUIXPRINT — REVISION 06
 
 Update for the current deployed Quixprint website.
 
@@ -15,10 +15,12 @@ Product dropdowns: native dropdowns blur after choosing an option and no longer 
 This patch does not replace quote email handlers, environment settings or Churches pages.
 
 VALIDATION
-Production build succeeded. 11 controller checks passed for this revision, including simulated touch focusout-before-click for all five non-default foil colors. The actual portable preview was checked for all new roll-label fields and options. Physical-phone/browser visual QA was not available; after publishing, test several product dropdowns on your phone.
+Production build succeeded. 12 controller checks passed, including all six mobile colors through add/edit for both foil finishes. Three page-preservation/asset checks also passed. The actual portable preview was checked for all new roll-label fields and options. Physical-phone/browser visual QA was not available; after publishing, test several product dropdowns on your phone.
 
 PREVIEW
-Open Quixprint-Preview-R05.html. The top banner reads PRODUCT UPDATE — REVISION 05. Preview quote submissions do not send email.
+Open Quixprint-Preview-R06.html. The top banner reads PRODUCT UPDATE — REVISION 06. Preview quote submissions do not send email.
 
-REVISION 05 FIX
-The foil color menu no longer closes on a focusout event with no relatedTarget. This preserves pending touch clicks so the chosen color is stored before the menu closes. Outside clicks, Escape, keyboard focus moving outside, and completed selections still close the menu. Physical iPhone verification remains required after deployment.
+REVISION 06 — MOBILE FOIL PICKER
+On touch devices, Foil color now uses a standard native select instead of the custom menu. A swatch sits beside the selected color; the operating-system option list displays color names. Changing color keeps the same select element in place and stores the value directly. Desktop mouse/keyboard users retain the swatch menu. The previous R05 focus-only fix did not resolve the reported phone behavior and is superseded by this change. Physical phone verification is still needed after deployment.
+
+Production script/style URLs now include content hashes so a new deployment requests the matching updated files.
