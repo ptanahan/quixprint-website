@@ -1,0 +1,24 @@
+QUIXPRINT — REVISION 05
+
+Update for the current deployed Quixprint website.
+
+1. Duplicate your existing repository folder as a backup.
+2. Merge the contents of website-update into the existing repository. On Mac use ditto with the downloaded website-update folder FIRST and your original repository folder SECOND. This overwrites matching files without deleting unrelated files.
+3. Review changes in GitHub Desktop. No deletions are expected. Commit and Push origin.
+4. Wait for Netlify to show Published, then refresh the website.
+
+CHANGES
+Roll labels: White Vinyl removed. Spot UV Varnish options are No, 2D Spot UV Varnish, 3D Spot UV Varnish, 2D+3D Spot UV Varnish. Foil Stamping is one dropdown: No (default), 2D Foil Stamping, 3D Foil Stamping. Foil color appears only for 2D or 3D and clears when No is selected. Foil colors are Gold, Silver, Rose Gold, Blue, Red, Holographic, each with a visual color circle in the dropdown.
+
+Product dropdowns: native dropdowns blur after choosing an option and no longer receive programmatic focus on touch devices after dependent fields update. Desktop pointer users retain focus. Foil-color menu closes on selection, Escape, focus leaving, or an outside click, and supports arrow-key navigation.
+
+This patch does not replace quote email handlers, environment settings or Churches pages.
+
+VALIDATION
+Production build succeeded. 11 controller checks passed for this revision, including simulated touch focusout-before-click for all five non-default foil colors. The actual portable preview was checked for all new roll-label fields and options. Physical-phone/browser visual QA was not available; after publishing, test several product dropdowns on your phone.
+
+PREVIEW
+Open Quixprint-Preview-R05.html. The top banner reads PRODUCT UPDATE — REVISION 05. Preview quote submissions do not send email.
+
+REVISION 05 FIX
+The foil color menu no longer closes on a focusout event with no relatedTarget. This preserves pending touch clicks so the chosen color is stored before the menu closes. Outside clicks, Escape, keyboard focus moving outside, and completed selections still close the menu. Physical iPhone verification remains required after deployment.
