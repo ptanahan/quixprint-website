@@ -59,7 +59,7 @@ let closeHeaderSearch=()=>{};
 function bindHeaderSearch(){
  const wrap=$('#header-search'),form=$('#header-search-form'),input=$('#header-search-input'),toggle=$('#header-search-toggle'),panel=$('#header-search-results'),list=$('#header-search-list'),status=$('#header-search-status'),all=$('#header-search-all'),empty=$('#header-search-empty'),clear=$('#header-search-clear');
  if(!wrap||!form)return;
- const popular=['business-cards','brochures','postcards','roll-labels'].map(id=>Q.product(id)).filter(Boolean);
+ const popular=['flyers','brochures','postcards','roll-labels'].map(id=>Q.product(id)).filter(Boolean);
  let hoverTimer,openedByHover=false;
  function close(){clearTimeout(hoverTimer);openedByHover=false;wrap.hidden=true;panel.hidden=true;wrap.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Search products');toggle.innerHTML=icon('search');}
  closeHeaderSearch=close;
