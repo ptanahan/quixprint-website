@@ -41,7 +41,7 @@ test('industry links, anchors, responsive image sources and custom quote prefill
 function menuFixture(){
  const node=()=>({hidden:true,listeners:{},attrs:{},addEventListener(type,fn){(this.listeners[type]??=[]).push(fn)},setAttribute(k,v){this.attrs[k]=v},contains(target){return target===this},focus(){this.focused=true},fire(type,e={}){for(const fn of this.listeners[type]||[])fn(e)}});
  const nodes=Object.fromEntries(['#product-menu','#products-toggle','#menu-scrim','#industry-menu','#industries-toggle','.industries-nav','#industries-link'].map(k=>[k,node()]));
- const document=node(),anchor=node(),ctx={document,innerWidth:1200,$:(s)=>s==='a'?anchor:nodes[s],clearTimeout(){},setTimeout:fn=>{ctx.timer=fn;return 1},menuTimer:null};
+ const document=node(),anchor=node(),ctx={document,closeHeaderSearch(){ctx.searchClosed=true},innerWidth:1200,$:(s)=>s==='a'?anchor:nodes[s],clearTimeout(){},setTimeout:fn=>{ctx.timer=fn;return 1},menuTimer:null};
  const menu=app.slice(app.indexOf('function menu(open)'),app.indexOf('function bindUnwindGuide'));
  const industry=app.slice(app.indexOf('let industryMenuTimer;'),app.indexOf('// Only non-personal'));
  vm.runInNewContext(menu+industry+';this.openProducts=menu;this.openIndustries=industryMenu;bindIndustryHeader();',ctx);
@@ -50,7 +50,7 @@ function menuFixture(){
 test('Industries menu opens by hover and tap, supports keyboard and never leaves both menus open',()=>{
  const {nodes:n,document:d,anchor,ctx}=menuFixture();
  n['.industries-nav'].fire('pointerenter',{pointerType:'mouse'});assert.equal(n['#industry-menu'].hidden,false);assert.equal(n['#industries-toggle'].attrs['aria-expanded'],'true');assert.equal(n['#menu-scrim'].hidden,false);
- ctx.openProducts(true);assert.equal(n['#industry-menu'].hidden,true);assert.equal(n['#product-menu'].hidden,false);assert.equal(n['#menu-scrim'].hidden,false);
+ ctx.openProducts(true);assert.equal(ctx.searchClosed,true);assert.equal(n['#industry-menu'].hidden,true);assert.equal(n['#product-menu'].hidden,false);assert.equal(n['#menu-scrim'].hidden,false);
  n['#industries-toggle'].fire('click');assert.equal(n['#industry-menu'].hidden,false);assert.equal(n['#product-menu'].hidden,true);
  d.fire('keydown',{key:'Escape'});assert.equal(n['#industry-menu'].hidden,true);assert.ok(n['#industries-link'].focused);
  n['#industries-link'].fire('keydown',{key:'ArrowDown',preventDefault(){}});assert.equal(n['#industry-menu'].hidden,false);assert.ok(anchor.focused);
