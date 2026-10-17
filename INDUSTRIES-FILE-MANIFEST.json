@@ -1,0 +1,343 @@
+{
+  "date": "2026-10-17",
+  "revision": 11,
+  "industry_count": 12,
+  "deployed": false,
+  "files": [
+    {
+      "path": "INDUSTRIES-CAMPAIGN-NOTES.md",
+      "status": "new",
+      "sha256": "22293781b56d06ce87e6b73ea5957133d5fba6a1c9742a4e137b371b9f0a67c1"
+    },
+    {
+      "path": "INDUSTRIES-QA.md",
+      "status": "new",
+      "sha256": "1fe38e51de9322a63b5c0b21434d9cb80ef47af346be049a1742b2ec452a39ad"
+    },
+    {
+      "path": "INDUSTRIES-UPDATE.md",
+      "status": "new",
+      "sha256": "5ad37457d2fba720f331ff74ae6743a14ffc34d7d8dbffe35029fa72d12d4ada"
+    },
+    {
+      "path": "artwork/industry-automotive-1536.webp",
+      "status": "new",
+      "sha256": "0edeb7da7a8225fa72410ede110acd020b951046002af15720636b4a17485c6e"
+    },
+    {
+      "path": "artwork/industry-automotive-768.webp",
+      "status": "new",
+      "sha256": "b91c51421aacff3770f8a51db1c79ef5606687768b2700c9af45d54821ad5517"
+    },
+    {
+      "path": "artwork/industry-automotive-story-1536.webp",
+      "status": "new",
+      "sha256": "c9930d59b38258ae976f9b7d7017d2d78b22d9ada564a582e8364aea103cbef7"
+    },
+    {
+      "path": "artwork/industry-automotive-story-768.webp",
+      "status": "new",
+      "sha256": "7739c06ae7ca5731663ca49e172ea8409052602e05cf43912a72df1213f82bfa"
+    },
+    {
+      "path": "artwork/industry-building-materials-1536.webp",
+      "status": "new",
+      "sha256": "5f1aa83fe267da92b776adb33e7409b3a785be06210fef40b47c1f83b2bd49da"
+    },
+    {
+      "path": "artwork/industry-building-materials-768.webp",
+      "status": "new",
+      "sha256": "9e196f48a77c9700715118fb438a44c0891292a7ca76293b6ff8e6854de3dac9"
+    },
+    {
+      "path": "artwork/industry-building-materials-story-1536.webp",
+      "status": "new",
+      "sha256": "5e45a8ae86e98548516291b74da06efdd366de8aeb320b1a7157d512def64df6"
+    },
+    {
+      "path": "artwork/industry-building-materials-story-768.webp",
+      "status": "new",
+      "sha256": "7bea83d9978760f86a8b5bd1aa889f3bb1d73fd2c4050244a9396bb4e96879dd"
+    },
+    {
+      "path": "artwork/industry-dental-1536.webp",
+      "status": "new",
+      "sha256": "34eff7a83811a119bfe2f2b39fa4aff8ba80b776803988c9348e2430407a27e2"
+    },
+    {
+      "path": "artwork/industry-dental-768.webp",
+      "status": "new",
+      "sha256": "c91d13abfd00ca05764efd35ebd8016825afba08de54b0f57b80186bca2bde7b"
+    },
+    {
+      "path": "artwork/industry-dental-story-1536.webp",
+      "status": "new",
+      "sha256": "e2be9293dab091b760192c5927d2076e10e9ab020ae8ed30c4440ea81ada8787"
+    },
+    {
+      "path": "artwork/industry-dental-story-768.webp",
+      "status": "new",
+      "sha256": "c2f436582ea9737895a2d8c3c976434f6953397f8bd6a3ccf3e673ee031092fc"
+    },
+    {
+      "path": "artwork/industry-education-1536.webp",
+      "status": "new",
+      "sha256": "612000ba556afd1e1090570cb9c86909a80e845cb9a54f775a30d5e016c41ab3"
+    },
+    {
+      "path": "artwork/industry-education-768.webp",
+      "status": "new",
+      "sha256": "9fcbd6787dca7f51379e57c4f3362193da6ac3670399f9c7997707a142f40c10"
+    },
+    {
+      "path": "artwork/industry-education-story-1536.webp",
+      "status": "new",
+      "sha256": "c9ed2e1181b3e9fa20d8c0261fda15e8162c53abb4d1051a3713ee978defd4e9"
+    },
+    {
+      "path": "artwork/industry-education-story-768.webp",
+      "status": "new",
+      "sha256": "7d1f411b25a9ef8c40c546cd3c2395fe600bfad7848d4652a4fad86a1f9a24fb"
+    },
+    {
+      "path": "artwork/industry-healthcare-1536.webp",
+      "status": "new",
+      "sha256": "d72c1d5bd6aa42dc6a5a7c0bac6548c1dc6d2921c673a1d39d00856d21a5a920"
+    },
+    {
+      "path": "artwork/industry-healthcare-768.webp",
+      "status": "new",
+      "sha256": "c0a625859589e1f8fc31e31aff1e7a406cc2c7f8a8fa2484024ba5fa224f5b83"
+    },
+    {
+      "path": "artwork/industry-healthcare-story-1536.webp",
+      "status": "new",
+      "sha256": "96f6fe9b8512d8d78a5551a9bcc40439ed62bdfa3d2cc901e565d92566dad963"
+    },
+    {
+      "path": "artwork/industry-healthcare-story-768.webp",
+      "status": "new",
+      "sha256": "b25cecaa32912c173ee86d04289a077564999a2a6c48d90cfc7cf80bcb271364"
+    },
+    {
+      "path": "artwork/industry-hotels-hospitality-1536.webp",
+      "status": "new",
+      "sha256": "96e21677c6d5c6464ee4562bae75ac2b6f726adaecb7982c391830271846c1db"
+    },
+    {
+      "path": "artwork/industry-hotels-hospitality-768.webp",
+      "status": "new",
+      "sha256": "78d0d03eaea19c19fc0a1d0da1ae54fdd19eadb53e5a3a5fc156b86307c0521e"
+    },
+    {
+      "path": "artwork/industry-hotels-hospitality-story-1536.webp",
+      "status": "new",
+      "sha256": "91a3151e6d9e3285176c3a0d544ec0f22d80e22299f759846cd79cb6ec273285"
+    },
+    {
+      "path": "artwork/industry-hotels-hospitality-story-768.webp",
+      "status": "new",
+      "sha256": "402d5890dd0e73ba49d2d3d03dcebb72e461cf7495afa17025fc59a8a86ce5fc"
+    },
+    {
+      "path": "artwork/industry-law-firms-1536.webp",
+      "status": "new",
+      "sha256": "d24818ee7ca4bddb7c7a72951891fe23e8f6908bc6026f257d41a78d6a29bd27"
+    },
+    {
+      "path": "artwork/industry-law-firms-768.webp",
+      "status": "new",
+      "sha256": "e2ffcea8d4f85e1bbf0a1aaca9d8c62ea9797dc22b69d156f0626d49ac532dbf"
+    },
+    {
+      "path": "artwork/industry-law-firms-story-1536.webp",
+      "status": "new",
+      "sha256": "b65510cad48b5c199fd9f2f7b2289604223edf697544acc993c35523f9b922d2"
+    },
+    {
+      "path": "artwork/industry-law-firms-story-768.webp",
+      "status": "new",
+      "sha256": "4e43e1ddefa329fbc996079d6c651d82d5c1c9b1a85004d9b8707722a42e897b"
+    },
+    {
+      "path": "artwork/industry-real-estate-1536.webp",
+      "status": "new",
+      "sha256": "c50453274c6460f5a1d2f9b380c6295219eb43510f06e9a5741f153af0025d4d"
+    },
+    {
+      "path": "artwork/industry-real-estate-768.webp",
+      "status": "new",
+      "sha256": "132c2cd59d93248895b07a09bca676234d0e03b4e0f5b35f7fc933347e6c6d94"
+    },
+    {
+      "path": "artwork/industry-real-estate-story-1536.webp",
+      "status": "new",
+      "sha256": "06b2c14289d754e5f0ed5f631c7805746e39ceb2168adf44f498fb2d2c99ec43"
+    },
+    {
+      "path": "artwork/industry-real-estate-story-768.webp",
+      "status": "new",
+      "sha256": "2a873a126c05f8ff9bb2fda8861db64e9862afb56ec5b85c0ba9a21cbbf892e8"
+    },
+    {
+      "path": "artwork/industry-religious-1536.webp",
+      "status": "new",
+      "sha256": "9ee8c2c5dd1d4465ec697764e313467a3bfca663a73e0872afd920f0189c45a2"
+    },
+    {
+      "path": "artwork/industry-religious-768.webp",
+      "status": "new",
+      "sha256": "343eb0c243f5b67f3e1d9b08be0dd9b9fe7874c3cfcfed6b94f519cbc01183bb"
+    },
+    {
+      "path": "artwork/industry-religious-story-1536.webp",
+      "status": "new",
+      "sha256": "8d8b812861feeca4e5bdbed3e0128db1cdc6df14f8c5d87d0d2109acff47d919"
+    },
+    {
+      "path": "artwork/industry-religious-story-768.webp",
+      "status": "new",
+      "sha256": "a9ca5134d154caeeef1e0d2c796360cd66fd2e407cbefb3aa601400486b98841"
+    },
+    {
+      "path": "artwork/industry-restaurants-1536.webp",
+      "status": "new",
+      "sha256": "3e2ab7bf9029c486cf9cfcd924e37ac49b2dddf1de829e1b9837d0fafacb302c"
+    },
+    {
+      "path": "artwork/industry-restaurants-768.webp",
+      "status": "new",
+      "sha256": "4662aef5aafae88951935b7c62f38ced9eeb1edc0554f01021d55baa1dbec224"
+    },
+    {
+      "path": "artwork/industry-restaurants-story-1536.webp",
+      "status": "new",
+      "sha256": "b11d16075cd31a2e9c513c606a2cbe406b926f2a9cef63f99049043e71234741"
+    },
+    {
+      "path": "artwork/industry-restaurants-story-768.webp",
+      "status": "new",
+      "sha256": "cf55e034e5394424854b31f6bf3a3aa3d6ce7d017e36f526f5e9acf78ba33503"
+    },
+    {
+      "path": "artwork/industry-retail-1536.webp",
+      "status": "new",
+      "sha256": "f91af7a06916e152044b6dc68eebe50f0cee8353c56e62abbb9aee9bf5e6759e"
+    },
+    {
+      "path": "artwork/industry-retail-768.webp",
+      "status": "new",
+      "sha256": "b1fc8225a9226e102ba388b5d3ce557b632d89c9b6605b11465a1cae10f3e85e"
+    },
+    {
+      "path": "artwork/industry-retail-story-1536.webp",
+      "status": "new",
+      "sha256": "e308484c82c0c8bf67b33a72c8a71ffd93b73dc4c1624b817032d9e7cff3615a"
+    },
+    {
+      "path": "artwork/industry-retail-story-768.webp",
+      "status": "new",
+      "sha256": "fbaf9d1d55a334de5c4726a46556473b4115fdcc175a047ed036f46177cd0003"
+    },
+    {
+      "path": "artwork/industry-trade-shows-1536.webp",
+      "status": "new",
+      "sha256": "6e5577f9ce5acefa8ffa2041441c7e8dae2f4d7aec521f9a839b4e9e3c834d3a"
+    },
+    {
+      "path": "artwork/industry-trade-shows-768.webp",
+      "status": "new",
+      "sha256": "a71ae25d64bdae935fbacf958f1081819dcb86439b67ce3478e6d345ccf34053"
+    },
+    {
+      "path": "artwork/industry-trade-shows-story-1536.webp",
+      "status": "new",
+      "sha256": "bbb948593ec299cf354bd042ed5a7b8912fa87bc2d21ef2f5b336cc429d030ac"
+    },
+    {
+      "path": "artwork/industry-trade-shows-story-768.webp",
+      "status": "new",
+      "sha256": "2831e9c92a082ede1ec19725ae3236378721baa07876884b31a634a2e4f3aa48"
+    },
+    {
+      "path": "data/industries.json",
+      "status": "new",
+      "sha256": "02fb34310faa84555f70328b7f647c53cfbd39a74f77de7b48dea63721ba870e"
+    },
+    {
+      "path": "scripts/build.mjs",
+      "status": "modified",
+      "sha256": "2a3c03824c1e5852b21c89969e0c5b509c23ba6b63857c4c9c1e260c17946a6c"
+    },
+    {
+      "path": "src/app.js",
+      "status": "modified",
+      "sha256": "fd0e85f6439d4c560f8da250a0e90594c2f0538a0ed26b812ea99c45bba46ae7"
+    },
+    {
+      "path": "src/home-products.css",
+      "status": "new",
+      "sha256": "cdb4dc9fd81d4423099024c530fc40c141910fd1c61069b6003bc07a41c885e5"
+    },
+    {
+      "path": "src/industries.css",
+      "status": "new",
+      "sha256": "496e93d49db289b80b8e3ae8241efaa55e36293ad6658e871b468db74c9ac73c"
+    },
+    {
+      "path": "src/industries.mjs",
+      "status": "new",
+      "sha256": "8c19849475a477f8cd092811b624dbb6d9533a23eb43728a5b6fcefa82c6c017"
+    },
+    {
+      "path": "src/journal.css",
+      "status": "modified",
+      "sha256": "5c28e65f246334813998e2f354127d7c6d519d386254f0362355e8ff4d407239"
+    },
+    {
+      "path": "src/journal.mjs",
+      "status": "modified",
+      "sha256": "a1d3954f2d4d98e542929614a03fd3103690518ac69103fc6de77454c306cb1e"
+    },
+    {
+      "path": "src/refinement.css",
+      "status": "modified",
+      "sha256": "9ff9614bbffe3fa6122101f00e3bafbd5f05dba2db1659608b0f2eef0a9e7a21"
+    },
+    {
+      "path": "src/site.css",
+      "status": "modified",
+      "sha256": "97fef9b1d6174978f30cd44901d2998764ac8692a066fd48ccce9c14ec1dba05"
+    },
+    {
+      "path": "src/templates.mjs",
+      "status": "modified",
+      "sha256": "b9d0a4b4a704fc8a5dc7003e70af40bad8929ecd333b2ecc526a4b93011cd5e5"
+    },
+    {
+      "path": "tests/analytics.test.mjs",
+      "status": "modified",
+      "sha256": "75d48deeddb275d36d60822caf28ecb1e58ded5f7fb9b31737167e5f5a2db2b8"
+    },
+    {
+      "path": "tests/home-products.test.mjs",
+      "status": "new",
+      "sha256": "62a9e607964f41bab427fa963b5e0568419762be7f7cb85132ff3799082505be"
+    },
+    {
+      "path": "tests/industries.test.mjs",
+      "status": "new",
+      "sha256": "29c310ec2a1e8e528f3473a3a62787d604934cb609f7f1a978d4f66a703a9373"
+    },
+    {
+      "path": "tests/journal.test.mjs",
+      "status": "modified",
+      "sha256": "ce6abd9f5adb861e25d38c1925b33bbdf2dfd9e9acaa1b5c7494ec8385857573"
+    },
+    {
+      "path": "tests/quote.test.mjs",
+      "status": "modified",
+      "sha256": "9dc215cd16a18099a04993af4bd339839c013aebb634a19cde0de6c30ce7d5c6"
+    }
+  ]
+}

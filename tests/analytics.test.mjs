@@ -6,7 +6,7 @@ import vm from 'node:vm';
 import {analyticsTag,measurementId} from '../src/analytics.mjs';
 const walk=dir=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(d=>d.isDirectory()?walk(path.join(dir,d.name)):[path.join(dir,d.name)]);
 test('every deployable HTML page has exactly one shared analytics initializer',()=>{
- const files=walk('dist').filter(f=>f.endsWith('.html'));assert.equal(files.length,75);
+ const files=walk('dist').filter(f=>f.endsWith('.html'));assert.equal(files.length,88);
  for(const f of files){const html=fs.readFileSync(f,'utf8');assert.equal((html.match(/<script data-qxp-analytics>/g)||[]).length,1,f);assert.equal((html.match(/googletagmanager.com\/gtag\/js/g)||[]).length,1,f);assert.ok(html.includes(measurementId),f);}
  assert.ok(!fs.readFileSync('src/app.js','utf8').includes('googletagmanager'));
  assert.ok(!fs.readFileSync('Quixprint-Full-Preview.html','utf8').includes('googletagmanager'));

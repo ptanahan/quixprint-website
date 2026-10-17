@@ -36,7 +36,7 @@ test('portable preview includes both restyled legal pages and the supplied guide
  for(const route of ['/privacy/','/terms/']){
   assert.equal(context.window.QXP_PAGES[route].type,'legal');
   const page=fs.readFileSync('dist'+route+'index.html','utf8');
-  assert.doesNotMatch(page,/href="\/(?:styles|legal)\.css"/);assert.match(page,/href="\/assets\/qxp.css"/);
+  assert.doesNotMatch(page,/href="\/(?:styles|legal)\.css"/);assert.match(page,/href="\/assets\/qxp.css(?:\?v=[a-f0-9]+)?"/);
  }
  assert.match(context.window.QXP_ASSETS['/assets/products/roll-unwind-guide.webp'],/^data:image\/webp;base64,/);
  assert.match(html,/class="unwind-guide-image"/);
