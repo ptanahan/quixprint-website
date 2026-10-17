@@ -27,7 +27,7 @@ test('homepage has curated alphabetical shortcuts, compact tiles, updated copy a
  const featured=html.match(/id="home-featured-products">([\s\S]*?)<div class="product-grid home-result-grid"/)[1];
  assert.equal((featured.match(/class="product-card"/g)||[]).length,6);
  assert.match(html,/<h1>Great print,<br><span>No exceptions\.<\/span><\/h1>/);
- for(const text of ['Printing for the way you do business. From everyday essentials to nationwide campaigns, we’ve got you covered.','Four decades of expertise. Serving businesses nationwide.','In good hands.<br><strong>Brands that trust us.</strong>','Every piece has a purpose.','Your printing,<br>handled with care.','Great printing starts with understanding your business.'])assert.ok(html.includes(text),text);
+ for(const text of ['Printing for the way you do business. From everyday essentials to nationwide campaigns, we’ve got you covered, with quality you can count on every time.','Four decades of expertise. Serving businesses nationwide.','In good hands.<br><strong>Brands that trust us.</strong>','Every piece has a purpose.','Your printing,<br>handled with care.','Great printing starts with understanding your business.'])assert.ok(html.includes(text),text);
  assert.equal((html.match(/data-home-product=/g)||[]).length,30);assert.match(html,/id="home-product-search"[^>]*type="search"/);
  const css=fs.readFileSync('src/home-products.css','utf8');assert.match(css,/@media\(max-width:760px\)\{[\s\S]*\.home-product-directory\{display:none!important\}/);
  assert.ok(!css.includes('@media(max-width:380px)'));assert.match(css,/grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/);assert.match(css,/align-items:stretch/);
