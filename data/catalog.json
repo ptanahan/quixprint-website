@@ -620,7 +620,7 @@
       "id": "envelopes",
       "name": "Envelopes",
       "category": "Business essentials",
-      "headline": "Make an impression before it\u2019s opened.",
+      "headline": "Make an impression before it’s opened.",
       "description": "Carry your identity from the outside in with printed envelopes for business correspondence and campaigns.",
       "image": "/assets/products/product-envelopes-1200.webp",
       "imageAlt": "Alder envelopes photographed on a soft neutral studio background",
@@ -770,7 +770,7 @@
       "name": "Brochures",
       "category": "Marketing materials",
       "headline": "Give your story room to unfold.",
-      "description": "Turn the details of your business into a clear, tangible introduction\u2014ready for sales meetings, displays, and direct conversations.",
+      "description": "Turn the details of your business into a clear, tangible introduction—ready for sales meetings, displays, and direct conversations.",
       "image": "/assets/products/product-brochures-1200.webp",
       "imageAlt": "Northline brochures photographed on a soft neutral studio background",
       "featured": true,
@@ -2054,10 +2054,10 @@
             }
           },
           {
-            "label": "Round corners",
+            "label": "Corners",
             "required": true,
             "options": [
-              "No",
+              "Sharp corners",
               "Rounded corners"
             ],
             "ui": "segmented",
@@ -2067,7 +2067,6 @@
                 "Square"
               ]
             },
-            "help": "Sharp corners may require a custom die.",
             "default": "Rounded corners"
           },
           {
@@ -3193,7 +3192,7 @@
       "reviewRequired": true,
       "sourceStatus": "Live Axiom controls observed 2026-10-10; listed menus and key dependencies verified, exhaustive combinations remain a launch check.",
       "facts": [
-        "A 24 \u00d7 36 inch sidewalk display with replaceable graphics.",
+        "A 24 × 36 inch sidewalk display with replaceable graphics.",
         "Choose a white or black frame, or replacement prints for your existing stand."
       ],
       "imageSmall": "/assets/products/studio-daymark-signs-600.webp",
@@ -4315,7 +4314,7 @@
       "name": "Takeout Menus",
       "category": "Menus & counters",
       "headline": "Keep your next order within reach.",
-      "description": "Put your menu in customers\u2019 hands and give them a reason to come back.",
+      "description": "Put your menu in customers’ hands and give them a reason to come back.",
       "image": "/assets/products/product-takeout-menus-1200.webp",
       "imageAlt": "Sora takeout menus photographed on a soft neutral studio background",
       "featured": false,
@@ -4544,7 +4543,7 @@
       "reviewRequired": true,
       "sourceStatus": "Live Axiom configurator reviewed October 2026",
       "facts": [
-        "18 \u00d7 12 and 24 \u00d7 16 inches, plus custom sizes",
+        "18 × 12 and 24 × 16 inches, plus custom sizes",
         "Econo 6 mil or Standard 20 mil PVC",
         "Matte or gloss lamination; square or 1/4-inch rounded corners"
       ],
@@ -4557,7 +4556,7 @@
       "name": "Custom Printing",
       "category": "Custom projects",
       "headline": "Something else in mind?",
-      "description": "Tell us about the piece you want to create. Share the size, material, quantity, and any details that matter\u2014we\u2019ll help you work through the possibilities.",
+      "description": "Tell us about the piece you want to create. Share the size, material, quantity, and any details that matter—we’ll help you work through the possibilities.",
       "image": "/assets/products/hero-forma-v2.webp",
       "imageAlt": "Coordinated Forma printed materials including a catalog, brochure, folder and stationery",
       "customOnly": true,
