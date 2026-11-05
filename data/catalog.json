@@ -1994,12 +1994,12 @@
             "label": "Material",
             "required": true,
             "options": [
-              "White Matte BOPP",
-              "Silver Gloss BOPP",
-              "Clear Gloss BOPP",
+              "White BOPP",
+              "Silver BOPP",
+              "Clear BOPP",
               "60# Semi-Gloss Paper",
               "Silver Gloss Paper",
-              "Holographic Gloss BOPP",
+              "Holographic BOPP",
               "60# White Uncoated Paper",
               "Kraft Paper"
             ],
@@ -2011,16 +2011,16 @@
             "optionsBy": {
               "field": "Material",
               "values": {
-                "Silver Gloss BOPP": [
+                "Silver BOPP": [
                   "Full Color + White (5/0)"
                 ],
-                "Clear Gloss BOPP": [
+                "Clear BOPP": [
                   "Full Color + White (5/0)"
                 ],
                 "Silver Gloss Paper": [
                   "Full Color + White (5/0)"
                 ],
-                "Holographic Gloss BOPP": [
+                "Holographic BOPP": [
                   "Full Color + White (5/0)"
                 ],
                 "Kraft Paper": [
@@ -2123,11 +2123,11 @@
             "optionsBy": {
               "field": "Material",
               "values": {
-                "White Matte BOPP": [
+                "White BOPP": [
                   "40# Paper Liner",
                   "Clear 1.2Mil PET Liner"
                 ],
-                "Clear Gloss BOPP": [
+                "Clear BOPP": [
                   "Clear 1.2Mil PET Liner"
                 ]
               },
