@@ -1,4 +1,14 @@
 window.QUIXPRINT_POSTS = [
+  {
+    title: "RGB vs CMYK: Why Your Printed Colors Look Different From Your Screen",
+    slug: "rgb-vs-cmyk",
+    date: "November 17, 2026",
+    excerpt: "Why printed colors look different from your screen, how rich black works, and how to prepare artwork in Canva and Illustrator.",
+    image: "/assets/rgb-vs-cmyk-hero.png",
+    thumbnail: "/assets/rgb-vs-cmyk-hero.png",
+    imageAlt: "Abstract colorful printed artwork and color swatches in a sunlit studio"
+  },
+
 {
   "title": "Custom Counter Mats: How Checkout Counters Become Selling Space",
   "slug": "custom-counter-mats",
