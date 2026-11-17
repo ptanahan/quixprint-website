@@ -1,14 +1,14 @@
 window.QUIXPRINT_POSTS = [
-{
-  "title": "How to Make Your Labels Stand Out: Materials, Finishes & Embellishments",
-  "slug": "how-to-make-labels-stand-out",
-  "date": "October 19, 2026",
-  "category": "Materials & finishes",
-  "excerpt": "From silver BOPP to foil stamping and raised spot UV, here’s how to make custom labels that get noticed and picked up.",
-  "image": "/assets/how-to-make-labels-stand-out.jpg",
-  "thumbnail": "/assets/how-to-make-labels-stand-out-960.webp",
-  "imageAlt": "Botanical green labels with gold foil beside a Pulse white BOPP label with matte lamination and raised gloss UV on black lettering and orange accents"
-},
+  {
+    title: "RGB vs CMYK: Why Your Printed Colors Look Different From Your Screen",
+    slug: "rgb-vs-cmyk",
+    date: "November 17, 2026",
+    excerpt: "Why printed colors look different from your screen, how rich black works, and how to prepare artwork in Canva and Illustrator.",
+    image: "/assets/rgb-vs-cmyk-hero.png",
+    thumbnail: "/assets/rgb-vs-cmyk-hero.png",
+    imageAlt: "Abstract colorful printed artwork and color swatches in a sunlit studio"
+  },
+
 {
   "title": "Custom Counter Mats: How Checkout Counters Become Selling Space",
   "slug": "custom-counter-mats",
