@@ -1,4 +1,6 @@
 window.QUIXPRINT_POSTS = [
+  { title: "How to Prepare Files for Printing: Bleed, Trim, Resolution and the Prepress Checklist", slug: "how-to-prepare-files-for-printing", date: "November 18, 2026", excerpt: "Bleed, safe margins, resolution, CMYK, fonts and PDF export—plus a free print-ready checklist.", image: "/assets/prepress-hero.webp", thumbnail: "/assets/prepress-hero.webp", imageAlt: "Sunlit studio desk with printed brochures, color swatches and paper samples" },
+
   {
     title: "RGB vs CMYK: Why Your Printed Colors Look Different From Your Screen",
     slug: "rgb-vs-cmyk",
