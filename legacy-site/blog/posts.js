@@ -1,5 +1,7 @@
 window.QUIXPRINT_POSTS = [
-  { title: "How to Prepare Files for Printing: Bleed, Trim, Resolution and the Prepress Checklist", slug: "how-to-prepare-files-for-printing", date: "November 18, 2026", excerpt: "Bleed, safe margins, resolution, CMYK, fonts and PDF export—plus a free print-ready checklist.", image: "/assets/prepress-hero.webp", thumbnail: "/assets/prepress-hero-480.webp", thumbnailSrcSet: "/assets/prepress-hero-480.webp 480w, /assets/prepress-hero-960.webp 960w", imageAlt: "Sunlit studio desk with printed brochures, color swatches and paper samples" },
+  { title: "Perfect Binding vs Saddle Stitch: How to Choose the Right Binding for Your Catalog or Booklet", slug: "perfect-binding-vs-saddle-stitch", date: "November 18, 2026", excerpt: "Compare saddle stitch and perfect binding by page count, cost, opening style, and finish—plus a quick decision guide.", image: "/assets/perfect-binding-vs-saddle-stitch-hero.webp", thumbnail: "/assets/blog-thumbnails/perfect-binding-vs-saddle-stitch-640.webp", thumbnailSrcSet: "/assets/blog-thumbnails/perfect-binding-vs-saddle-stitch-320.webp 320w, /assets/blog-thumbnails/perfect-binding-vs-saddle-stitch-640.webp 640w, /assets/blog-thumbnails/perfect-binding-vs-saddle-stitch-960.webp 960w", imageAlt: "A saddle-stitched booklet beside a thick perfect-bound catalog on a sunlit wooden desk" },
+
+  { title: "How to Prepare Files for Printing: Bleed, Trim, Resolution and the Prepress Checklist", slug: "how-to-prepare-files-for-printing", date: "November 18, 2026", excerpt: "Bleed, safe margins, resolution, CMYK, fonts and PDF export—plus a free print-ready checklist.", image: "/assets/prepress-hero.webp", thumbnail: "/assets/prepress-hero.webp", imageAlt: "Sunlit studio desk with printed brochures, color swatches and paper samples" },
 
   {
     title: "RGB vs CMYK: Why Your Printed Colors Look Different From Your Screen",
@@ -7,8 +9,7 @@ window.QUIXPRINT_POSTS = [
     date: "November 17, 2026",
     excerpt: "Why printed colors look different from your screen, how rich black works, and how to prepare artwork in Canva and Illustrator.",
     image: "/assets/rgb-vs-cmyk-hero.png",
-    thumbnail: "/assets/rgb-vs-cmyk-hero-480.webp",
-    thumbnailSrcSet: "/assets/rgb-vs-cmyk-hero-480.webp 480w, /assets/rgb-vs-cmyk-hero-960.webp 960w",
+    thumbnail: "/assets/rgb-vs-cmyk-hero.png",
     imageAlt: "Abstract colorful printed artwork and color swatches in a sunlit studio"
   },
 
