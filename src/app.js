@@ -148,11 +148,38 @@ function initProduct(){
  if(p.id==='stickers'&&params.get('format'))choices={...choices,Format:params.get('format')};
  if(p.customOnly&&params.get('product')&&!editing)choices={'Project description':'I’m interested in '+params.get('product')+'.',...choices};
  if(editing){$('#item-note').value=editing.note||'';$('#already-buying').checked=editing.buying===true;$('#supplier').value=editing.supplier||'';$('#current-price').value=editing.currentPrice||'';$('#buying-notes').value=editing.buyingDetails||'';$('#buying-details').open=!!editing.buying;$('#add-to-quote').innerHTML='Save changes '+icon('arrow-up-right');}
+ // Keep unchanged controls mounted so native dropdowns and focus stay stable.
+ const fieldNodes=new Map(),fieldIds=new Map();let nextFieldId=0,quantityViewKey;
+ const quantityKey=()=>JSON.stringify([resolved.quantities,choices.Versions,Q.quantityUnit(p,choices),choices.Format]);
+ function syncField(node,f){
+  node.querySelectorAll('[data-spec]').forEach(control=>{
+   if(control.tagName==='BUTTON'){const pressed=String(control.dataset.value===f.value);if(control.getAttribute('aria-pressed')!==pressed)control.setAttribute('aria-pressed',pressed);}
+   else if(control.tagName==='SUMMARY'){
+    control.value=f.value;
+    const name=control.querySelector('[id^="spec-value-"]');if(name&&name.textContent!==f.value)name.textContent=f.value;
+    const dot=control.querySelector('.foil-swatch');if(dot)dot.className='foil-swatch foil-'+f.swatches[f.value];
+   }else{
+    if(control.value!==f.value)control.value=f.value;
+    if(control.classList.contains('spec-fixed')&&control.textContent!==f.value)control.textContent=f.value;
+   }
+  });
+  const dot=node.querySelector('.native-foil-control .foil-swatch');if(dot)dot.className='foil-swatch foil-'+f.swatches[f.value];
+ }
  function choose(f,value){choices[f.label]=value;renderFields(f.label);}
  function renderFields(focusLabel){
   resolved=Q.resolve(p.id,choices);choices=resolved.state;
-  const root=$('#config-fields');root.replaceChildren();const grid=document.createElement('div');grid.className='field-grid';
-  resolved.fields.filter(f=>f.label!=='Versions').forEach((f,i)=>{
+  const root=$('#config-fields');let grid=root.firstElementChild;
+  if(!grid){grid=document.createElement('div');grid.className='field-grid';root.append(grid);}
+  const desired=[],visible=new Set();
+  function mount(node,f,key){fieldNodes.set(f.label,{node,key});desired.push(node);}
+
+  resolved.fields.filter(f=>f.label!=='Versions').forEach(f=>{
+   if(!fieldIds.has(f.label))fieldIds.set(f.label,nextFieldId++);
+   const i=fieldIds.get(f.label);visible.add(f.label);
+   const key=JSON.stringify({...f,value:undefined,customSizeLink:!!f.customSize&&f.value!=='Custom size'});
+   const previous=fieldNodes.get(f.label);
+   if(previous?.key===key){syncField(previous.node,f);desired.push(previous.node);return;}
+
    // Orientation is a shared visual control, including legacy catalog fields.
    const ui=f.label==='Orientation'&&f.options?'orientation':f.ui;
    if(ui==='color-dropdown'){
@@ -162,7 +189,7 @@ function initProduct(){
      const field=document.createElement('label');field.className='field';const text=document.createElement('span');text.textContent=f.label+' *';field.append(text);
      const control=document.createElement('span');control.className='native-foil-control';const dot=document.createElement('span');dot.className='foil-swatch foil-'+f.swatches[f.value];dot.setAttribute('aria-hidden','true');
      const select=document.createElement('select');select.id='spec-'+i;select.dataset.spec=f.label;select.required=true;f.options.forEach(value=>{const option=document.createElement('option');option.value=value;option.textContent=value;select.append(option);});select.value=f.value;
-     select.addEventListener('change',()=>{choices[f.label]=select.value;dot.className='foil-swatch foil-'+f.swatches[select.value];select.blur();});control.append(dot,select);field.append(control);grid.append(field);return;
+     select.addEventListener('change',()=>{choices[f.label]=select.value;dot.className='foil-swatch foil-'+f.swatches[select.value];select.blur();});control.append(dot,select);field.append(control);mount(field,f,key);return;
     }
     const field=document.createElement('div');field.className='field';const label=document.createElement('span');label.id='spec-label-'+i;label.textContent=f.label+' *';field.append(label);
     const dropdown=document.createElement('details');dropdown.className='color-dropdown';const trigger=document.createElement('summary');trigger.dataset.spec=f.label;trigger.value=f.value;trigger.id='spec-'+i;trigger.setAttribute('aria-labelledby',label.id+' spec-value-'+i);
@@ -174,7 +201,7 @@ function initProduct(){
     // Touch browsers can blur the summary without focusing the tapped button.
     // Keep the menu mounted until its click commits the color; outside clicks
     // are handled by the document listener below.
-    dropdown.addEventListener('focusout',e=>{if(e.relatedTarget&&!dropdown.contains(e.relatedTarget))dropdown.open=false;});field.append(dropdown);grid.append(field);return;
+    dropdown.addEventListener('focusout',e=>{if(e.relatedTarget&&!dropdown.contains(e.relatedTarget))dropdown.open=false;});field.append(dropdown);mount(field,f,key);return;
    }
    if(f.options&&ui){
     const set=document.createElement('fieldset');set.className='spec-option-field span-full';const legend=document.createElement('legend');legend.textContent=f.label;set.append(legend);
@@ -185,7 +212,7 @@ function initProduct(){
      if(ui==='diagram'&&f.icons?.[value]){const diagram=document.createElement('span');diagram.className='option-diagram';diagram.innerHTML=icon(f.icons[value]);button.append(diagram);}
      if(['shape','orientation','material'].includes(ui)){const icon=document.createElement('span');icon.setAttribute('aria-hidden','true');icon.className=ui==='shape'?'shape-icon shape-'+value.toLowerCase().replaceAll(' ','-'):ui==='orientation'?'orientation-icon orientation-'+orientationLabel(value).toLowerCase():'material-swatch '+(/holographic/i.test(value)?'holographic':/silver/i.test(value)?'silver':/clear/i.test(value)?'clear':/kraft/i.test(value)?'kraft':'');button.append(icon);}
      const caption=document.createElement('span');caption.textContent=ui==='orientation'?orientationLabel(value):value;button.append(caption);button.addEventListener('click',()=>choose(f,value));buttons.append(button);
-    });set.append(buttons);if(f.help){const help=document.createElement('p');help.className='field-help';help.textContent=f.help;set.append(help);}grid.append(set);return;
+    });set.append(buttons);if(f.help){const help=document.createElement('p');help.className='field-help';help.textContent=f.help;set.append(help);}mount(set,f,key);return;
    }
    const label=document.createElement('label');label.className='field'+(f.type==='textarea'?' span-full':'');const text=document.createElement('span');text.textContent=f.label+(f.required?' *':'');label.append(text);let el;
    if(f.options&&f.options.length===1){el=document.createElement('span');el.className='spec-fixed';el.textContent=f.value;}
@@ -194,8 +221,14 @@ function initProduct(){
    el.id='spec-'+i;el.dataset.spec=f.label;el.value=f.value;el.required=!!f.required;
    el.addEventListener(f.options?'change':'input',()=>{choices[f.label]=el.value;if(f.options){if(el.tagName==='SELECT')el.blur();renderFields(f.label)}});label.append(el);
    if(f.customSize&&f.value!=='Custom size'){const custom=document.createElement('button');custom.type='button';custom.className='custom-size-button';custom.textContent='Custom size';custom.addEventListener('click',()=>choose(f,'Custom size'));label.append(custom);}
-   if(f.guide==='unwind'){const guide=document.createElement('button');guide.type='button';guide.className='custom-size-button';guide.textContent='View roll unwind guide';guide.setAttribute('aria-haspopup','dialog');guide.setAttribute('aria-controls','unwind-guide');guide.addEventListener('click',()=>$('#unwind-guide').showModal());label.append(guide);}if(f.help){const h=document.createElement('span');h.className='field-help';h.textContent=f.help;label.append(h);}grid.append(label);
-  });root.append(grid);renderQuantity();if(focusLabel){const focus=$$('[data-spec]').find(el=>el.dataset.spec===focusLabel&&(el.dataset.value===undefined||el.dataset.value===choices[focusLabel]));if(focus&&(focus.tagName!=='SELECT'||(typeof matchMedia==='function'&&matchMedia('(hover: hover) and (pointer: fine)').matches)))focus.focus({preventScroll:true});}
+   if(f.guide==='unwind'){const guide=document.createElement('button');guide.type='button';guide.className='custom-size-button';guide.textContent='View roll unwind guide';guide.setAttribute('aria-haspopup','dialog');guide.setAttribute('aria-controls','unwind-guide');guide.addEventListener('click',()=>$('#unwind-guide').showModal());label.append(guide);}if(f.help){const h=document.createElement('span');h.className='field-help';h.textContent=f.help;label.append(h);}mount(label,f,key);
+  });
+  for(const [label,entry] of fieldNodes)if(!visible.has(label)){entry.node.remove();fieldNodes.delete(label);}
+  // Remove superseded controls, then insert only new or reordered fields.
+  const keep=new Set(desired);for(const child of Array.from(grid.children))if(!keep.has(child))child.remove();
+  desired.forEach((node,i)=>{if(grid.children[i]!==node)grid.insertBefore(node,grid.children[i]||null);});
+  if(quantityViewKey!==quantityKey())renderQuantity();
+  if(focusLabel){const focus=$$('[data-spec]').find(el=>el.dataset.spec===focusLabel&&(el.dataset.value===undefined||el.dataset.value===choices[focusLabel]));if(focus&&(focus.tagName!=='SELECT'||(typeof matchMedia==='function'&&matchMedia('(hover: hover) and (pointer: fine)').matches)))focus.focus({preventScroll:true});}
  }
  function count(){return Number(choices.Versions||1);}
  function total(){return versionRows.slice(0,count()).reduce((sum,v)=>sum+(Number(v.quantity)||0),0);}
@@ -208,7 +241,7 @@ function initProduct(){
   else{
    if(resolved.quantities.length){const s=document.createElement('select');s.id='quantity-select';for(const q of resolved.quantities){const o=document.createElement('option');o.value=q;o.textContent=Number(q).toLocaleString();s.append(o);}if(!p.fixedQuantity){const other=document.createElement('option');other.value='custom';other.textContent='Custom quantity';s.append(other);}else quantityCustom=false;
     if(!quantity)quantity=resolved.quantities[0];if(!quantityCustom&&!resolved.quantities.includes(String(quantity)))quantity=resolved.quantities[0];s.value=quantityCustom?'custom':String(quantity);
-    s.addEventListener('change',()=>{quantityCustom=s.value==='custom';quantity=quantityCustom?'':s.value;versionRows[0]={...(versionRows[0]||{}),quantity};renderQuantity();$('#custom-quantity')?.focus();});qlabel.append(s);
+    s.addEventListener('change',()=>{const wasCustom=quantityCustom;quantityCustom=s.value==='custom';quantity=quantityCustom?'':s.value;versionRows[0]={...(versionRows[0]||{}),quantity};s.blur();if(wasCustom!==quantityCustom){renderQuantity();$('#custom-quantity')?.focus();}});qlabel.append(s);
    }else quantityCustom=true;
    root.append(qlabel);
    if(quantityCustom){const input=document.createElement('input');input.id='custom-quantity';input.type='number';input.min=1;input.max=10000000;input.step=1;input.required=true;input.inputMode='numeric';input.placeholder='Enter quantity';input.value=quantity;input.addEventListener('input',()=>{quantity=input.value;versionRows[0]={...(versionRows[0]||{}),quantity};});
@@ -231,6 +264,7 @@ function initProduct(){
    const summary=document.createElement('div');summary.className='version-total';const caption=document.createElement('span');caption.textContent='Total';const value=document.createElement('span');value.id='version-total';value.setAttribute('aria-live','polite');summary.append(caption,value);box.append(summary);breakdown.append(box);updateTotal();
   }
   $('#quantity-help').textContent=p.id==='notepads'?'A pad contains the selected number of sheets.':p.id==='custom-printing'?'Quantity is per artwork version.':Q.quantityUnit(p,choices)==='sheets'?'Quantity counts printed sheets.':p.id==='roll-labels'?'Quantity counts individual labels.':p.id==='stickers'&&choices.Format==='Sticker Sheets'?'Quantity counts individual stickers, supplied on sheets.':'';
+  quantityViewKey=quantityKey();
  }
  function syncBuyingFields(){const active=$('#already-buying').checked;$('#buying-fields').hidden=!active;$$('input,textarea',$('#buying-fields')).forEach(el=>el.disabled=!active);}syncBuyingFields();$('#already-buying').addEventListener('change',syncBuyingFields);
  form.addEventListener('submit',e=>{e.preventDefault();error($('#product-error'),'');try{
