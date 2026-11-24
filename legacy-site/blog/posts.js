@@ -17,6 +17,16 @@ window.QUIXPRINT_POSTS = [
     imageAlt: "Abstract colorful printed artwork and color swatches in a sunlit studio"
   },
 
+  {
+    title: "How to Make Your Labels Stand Out: Materials, Finishes & Embellishments",
+    slug: "how-to-make-labels-stand-out",
+    date: "October 19, 2026",
+    excerpt: "From silver BOPP to foil stamping and raised spot UV, here’s how to make custom labels that get noticed and picked up.",
+    image: "/assets/how-to-make-labels-stand-out.jpg",
+    thumbnail: "/assets/how-to-make-labels-stand-out-960.webp",
+    imageAlt: "Botanical green labels with gold foil beside a Pulse white BOPP label with matte lamination and raised gloss UV on black lettering and orange accents"
+  },
+
 {
   "title": "Custom Counter Mats: How Checkout Counters Become Selling Space",
   "slug": "custom-counter-mats",
